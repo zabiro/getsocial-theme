@@ -6,74 +6,74 @@ Dos formas. La **A** es la más simple si tu plan de Shopify lo permite.
 
 ## A) Integración nativa Shopify ↔ GitHub (recomendada)
 
-1. Sube el proyecto a un repo en GitHub (rama `main`).
-2. En Shopify: **Tienda online → Temas**.
-3. **Añadir tema → Conectar desde GitHub** (o “Connect to GitHub”).
-4. Autoriza GitHub, elige el repo y la rama `main`.
-5. Cada **push** a esa rama actualiza el tema en Shopify automáticamente.
+1. Repo en GitHub, rama `main`.
+2. **Tienda online → Temas → Añadir tema → Conectar desde GitHub**.
+3. Repo: `zabiro/getsocial-theme`, rama `main`.
+4. Cada push actualiza el tema.
 
-Solo deben estar en el repo las carpetas del tema (`assets`, `config`, `layout`, etc.). Los ZIP y `license-server/` no hacen falta en GitHub.
-
----
-
-## B) GitHub Actions (este repo ya incluye el workflow)
-
-Archivo: `.github/workflows/deploy-theme.yml`
-
-### 1. Token de tema en Shopify
-
-1. **Configuración → Apps y canales de venta → Desarrollar apps**.
-2. Crea una app personalizada (o usa una existente).
-3. Configura acceso a **Temas** → lectura y escritura.
-4. Instala la app en la tienda.
-5. Copia el **Admin API access token** (o usa Theme Access / CLI token según tu flujo).
-
-Documentación: [Shopify CLI - theme environments](https://shopify.dev/docs/storefronts/themes/tools/cli)
-
-### 2. Secrets en GitHub
-
-En el repo: **Settings → Secrets and variables → Actions → New repository secret**
-
-| Secret | Valor |
-|--------|--------|
-| `SHOPIFY_CLI_THEME_TOKEN` | Token con permiso de temas |
-| `SHOPIFY_STORE` | `prueba-tienda-3bmgzfei.myshopify.com` |
-
-### 3. Push a `main`
-
-Cada push ejecuta `shopify theme push --unpublished` y actualiza un tema **sin publicar** en la tienda. Revisa en **Temas** y publica cuando quieras.
+No necesitas GitHub Actions si usas esta opción.
 
 ---
 
-## Subir el proyecto a GitHub (primera vez)
+## B) GitHub Actions (`deploy-theme.yml`)
 
-En PowerShell, desde la carpeta del tema:
+Si el workflow **falla en rojo**, casi siempre faltan los **secrets** o el token no es de Theme Access.
+
+### Paso 1 — App Theme Access (obligatorio)
+
+1. En la tienda: instala **[Theme Access](https://apps.shopify.com/theme-access)** (gratis).
+2. Abre la app → **Create theme access password**.
+3. Permisos: al menos **Read and write themes**.
+4. Copia la contraseña generada (solo se muestra una vez).
+
+Documentación oficial: [Shopify CLI en CI/CD](https://shopify.dev/docs/storefronts/themes/tools/cli/ci-cd)
+
+> No uses el Admin API token de una app custom para `theme push` en CI; usa la contraseña de **Theme Access**.
+
+### Paso 2 — Secrets en GitHub
+
+Repo → **Settings → Secrets and variables → Actions → New repository secret**
+
+| Secret | Valor | Ejemplo |
+|--------|--------|---------|
+| `SHOPIFY_CLI_THEME_TOKEN` | Contraseña de Theme Access | `shpat_...` o la que da la app |
+| `SHOPIFY_STORE` | Dominio de la tienda | `prueba-tienda-3bmgzfei.myshopify.com` |
+| `SHOPIFY_THEME_ID` | *(opcional)* ID numérico del tema a actualizar | `123456789012` |
+
+Para ver el **ID del tema**: en el admin, abre el tema → la URL contiene `themes/123456789012`.
+
+Sin `SHOPIFY_THEME_ID`, el workflow crea/actualiza un **tema sin publicar**.
+
+### Paso 3 — Probar de nuevo
+
+1. Guarda los secrets.
+2. **Actions → Deploy GetSocial Theme → Run workflow** (workflow_dispatch).
+3. Debe quedar en verde. En **Temas** verás el tema actualizado.
+
+### Errores frecuentes
+
+| Error | Solución |
+|-------|----------|
+| `Missing secret SHOPIFY_CLI_THEME_TOKEN` | Crear el secret (paso 2) |
+| `Invalid password` / `401` | Regenerar contraseña en Theme Access |
+| `403` / permisos | La app Theme Access debe tener write themes |
+| Workflow verde pero tienda igual | Usas otro tema en preview; publica o abre el tema correcto |
+
+---
+
+## Subir cambios desde tu PC
 
 ```powershell
 cd "D:\informacion\Nueva carpeta - copia\tema shopify custom"
-git init
 git add .
-git commit -m "GetSocial Theme v1.6.0"
-git branch -M main
-git remote add origin https://github.com/TU-USUARIO/getsocial-theme.git
-git push -u origin main
+git commit -m "Descripción del cambio"
+$env:GIT_SSL_NO_VERIFY = 'true'
+git push origin main
 ```
 
-Crea antes el repo vacío en GitHub (sin README si ya tienes uno local).
-
 ---
 
-## Popup / cambios que no se ven
+## Sin GitHub Actions
 
-Si cambias código pero la tienda no se actualiza:
-
-1. Confirma que el push llegó a GitHub (Actions en verde).
-2. En Shopify, el tema conectado debe ser el de GitHub o el que actualiza Actions.
-3. **Ctrl+F5** en el navegador y borra caché, o prueba ventana privada.
-4. Para el popup: en consola (F12): `localStorage.removeItem('getsocial_newsletter_popup')`
-
----
-
-## Sin GitHub
-
-Sigue usando `getsocial-theme-v1.6.0.zip` o `.\scripts\dev-theme.ps1` cuando el CLI funcione.
+- ZIP: `getsocial-theme-v1.6.0.zip`
+- CLI local: `.\scripts\dev-theme.ps1` (cuando SSL lo permita)
