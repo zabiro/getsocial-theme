@@ -1,0 +1,25 @@
+{%- if settings.enable_custom_cursor -%}
+<style id="custom-cursor-theme">
+  :root {
+    --custom-cursor-size: {{ settings.cursor_size | default: 28 }}px;
+    --custom-cursor-size-hover: {{ settings.cursor_size_hover | default: 44 }}px;
+    --custom-cursor-color: {{ settings.cursor_color | default: '#e8788a' }};
+    --custom-cursor-fill: {{ settings.cursor_fill | default: 'rgba(255, 240, 232, 0.35)' }};
+    --custom-cursor-blend: {{ settings.cursor_blend_mode | default: 'multiply' }};
+  }
+  @media (pointer: fine) {
+    html.custom-cursor-active,
+    html.custom-cursor-active body,
+    html.custom-cursor-active a,
+    html.custom-cursor-active button,
+    html.custom-cursor-active .button,
+    html.custom-cursor-active input,
+    html.custom-cursor-active select,
+    html.custom-cursor-active textarea,
+    html.custom-cursor-active label,
+    html.custom-cursor-active summary {
+      cursor: none !important;
+    }
+  }
+</style>
+{%- endif -%}

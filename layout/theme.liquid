@@ -1,5 +1,5 @@
 <!doctype html>
-<html class="no-js" lang="{{ request.locale.iso_code }}">
+<html class="no-js{% if settings.enable_custom_cursor %} custom-cursor-active{% endif %}" lang="{{ request.locale.iso_code }}">
 <head>
   <!-- GetSocial Theme | GetSocial | Luciano De Luque -->
   {%- render 'meta-tags' -%}
@@ -26,6 +26,7 @@
     {%- render 'theme-fonts' -%}
   </style>
   {%- render 'css-variables' -%}
+  {%- render 'custom-cursor-styles' -%}
   {%- render 'json-ld' -%}
   {%- render 'license-admin-notice' -%}
   {{ 'base.css' | asset_url | stylesheet_tag }}
@@ -33,6 +34,9 @@
   {{ 'theme-modern.css' | asset_url | stylesheet_tag }}
   {{ 'sunny-style.css' | asset_url | stylesheet_tag }}
   {{ 'sunny-interactions.css' | asset_url | stylesheet_tag }}
+  {%- if settings.enable_custom_cursor -%}
+    {{ 'custom-cursor.css' | asset_url | stylesheet_tag }}
+  {%- endif -%}
   {%- if settings.custom_css != blank -%}<style>{{ settings.custom_css }}</style>{%- endif -%}
   {%- if settings.custom_head_scripts != blank -%}{{ settings.custom_head_scripts }}{%- endif -%}
   <script>document.documentElement.classList.replace('no-js','js');</script>
@@ -83,7 +87,17 @@
       predictiveSearch: {{ settings.predictive_search | json }},
       animations: {{ settings.enable_animations | json }},
       compareMax: {{ settings.compare_max | default: 4 | json }},
-      headerScrollHide: {{ settings.header_scroll_hide | json }}
+      headerScrollHide: {{ settings.header_scroll_hide | json }},
+      customCursor: {
+        enabled: {{ settings.enable_custom_cursor | json }},
+        style: {{ settings.cursor_style | default: 'ring' | json }},
+        imageUrl: {% if settings.cursor_image != blank %}{{ settings.cursor_image | image_url: width: 256 | json }}{% else %}null{% endif %},
+        imageHoverUrl: {% if settings.cursor_image_hover != blank %}{{ settings.cursor_image_hover | image_url: width: 256 | json }}{% else %}null{% endif %},
+        size: {{ settings.cursor_size | default: 28 | json }},
+        sizeHover: {{ settings.cursor_size_hover | default: 44 | json }},
+        smooth: {{ settings.cursor_smooth_follow | default: true | json }},
+        hideOnProduct: {{ settings.cursor_hide_on_product | default: true | json }}
+      }
     };
     window.themeStrings = {
       wishlistEmpty: {{ 'wishlist.empty' | t | json }},
@@ -96,6 +110,9 @@
   <script src="{{ 'theme.js' | asset_url }}" defer></script>
   <script src="{{ 'product-carousel.js' | asset_url }}" defer></script>
   <script src="{{ 'collection-tabs.js' | asset_url }}" defer></script>
+  {%- if settings.enable_custom_cursor -%}
+    <script src="{{ 'custom-cursor.js' | asset_url }}" defer></script>
+  {%- endif -%}
   {%- if settings.color_preset == 'sunny' or settings.color_preset == 'beauty' -%}
     <script src="{{ 'sunny-interactions.js' | asset_url }}" defer></script>
   {%- endif -%}

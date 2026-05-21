@@ -2,50 +2,14 @@
  * Efectos e interacciones — preset tropical / Sunny
  */
 
-/* Sin cursor decorativo en ficha de producto (confunde con la galería) */
-.template-product .sunny-cursor {
-  display: none !important;
-}
-
 @media (prefers-reduced-motion: reduce) {
   .sunny-reveal,
-  .tropical-float,
-  .sunny-cursor {
+  .tropical-float {
     animation: none !important;
     transition: none !important;
     opacity: 1 !important;
     transform: none !important;
   }
-}
-
-/* Cursor personalizado suave */
-.sunny-cursor {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 28px;
-  height: 28px;
-  margin: -14px 0 0 -14px;
-  border-radius: 50%;
-  border: 2px solid rgba(232, 120, 138, 0.55);
-  background: rgba(255, 240, 232, 0.35);
-  pointer-events: none;
-  z-index: 9998;
-  opacity: 0;
-  transition: opacity 0.25s, width 0.25s, height 0.25s, margin 0.25s, border-color 0.25s;
-  mix-blend-mode: multiply;
-}
-
-.sunny-cursor.is-visible {
-  opacity: 1;
-}
-
-.sunny-cursor.is-hover {
-  width: 44px;
-  height: 44px;
-  margin: -22px 0 0 -22px;
-  border-color: rgba(232, 120, 138, 0.9);
-  background: rgba(255, 224, 230, 0.5);
 }
 
 /* Enlaces con subrayado animado */

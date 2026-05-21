@@ -10,41 +10,6 @@
 
   if (reduced || !animOn) return;
 
-  /* Cursor suave (solo desktop, preset tropical) */
-  if (sunnyBody && window.matchMedia('(pointer: fine)').matches) {
-    const ring = document.createElement('div');
-    ring.className = 'sunny-cursor';
-    ring.setAttribute('aria-hidden', 'true');
-    document.body.appendChild(ring);
-
-    let mx = 0;
-    let my = 0;
-    let rx = 0;
-    let ry = 0;
-    let raf;
-
-    const tick = () => {
-      rx += (mx - rx) * 0.18;
-      ry += (my - ry) * 0.18;
-      ring.style.transform = `translate(${rx}px, ${ry}px)`;
-      raf = requestAnimationFrame(tick);
-    };
-
-    document.addEventListener('mousemove', (e) => {
-      mx = e.clientX;
-      my = e.clientY;
-      ring.classList.add('is-visible');
-    }, { passive: true });
-
-    document.addEventListener('mouseleave', () => ring.classList.remove('is-visible'));
-    tick();
-
-    document.querySelectorAll('a, button, .product-card, input, [data-cart-open]').forEach((el) => {
-      el.addEventListener('mouseenter', () => ring.classList.add('is-hover'));
-      el.addEventListener('mouseleave', () => ring.classList.remove('is-hover'));
-    });
-  }
-
   /* Aparición al scroll */
   const revealEls = document.querySelectorAll(
     '.hero, .featured-collection, .tropical-showcase, .featured-product, .image-with-text, .site-footer, .product-card'

@@ -1,4 +1,4 @@
-[
+﻿[
   {
     "name": "theme_info",
     "theme_name": "GetSocial Theme",
@@ -647,6 +647,101 @@
         "type": "image_picker",
         "id": "logo_footer",
         "label": "Logo pie de página"
+      }
+    ]
+  },
+  {
+    "name": "Cursor personalizado",
+    "settings": [
+      {
+        "type": "paragraph",
+        "content": "Cursor estilo Sunny Hunny: anillo suave, punto o tu propia imagen (PNG/SVG). Solo en escritorio con ratón; en móvil se usa el cursor normal."
+      },
+      {
+        "type": "checkbox",
+        "id": "enable_custom_cursor",
+        "label": "Activar cursor personalizado",
+        "default": true
+      },
+      {
+        "type": "select",
+        "id": "cursor_style",
+        "label": "Estilo del cursor",
+        "options": [
+          { "value": "ring", "label": "Anillo (Sunny)" },
+          { "value": "dot", "label": "Punto sólido" },
+          { "value": "image", "label": "Imagen personalizada" }
+        ],
+        "default": "ring"
+      },
+      {
+        "type": "image_picker",
+        "id": "cursor_image",
+        "label": "Imagen del cursor",
+        "info": "Recomendado: PNG o SVG transparente, ~64–128 px. Solo si el estilo es «Imagen personalizada»."
+      },
+      {
+        "type": "image_picker",
+        "id": "cursor_image_hover",
+        "label": "Imagen al pasar sobre enlaces (opcional)",
+        "info": "Si está vacío, se agranda la imagen principal."
+      },
+      {
+        "type": "range",
+        "id": "cursor_size",
+        "min": 12,
+        "max": 80,
+        "step": 2,
+        "unit": "px",
+        "label": "Tamaño normal",
+        "default": 28
+      },
+      {
+        "type": "range",
+        "id": "cursor_size_hover",
+        "min": 20,
+        "max": 120,
+        "step": 2,
+        "unit": "px",
+        "label": "Tamaño al hover (enlaces, botones)",
+        "default": 44
+      },
+      {
+        "type": "color",
+        "id": "cursor_color",
+        "label": "Color (anillo / punto)",
+        "default": "#e8788a"
+      },
+      {
+        "type": "color",
+        "id": "cursor_fill",
+        "label": "Relleno del anillo",
+        "default": "#fff0e8"
+      },
+      {
+        "type": "select",
+        "id": "cursor_blend_mode",
+        "label": "Modo de fusión",
+        "options": [
+          { "value": "multiply", "label": "Multiply (Sunny)" },
+          { "value": "normal", "label": "Normal" },
+          { "value": "screen", "label": "Screen" },
+          { "value": "difference", "label": "Difference" }
+        ],
+        "default": "multiply"
+      },
+      {
+        "type": "checkbox",
+        "id": "cursor_smooth_follow",
+        "label": "Movimiento suave (sigue el ratón con delay)",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "cursor_hide_on_product",
+        "label": "Ocultar en página de producto",
+        "default": true,
+        "info": "Evita confusión con la galería de fotos."
       }
     ]
   },

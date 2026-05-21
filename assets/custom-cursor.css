@@ -1,0 +1,77 @@
+/* Cursor personalizado — Ajustes del tema */
+
+.custom-cursor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 9998;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.25s;
+  mix-blend-mode: var(--custom-cursor-blend, multiply);
+  will-change: transform;
+}
+
+.custom-cursor.is-visible {
+  opacity: 1;
+}
+
+.custom-cursor__inner {
+  display: block;
+  width: var(--custom-cursor-size, 28px);
+  height: var(--custom-cursor-size, 28px);
+  margin: calc(var(--custom-cursor-size, 28px) / -2) 0 0 calc(var(--custom-cursor-size, 28px) / -2);
+  transition: width 0.25s, height 0.25s, margin 0.25s, border-color 0.25s, background 0.25s;
+}
+
+/* Anillo (estilo Sunny por defecto) */
+.custom-cursor--ring .custom-cursor__inner {
+  border-radius: 50%;
+  border: 2px solid color-mix(in srgb, var(--custom-cursor-color, #e8788a) 55%, transparent);
+  background: var(--custom-cursor-fill, rgba(255, 240, 232, 0.35));
+  box-sizing: border-box;
+}
+
+.custom-cursor--ring.is-hover .custom-cursor__inner {
+  width: var(--custom-cursor-size-hover, 44px);
+  height: var(--custom-cursor-size-hover, 44px);
+  margin: calc(var(--custom-cursor-size-hover, 44px) / -2) 0 0 calc(var(--custom-cursor-size-hover, 44px) / -2);
+  border-color: var(--custom-cursor-color, #e8788a);
+  background: color-mix(in srgb, var(--custom-cursor-color, #e8788a) 25%, white);
+}
+
+/* Punto sólido */
+.custom-cursor--dot .custom-cursor__inner {
+  border-radius: 50%;
+  background: var(--custom-cursor-color, #e8788a);
+  border: none;
+}
+
+.custom-cursor--dot.is-hover .custom-cursor__inner {
+  width: var(--custom-cursor-size-hover, 44px);
+  height: var(--custom-cursor-size-hover, 44px);
+  margin: calc(var(--custom-cursor-size-hover, 44px) / -2) 0 0 calc(var(--custom-cursor-size-hover, 44px) / -2);
+  opacity: 0.85;
+}
+
+/* Imagen personalizada (PNG, SVG, GIF…) */
+.custom-cursor--image .custom-cursor__inner {
+  border: none;
+  border-radius: 0;
+  background-color: transparent;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+}
+
+.custom-cursor--image.is-hover .custom-cursor__inner {
+  width: var(--custom-cursor-size-hover, 44px);
+  height: var(--custom-cursor-size-hover, 44px);
+  margin: calc(var(--custom-cursor-size-hover, 44px) / -2) 0 0 calc(var(--custom-cursor-size-hover, 44px) / -2);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .custom-cursor {
+    display: none !important;
+  }
+}
