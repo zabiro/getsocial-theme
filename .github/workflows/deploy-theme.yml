@@ -1,10 +1,11 @@
-# Despliega el tema a Shopify en cada push a main.
-# Requisitos: instalar app "Theme Access" en la tienda y configurar secrets en GitHub.
-# Ver docs/GITHUB-DEPLOY.md
+# OPCIONAL: deploy con Shopify CLI + Theme Access.
+# Si el tema ya está "Conectado desde GitHub" en Shopify admin, NO necesitas este workflow.
+# Sin secrets, el workflow termina en verde (omitido) y Shopify sigue sincronizando solo.
 
-name: Deploy GetSocial Theme
+name: Deploy GetSocial Theme (opcional)
 
 on:
+  workflow_dispatch:
   push:
     branches: [main]
     paths:
@@ -16,7 +17,6 @@ on:
       - 'snippets/**'
       - 'templates/**'
       - '.github/workflows/deploy-theme.yml'
-  workflow_dispatch:
 
 concurrency:
   group: deploy-theme-${{ github.ref }}
@@ -25,52 +25,54 @@ concurrency:
 jobs:
   deploy:
     runs-on: ubuntu-latest
-    env:
-      FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
-      - name: Setup Node
-        uses: actions/setup-node@v4
+      - uses: actions/setup-node@v4
         with:
           node-version: '22'
 
-      - name: Validate GitHub secrets
+      - name: Comprobar si hay secrets (Theme Access)
+        id: secrets
         run: |
-          if [ -z "${{ secrets.SHOPIFY_CLI_THEME_TOKEN }}" ]; then
-            echo "::error::Falta el secret SHOPIFY_CLI_THEME_TOKEN (contraseña de Theme Access). Ver docs/GITHUB-DEPLOY.md"
-            exit 1
-          fi
-          if [ -z "${{ secrets.SHOPIFY_STORE }}" ]; then
-            echo "::error::Falta el secret SHOPIFY_STORE (ej: prueba-tienda-3bmgzfei.myshopify.com)"
-            exit 1
+          if [ -n "${{ secrets.SHOPIFY_CLI_THEME_TOKEN }}" ] && [ -n "${{ secrets.SHOPIFY_STORE }}" ]; then
+            echo "ready=true" >> "$GITHUB_OUTPUT"
+            echo "Secrets encontrados: se usará Shopify CLI."
+          else
+            echo "ready=false" >> "$GITHUB_OUTPUT"
+            echo "::notice title=Tema vía Shopify + GitHub::No hay secrets de Actions. El tema se actualiza con la conexión nativa en Tienda online → Temas → Conectar desde GitHub. Este workflow se omite a propósito."
           fi
 
-      - name: Prepare theme folder (solo archivos Shopify)
+      - name: Omitir deploy (usa integración Shopify ↔ GitHub)
+        if: steps.secrets.outputs.ready != 'true'
+        run: |
+          echo "✅ OK — No se requiere GitHub Actions."
+          echo "Tu repo está conectado en Shopify; cada push a main sincroniza el tema."
+          echo "Si quieres ADEMÁS deploy por CLI, añade secrets: SHOPIFY_CLI_THEME_TOKEN y SHOPIFY_STORE"
+          echo "Ver docs/GITHUB-DEPLOY.md"
+
+      - name: Prepare theme folder
+        if: steps.secrets.outputs.ready == 'true'
         run: |
           mkdir -p deploy-theme
           for dir in assets config layout locales sections snippets templates; do
             cp -R "$dir" deploy-theme/
           done
-          echo "Archivos a subir:"
           find deploy-theme -type f | wc -l
 
       - name: Install Shopify CLI
+        if: steps.secrets.outputs.ready == 'true'
         run: npm install -g @shopify/cli@latest
 
-      - name: Push theme to store
+      - name: Push theme via CLI
+        if: steps.secrets.outputs.ready == 'true'
         env:
+          SHOPIFY_CLI_THEME_TOKEN: ${{ secrets.SHOPIFY_CLI_THEME_TOKEN }}
+          SHOPIFY_FLAG_STORE: ${{ secrets.SHOPIFY_STORE }}
           SHOPIFY_FLAG_FORCE: '1'
         run: |
-          set -e
-          ARGS="--path deploy-theme --store ${{ secrets.SHOPIFY_STORE }} --password ${{ secrets.SHOPIFY_CLI_THEME_TOKEN }} --unpublished"
-          if [ -n "${{ secrets.SHOPIFY_THEME_ID }}" ]; then
-            ARGS="$ARGS --theme ${{ secrets.SHOPIFY_THEME_ID }}"
-          fi
-          echo "Subiendo tema a ${{ secrets.SHOPIFY_STORE }} ..."
-          shopify theme push $ARGS
-
-      - name: Deploy summary
-        if: success()
-        run: echo "Tema actualizado correctamente en ${{ secrets.SHOPIFY_STORE }}"
+          shopify theme push \
+            --path deploy-theme \
+            --store "${{ secrets.SHOPIFY_STORE }}" \
+            --password "${{ secrets.SHOPIFY_CLI_THEME_TOKEN }}" \
+            --unpublished

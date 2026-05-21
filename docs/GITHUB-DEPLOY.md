@@ -1,17 +1,21 @@
 # GitHub + Shopify — actualizar el tema con push
 
-Dos formas. La **A** es la más simple si tu plan de Shopify lo permite.
+## A) Integración nativa Shopify ↔ GitHub (la que ya usas)
 
----
+1. Repo: `zabiro/getsocial-theme`, rama `main`.
+2. **Tienda online → Temas → Conectar desde GitHub**.
+3. Cada `git push` a `main` → Shopify sincroniza el tema solo.
 
-## A) Integración nativa Shopify ↔ GitHub (recomendada)
+**No necesitas GitHub Actions.** Si Actions sale en rojo, era por secrets vacíos; el workflow ya queda en verde y “omitido” si no configuras secrets.
 
-1. Repo en GitHub, rama `main`.
-2. **Tienda online → Temas → Añadir tema → Conectar desde GitHub**.
-3. Repo: `zabiro/getsocial-theme`, rama `main`.
-4. Cada push actualiza el tema.
+### Si el tema en la tienda no se actualiza
 
-No necesitas GitHub Actions si usas esta opción.
+1. En **Temas**, abre el tema con icono de GitHub → **Sincronizar** / revisa última sync.
+2. Confirma que editas la rama `main` del repo correcto.
+3. En el tema conectado, **Personalizar** y guarda si hace falta.
+4. Ctrl+F5 en la tienda.
+
+El repo debe tener solo carpetas de tema en la raíz (`assets`, `config`, `layout`, etc.). Archivos extra (`docs/`, `license-server/`) no rompen la sync de Shopify.
 
 ---
 
