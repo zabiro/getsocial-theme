@@ -1,0 +1,62 @@
+{%- comment -%}
+  Tarjeta de producto (nombre compatible con temas Dawn: card-product)
+{%- endcomment -%}
+{%- liquid
+  assign ratio_class = 'ratio-' | append: settings.image_ratio
+  assign card_style = settings.product_card_style
+  assign show_second = settings.product_card_show_second_image
+-%}
+<article class="product-card product-card--{{ card_style }} {{ ratio_class }}" data-product-card data-product-handle="{{ product.handle }}">
+  <div class="product-card__actions-top">
+    {% render 'wishlist-button', product: product %}
+    {% render 'compare-button', product: product %}
+  </div>
+  <a href="{{ product.url }}" class="product-card__media">
+    {% render 'product-media',
+      product: product,
+      card_index: card_index,
+      show_second_image: show_second,
+      image_class: 'product-card__image product-card__image--primary'
+    %}
+
+    <div class="product-card__badges">
+      {%- unless product.available -%}
+        <span class="badge badge--soldout">{{ settings.product_badge_soldout_text }}</span>
+      {%- elsif product.compare_at_price > product.price -%}
+        <span class="badge badge--sale">
+          {%- if settings.enable_sale_badge_percent -%}
+            {%- assign pct = product.compare_at_price | minus: product.price | times: 100 | divided_by: product.compare_at_price -%}-{{ pct }}%
+          {%- else -%}
+            {{ settings.product_badge_sale_text }}
+          {%- endif -%}
+        </span>
+      {%- endif -%}
+    </div>
+
+    <div class="product-card__actions-bottom">
+      {%- if settings.enable_quick_view -%}
+        <button type="button" class="product-card__qv button button--small" data-quick-view="{{ product.handle }}">{{ 'products.quick_view' | t }}</button>
+      {%- endif -%}
+      {%- if settings.product_card_show_quick_add and product.available -%}
+        <button type="button" class="product-card__quick-add button button--small" data-quick-add="{{ product.selected_or_first_available_variant.id }}">
+          {{ 'general.add_to_cart' | t }}
+        </button>
+      {%- endif -%}
+    </div>
+  </a>
+
+  <div class="product-card__info">
+    {%- if settings.product_card_show_vendor and product.vendor != blank -%}
+      <p class="product-card__vendor">{{ product.vendor }}</p>
+    {%- endif -%}
+    <h3 class="product-card__title">
+      <a href="{{ product.url }}">{{ product.title | escape }}</a>
+    </h3>
+    <div class="product-card__price">
+      {% render 'price', product: product %}
+    </div>
+    {%- if settings.product_card_show_rating -%}
+      <div class="product-card__rating" aria-hidden="true">★★★★★</div>
+    {%- endif -%}
+  </div>
+</article>

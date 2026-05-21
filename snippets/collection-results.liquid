@@ -65,7 +65,7 @@
       <div class="collection-grid-wrap" data-collection-grid-wrap>
         <div class="grid grid--{{ section.settings.columns_desktop }}" data-collection-grid>
           {%- for product in collection.products -%}
-            {% render 'product-card', product: product %}
+            {% render 'card-product', product: product, card_index: forloop.index %}
           {%- else -%}
             <p class="collection-empty">{{ 'collections.empty' | t }}</p>
           {%- endfor -%}

@@ -1,0 +1,34 @@
+{%- liquid
+  assign idx = card_index | default: 1
+  if product.id != blank
+    assign idx = product.id | modulo: 6 | plus: 1
+  endif
+  assign placeholder_asset = 'placeholder-product-' | append: idx | append: '.svg'
+  assign img_class = image_class | default: 'product-card__image product-card__image--primary'
+-%}
+{%- if product.featured_media -%}
+  {{ product.featured_media | image_url: width: 600 | image_tag:
+    class: img_class,
+    loading: 'lazy',
+    widths: '300,400,500,600',
+    sizes: sizes | default: '(min-width: 990px) 25vw, 50vw',
+    alt: product.featured_media.alt | default: product.title | escape
+  }}
+  {%- if show_second_image and product.media.size > 1 -%}
+    {{ product.media[1] | image_url: width: 600 | image_tag:
+      class: 'product-card__image product-card__image--secondary',
+      loading: 'lazy',
+      widths: '300,400,500,600',
+      alt: product.media[1].alt | default: product.title | escape
+    }}
+  {%- endif -%}
+{%- else -%}
+  <img
+    src="{{ placeholder_asset | asset_url }}"
+    alt="{{ product.title | escape }}"
+    class="{{ img_class }} product-card__placeholder"
+    loading="lazy"
+    width="600"
+    height="800"
+  >
+{%- endif -%}

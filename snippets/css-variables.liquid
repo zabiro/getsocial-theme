@@ -27,8 +27,8 @@
   unless settings.color_preset == 'custom' or settings.color_preset == blank
     case settings.color_preset
       when 'fashion'
-        assign font_heading_stack = 'Georgia, "Times New Roman", serif'
-        assign font_body_stack = 'Helvetica, Arial, sans-serif'
+        assign font_heading_stack = '"Playfair Display", Georgia, serif'
+        assign font_body_stack = 'Inter, system-ui, -apple-system, sans-serif'
         assign preset_heading_scale = 1.05
         assign color_primary = '#1a1a1a'
         assign color_accent = '#c9a962'
@@ -139,9 +139,12 @@
 {{ settings.font_heading | font_face: font_display: 'swap' }}
 {{ settings.font_body | font_face: font_display: 'swap' }}
 {{ settings.font_navigation | font_face: font_display: 'swap' }}
-{%- if font_heading_stack != blank -%}
 <style>
-  h1,h2,h3,.site-header__logo { font-family: var(--font-heading-override), var(--font-heading-family); }
-  body { font-family: var(--font-body-override), var(--font-body-family); }
+  h1,h2,h3,.site-header__logo,.collection-header h1 {
+    font-family: {% if font_heading_stack != blank %}var(--font-heading-override), {% endif %}var(--font-heading-family), Georgia, serif;
+  }
+  body,.button,input,select,textarea {
+    font-family: {% if font_body_stack != blank %}var(--font-body-override), {% endif %}var(--font-body-family), system-ui, sans-serif;
+  }
+  .site-header__nav,.site-header__menu { font-family: var(--font-navigation-family), system-ui, sans-serif; }
 </style>
-{%- endif -%}
