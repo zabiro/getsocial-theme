@@ -26,19 +26,6 @@
   assign preset_heading_scale = heading_scale
   assign preset_body_scale = body_scale
 
-  comment
-    Fuentes del personalizador (solo si son font_picker válidos)
-  endcomment
-  if settings.font_heading.family != blank
-    assign font_heading_family = settings.font_heading.family | append: ', ' | append: settings.font_heading.fallback_families
-  endif
-  if settings.font_body.family != blank
-    assign font_body_family = settings.font_body.family | append: ', ' | append: settings.font_body.fallback_families
-  endif
-  if settings.font_navigation.family != blank
-    assign font_nav_family = settings.font_navigation.family | append: ', ' | append: settings.font_navigation.fallback_families
-  endif
-
   unless settings.color_preset == 'custom' or settings.color_preset == blank
     case settings.color_preset
       when 'fashion'
@@ -52,9 +39,9 @@
         assign color_background_secondary = '#f7f7f7'
         assign color_button = '#1a1a1a'
       when 'sunny'
-        assign font_heading_family = '"Poppins", system-ui, -apple-system, sans-serif'
-        assign font_body_family = '"Poppins", system-ui, -apple-system, sans-serif'
-        assign font_nav_family = '"Poppins", system-ui, sans-serif'
+        assign font_heading_family = 'Poppins, system-ui, -apple-system, sans-serif'
+        assign font_body_family = 'Poppins, system-ui, -apple-system, sans-serif'
+        assign font_nav_family = 'Poppins, system-ui, sans-serif'
         assign preset_heading_scale = 1.08
         assign color_primary = '#2b2623'
         assign color_accent = '#e8788a'
@@ -70,8 +57,8 @@
         assign header_background = '#fffbf8'
         assign header_text = '#2b2623'
       when 'beauty'
-        assign font_heading_family = '"Poppins", system-ui, sans-serif'
-        assign font_body_family = '"Poppins", system-ui, sans-serif'
+        assign font_heading_family = 'Poppins, system-ui, sans-serif'
+        assign font_body_family = 'Poppins, system-ui, sans-serif'
         assign preset_heading_scale = 1.02
         assign color_primary = '#2d2a26'
         assign color_accent = '#e8788a'
@@ -82,8 +69,8 @@
         assign color_button_text = '#ffffff'
         assign header_background = '#fffbf8'
       when 'electronics'
-        assign font_heading_family = '"Segoe UI", Roboto, Helvetica, sans-serif'
-        assign font_body_family = '"Segoe UI", Roboto, sans-serif'
+        assign font_heading_family = 'Segoe UI, Roboto, Helvetica, sans-serif'
+        assign font_body_family = 'Segoe UI, Roboto, sans-serif'
         assign preset_heading_scale = 0.95
         assign color_primary = '#0d1117'
         assign color_accent = '#3b82f6'
@@ -109,7 +96,7 @@
         assign color_button = '#1e3d2f'
         assign color_success = '#4a7c43'
       when 'sport'
-        assign font_heading_family = 'Impact, "Arial Black", sans-serif'
+        assign font_heading_family = 'Impact, Arial Black, sans-serif'
         assign font_body_family = 'Arial, Helvetica, sans-serif'
         assign preset_heading_scale = 1.1
         assign color_primary = '#111111'
@@ -120,23 +107,25 @@
         assign color_button = '#111111'
         assign color_sale = '#e63946'
     endcase
-  assign use_theme_font_picker = true
-  if settings.color_preset == 'sunny' or settings.color_preset == 'beauty'
-    assign use_theme_font_picker = false
+  endunless
+
+  comment
+    Presets sunny/beauty usan Google Fonts en theme.liquid (Poppins).
+    Otros presets: solo variables CSS; fuentes vía theme-fonts.liquid en <head>.
+  endcomment
+  if settings.color_preset != 'sunny' and settings.color_preset != 'beauty'
+    if settings.font_heading.family != blank
+      assign font_heading_family = settings.font_heading.family | append: ', ' | append: settings.font_heading.fallback_families
+    endif
+    if settings.font_body.family != blank
+      assign font_body_family = settings.font_body.family | append: ', ' | append: settings.font_body.fallback_families
+    endif
+    if settings.font_navigation.family != blank
+      assign font_nav_family = settings.font_navigation.family | append: ', ' | append: settings.font_navigation.fallback_families
+    endif
   endif
 -%}
 <style>
-  {%- if use_theme_font_picker -%}
-    {%- if settings.font_heading.family != blank -%}
-      {{ settings.font_heading | font_face: font_display: 'swap' }}
-    {%- endif -%}
-    {%- if settings.font_body.family != blank -%}
-      {{ settings.font_body | font_face: font_display: 'swap' }}
-    {%- endif -%}
-    {%- if settings.font_navigation.family != blank -%}
-      {{ settings.font_navigation | font_face: font_display: 'swap' }}
-    {%- endif -%}
-  {%- endif -%}
   :root {
     --color-primary: {{ color_primary }};
     --color-secondary: {{ color_secondary }};

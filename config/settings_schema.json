@@ -134,7 +134,7 @@
         "type": "font_picker",
         "id": "font_heading",
         "label": "t:settings_schema.typography.settings.font_heading.label",
-        "default": "playfair_display_n4"
+        "default": "inter_n6"
       },
       {
         "type": "range",

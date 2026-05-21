@@ -4,7 +4,8 @@
 
 | Mensaje | Causa | Arreglo |
 |---------|--------|---------|
-| `font_face can only be used with a font drop` | Fuentes en `settings_data` inválidas + `font_face` sin comprobar | `css-variables.liquid` corregido |
+| `font_face can only be used with a font drop` | Fuentes inválidas en settings | Usar `snippets/theme-fonts.liquid` desde `theme.liquid` |
+| CSS `@font-face` visible arriba de la página | `font_face` fuera de `<style>` o Liquid sin `endunless` | Solo `theme-fonts.liquid` en `<head>`; `css-variables` sin font_face |
 | `Nesting too deep` en card-product | Bucle infinito card-product ↔ product-card | Eliminado `card-product.liquid`; solo `product-card.liquid` |
 | `Could not find asset snippets/card-product.liquid` | `product-card.liquid` quedó como alias tras sync Shopify→GitHub | Restaurar contenido completo en `product-card.liquid` (no llamar a `card-product`) |
 

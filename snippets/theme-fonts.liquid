@@ -1,0 +1,21 @@
+{%- comment -%}
+  @font-face solo aquí, cargado desde layout/theme.liquid en <head>.
+  Nunca usar font_face en snippets que puedan romper el <style>.
+{%- endcomment -%}
+{%- if settings.color_preset == 'sunny' or settings.color_preset == 'beauty' -%}
+  {%- comment -%} Google Fonts (Poppins) en theme.liquid {%- endcomment -%}
+{%- else -%}
+  {%- unless settings.font_heading.system? -%}
+    {{ settings.font_heading | font_face: font_display: 'swap' }}
+  {%- endunless -%}
+  {%- unless settings.font_body.system? -%}
+    {%- unless settings.font_body.family == settings.font_heading.family -%}
+      {{ settings.font_body | font_face: font_display: 'swap' }}
+    {%- endunless -%}
+  {%- endunless -%}
+  {%- unless settings.font_navigation.system? -%}
+    {%- unless settings.font_navigation.family == settings.font_heading.family or settings.font_navigation.family == settings.font_body.family -%}
+      {{ settings.font_navigation | font_face: font_display: 'swap' }}
+    {%- endunless -%}
+  {%- endunless -%}
+{%- endif -%}
