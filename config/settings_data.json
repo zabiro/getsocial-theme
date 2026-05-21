@@ -43,7 +43,7 @@
     "cursor_fill": "rgba(255, 240, 232, 0.35)",
     "cursor_blend_mode": "multiply",
     "cursor_smooth_follow": true,
-    "cursor_hide_on_product": true,
+    "cursor_hide_on_product": false,
     "image_ratio": "portrait",
     "card_image_hover": "second_image",
     "header_layout": "logo_center",

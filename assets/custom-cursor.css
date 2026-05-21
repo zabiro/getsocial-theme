@@ -54,7 +54,11 @@
   opacity: 0.85;
 }
 
-/* Imagen personalizada (PNG, SVG, GIF…) */
+/* Imagen personalizada (PNG, SVG, GIF…) — sin multiply para que no se “pierda” */
+.custom-cursor--image {
+  mix-blend-mode: normal;
+}
+
 .custom-cursor--image .custom-cursor__inner {
   border: none;
   border-radius: 0;

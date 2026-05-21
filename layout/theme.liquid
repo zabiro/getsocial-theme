@@ -1,5 +1,14 @@
+{%- liquid
+  assign custom_cursor_active = false
+  if settings.enable_custom_cursor
+    assign custom_cursor_active = true
+    if settings.cursor_hide_on_product and template.name == 'product'
+      assign custom_cursor_active = false
+    endif
+  endif
+-%}
 <!doctype html>
-<html class="no-js{% if settings.enable_custom_cursor %} custom-cursor-active{% endif %}" lang="{{ request.locale.iso_code }}">
+<html class="no-js{% if custom_cursor_active %} custom-cursor-active{% endif %}" lang="{{ request.locale.iso_code }}">
 <head>
   <!-- GetSocial Theme | GetSocial | Luciano De Luque -->
   {%- render 'meta-tags' -%}

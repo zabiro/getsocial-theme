@@ -651,11 +651,15 @@
     ]
   },
   {
-    "name": "Cursor personalizado",
+    "name": "Extras premium",
     "settings": [
       {
+        "type": "header",
+        "content": "Cursor personalizado"
+      },
+      {
         "type": "paragraph",
-        "content": "Cursor estilo Sunny Hunny: anillo suave, punto o tu propia imagen (PNG/SVG). Solo en escritorio con ratón; en móvil se usa el cursor normal."
+        "content": "Anillo, punto o imagen (PNG/SVG). Solo escritorio con ratón."
       },
       {
         "type": "checkbox",
@@ -678,13 +682,12 @@
         "type": "image_picker",
         "id": "cursor_image",
         "label": "Imagen del cursor",
-        "info": "Recomendado: PNG o SVG transparente, ~64–128 px. Solo si el estilo es «Imagen personalizada»."
+        "info": "PNG o SVG transparente, ~64–128 px. Usar con estilo «Imagen personalizada»."
       },
       {
         "type": "image_picker",
         "id": "cursor_image_hover",
-        "label": "Imagen al pasar sobre enlaces (opcional)",
-        "info": "Si está vacío, se agranda la imagen principal."
+        "label": "Imagen al pasar sobre enlaces (opcional)"
       },
       {
         "type": "range",
@@ -703,7 +706,7 @@
         "max": 120,
         "step": 2,
         "unit": "px",
-        "label": "Tamaño al hover (enlaces, botones)",
+        "label": "Tamaño al hover",
         "default": 44
       },
       {
@@ -728,26 +731,24 @@
           { "value": "screen", "label": "Screen" },
           { "value": "difference", "label": "Difference" }
         ],
-        "default": "multiply"
+        "default": "normal"
       },
       {
         "type": "checkbox",
         "id": "cursor_smooth_follow",
-        "label": "Movimiento suave (sigue el ratón con delay)",
+        "label": "Movimiento suave",
         "default": true
       },
       {
         "type": "checkbox",
         "id": "cursor_hide_on_product",
         "label": "Ocultar en página de producto",
-        "default": true,
-        "info": "Evita confusión con la galería de fotos."
-      }
-    ]
-  },
-  {
-    "name": "Extras premium",
-    "settings": [
+        "default": false
+      },
+      {
+        "type": "header",
+        "content": "Otras funciones premium"
+      },
       { "type": "checkbox", "id": "enable_quick_view", "label": "Vista rápida (quick view)", "default": true },
       { "type": "checkbox", "id": "enable_whatsapp", "label": "Botón flotante WhatsApp", "default": false },
       { "type": "text", "id": "whatsapp_number", "label": "Número WhatsApp (con código país)", "default": "34600000000" },

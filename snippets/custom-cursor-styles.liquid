@@ -1,4 +1,13 @@
-{%- if settings.enable_custom_cursor -%}
+{%- liquid
+  assign custom_cursor_active = false
+  if settings.enable_custom_cursor
+    assign custom_cursor_active = true
+    if settings.cursor_hide_on_product and template.name == 'product'
+      assign custom_cursor_active = false
+    endif
+  endif
+-%}
+{%- if custom_cursor_active -%}
 <style id="custom-cursor-theme">
   :root {
     --custom-cursor-size: {{ settings.cursor_size | default: 28 }}px;

@@ -58,7 +58,14 @@
     { passive: true }
   );
 
-  document.addEventListener('mouseleave', () => root.classList.remove('is-visible'));
+  document.addEventListener('mouseout', (e) => {
+    if (!e.relatedTarget && e.target === document.documentElement) {
+      root.classList.remove('is-visible');
+    }
+  });
+  document.addEventListener('visibilitychange', () => {
+    if (!document.hidden) root.classList.add('is-visible');
+  });
 
   const hoverSel = 'a, button, .button, .product-card, input, select, textarea, [data-cart-open], [role="button"]';
   const setHover = (on) => {
