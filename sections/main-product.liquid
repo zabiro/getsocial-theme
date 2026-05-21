@@ -1,34 +1,43 @@
 <script type="application/json" data-product-json>{{ product | json }}</script>
 
 <section class="main-product section-spacing" data-product-section data-product-id="{{ product.id }}" data-product-handle="{{ product.handle }}">
-  <div class="page-width product-main product-gallery--{{ settings.product_gallery_layout }}">
-    <div class="product-gallery" data-product-gallery>
+  <div class="page-width product-main">
+    <div class="product-gallery product-gallery--{{ settings.product_gallery_layout }}" data-product-gallery>
       {%- if settings.product_gallery_layout contains 'thumbnails' -%}
-        <div class="product-gallery__thumbs">
+        <div class="product-gallery__thumbs" data-gallery-thumbs>
           {%- for media in product.media -%}
-            <button type="button" class="product-gallery__thumb{% if forloop.first %} is-active{% endif %}" data-thumb="{{ forloop.index0 }}" data-media-id="{{ media.id }}">
-              {{ media.preview_image | image_url: width: 120 | image_tag }}
+            <button type="button" class="product-gallery__thumb{% if forloop.first %} is-active{% endif %}" data-thumb="{{ forloop.index0 }}" data-media-id="{{ media.id }}" aria-label="{{ media.alt | default: product.title | escape }}">
+              {{ media.preview_image | image_url: width: 160 | image_tag: class: 'product-gallery__thumb-img', loading: 'lazy', widths: '80, 160', sizes: '80px' }}
             </button>
           {%- endfor -%}
         </div>
       {%- endif -%}
       <div class="product-gallery__main{% if settings.product_enable_zoom %} product-gallery__main--zoom{% endif %}" data-gallery-main>
-        {%- for media in product.media -%}
-          <div class="product-gallery__slide{% unless forloop.first %} hidden{% endunless %}" data-gallery-slide data-index="{{ forloop.index0 }}">
-            {%- case media.media_type -%}
-              {%- when 'image' -%}
-                {%- if forloop.first -%}
-                  {{ media | image_url: width: 1400 | image_tag: loading: 'eager', id: 'ProductMainImage', alt: media.alt }}
+        <div class="product-gallery__viewer">
+          {%- for media in product.media -%}
+            <div class="product-gallery__slide{% unless forloop.first %} hidden{% endunless %}" data-gallery-slide data-index="{{ forloop.index0 }}">
+              {%- case media.media_type -%}
+                {%- when 'image' -%}
+                  <div class="product-gallery__media">
+                    {%- assign gallery_img_class = 'product-gallery__image' -%}
+                    {%- if forloop.first -%}
+                      {{ media | image_url: width: 1400 | image_tag: loading: 'eager', id: 'ProductMainImage', class: gallery_img_class, alt: media.alt | default: product.title, widths: '400, 600, 800, 1000, 1200, 1400', sizes: '(min-width: 990px) 50vw, 100vw' }}
+                    {%- else -%}
+                      {{ media | image_url: width: 1400 | image_tag: loading: 'lazy', class: gallery_img_class, alt: media.alt | default: product.title, widths: '400, 600, 800, 1000, 1200, 1400', sizes: '(min-width: 990px) 50vw, 100vw' }}
+                    {%- endif -%}
+                  </div>
+                {%- when 'video' -%}
+                  <div class="product-gallery__media product-gallery__media--video">
+                    {{ media | video_tag: controls: true, class: 'product-gallery__video' }}
+                  </div>
                 {%- else -%}
-                  {{ media | image_url: width: 1400 | image_tag: loading: 'lazy', alt: media.alt }}
-                {%- endif -%}
-              {%- when 'video' -%}
-                {{ media | video_tag: controls: true }}
-              {%- else -%}
-                {{ media | image_url: width: 1400 | image_tag }}
-            {%- endcase -%}
-          </div>
-        {%- endfor -%}
+                  <div class="product-gallery__media">
+                    {{ media | image_url: width: 1400 | image_tag: class: 'product-gallery__image', alt: media.alt | default: product.title }}
+                  </div>
+              {%- endcase -%}
+            </div>
+          {%- endfor -%}
+        </div>
       </div>
     </div>
 
@@ -165,6 +174,11 @@
       </div>
     </div>
   {%- endif -%}
+
+  <div class="product-lightbox" data-product-lightbox hidden>
+    <button type="button" class="product-lightbox__close" data-product-lightbox-close aria-label="{{ 'general.close' | t }}">×</button>
+    <img src="" alt="" width="1200" height="1200" data-product-lightbox-img>
+  </div>
 </section>
 
 {% schema %}

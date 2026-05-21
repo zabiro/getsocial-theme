@@ -202,6 +202,15 @@ body.color-preset--sunny .announcement-bar {
   color: var(--sunny-coral, var(--color-accent));
 }
 
+.color-preset--sunny .product-gallery__viewer {
+  background: #faf8f6;
+  box-shadow: 0 4px 24px rgba(45, 42, 38, 0.06);
+}
+
+.color-preset--sunny .product-gallery__thumb.is-active {
+  border-color: var(--sunny-coral, var(--color-accent));
+}
+
 .color-preset--sunny .product-card__info {
   text-align: center;
   padding: 1rem 0.5rem;

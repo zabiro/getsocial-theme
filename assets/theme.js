@@ -128,15 +128,6 @@
     new IntersectionObserver(([e]) => stickyAtc.classList.toggle('is-visible', !e.isIntersecting)).observe(productFormEl);
   }
 
-  /* --- Product gallery thumbs --- */
-  $$('[data-thumb]').forEach((btn) => {
-    btn.addEventListener('click', () => {
-      const idx = btn.dataset.thumb;
-      $$('[data-gallery-slide]').forEach((s) => s.classList.toggle('hidden', s.dataset.index !== idx));
-      $$('[data-thumb]').forEach((t) => t.classList.toggle('is-active', t === btn));
-    });
-  });
-
   /* --- Qty buttons --- */
   const qtyInput = $('[data-qty-input]');
   $('[data-qty-minus]')?.addEventListener('click', () => { if (qtyInput) qtyInput.value = Math.max(1, Number(qtyInput.value) - 1); });

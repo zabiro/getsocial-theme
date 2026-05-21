@@ -2,6 +2,11 @@
  * Efectos e interacciones — preset tropical / Sunny
  */
 
+/* Sin cursor decorativo en ficha de producto (confunde con la galería) */
+.template-product .sunny-cursor {
+  display: none !important;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .sunny-reveal,
   .tropical-float,

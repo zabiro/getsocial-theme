@@ -101,6 +101,9 @@
   {%- if template.name == 'collection' -%}
     <script src="{{ 'collection-ajax.js' | asset_url }}" defer></script>
   {%- endif -%}
+  {%- if template.name == 'product' -%}
+    <script src="{{ 'product-gallery.js' | asset_url }}" defer></script>
+  {%- endif -%}
   {%- if settings.enable_wishlist or settings.enable_compare -%}
     <script src="{{ 'wishlist-compare.js' | asset_url }}" defer></script>
   {%- endif -%}
