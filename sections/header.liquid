@@ -14,7 +14,7 @@
       <nav class="site-header__nav" aria-label="Principal">
         {%- for link in section.settings.menu.links -%}
           <div class="site-header__nav-item{% if link.links.size > 0 %} has-dropdown{% endif %}">
-            <a href="{{ link.url }}">{{ link.title }}</a>
+            <a href="{{ link.url }}" class="{% if settings.color_preset == 'sunny' or settings.color_preset == 'beauty' %}link-hover-sunny{% endif %}">{{ link.title }}</a>
             {%- if link.links.size > 0 and section.settings.enable_mega_menu -%}
               <div class="site-header__dropdown mega-menu">
                 {% render 'mega-menu', link: link, promo_image: section.settings.mega_menu_image, promo_link: section.settings.mega_menu_link, promo_title: section.settings.mega_menu_title %}

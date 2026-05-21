@@ -404,39 +404,240 @@ body.color-preset--sunny .announcement-bar {
   text-transform: uppercase;
 }
 
-/* Footer newsletter */
+/* ========== FOOTER estilo Sunny Hunny ========== */
+.site-footer--tropical,
 .color-preset--sunny .site-footer {
-  background: var(--sunny-peach, var(--color-background-secondary));
+  background: var(--footer-bg, var(--sunny-peach, #fff0e8));
+  color: var(--footer-text, var(--color-text));
   border-top: none;
+  margin-top: 0;
+  padding: 0 0 2rem;
+  position: relative;
 }
 
-.color-preset--sunny .site-footer h3 {
-  font-size: 0.8125rem;
-  letter-spacing: 0.15em;
+.site-footer__wave {
+  display: block;
+  line-height: 0;
+  margin-top: -1px;
+  background: var(--color-background);
+}
+
+.site-footer__wave svg {
+  width: 100%;
+  height: 48px;
+  display: block;
+}
+
+.site-footer__shell {
+  padding-top: 2.5rem;
+}
+
+.site-footer__brand {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.site-footer__logo-img {
+  max-width: 200px;
+  height: auto;
+  margin: 0 auto;
+  opacity: 0.95;
+  transition: opacity 0.3s, transform 0.3s;
+}
+
+.site-footer__logo-link:hover .site-footer__logo-img {
+  opacity: 1;
+  transform: scale(1.03);
+}
+
+.site-footer__heading {
+  font-size: 0.6875rem;
+  letter-spacing: 0.2em;
   text-transform: uppercase;
   font-weight: 700;
+  margin: 0 0 1rem;
+  color: var(--footer-text, inherit);
 }
 
-.color-preset--sunny .footer-newsletter input {
-  border-radius: 999px;
-  border: 1px solid var(--color-border);
-  padding: 0.75rem 1.25rem;
-  width: 100%;
-  max-width: 320px;
-  margin-bottom: 0.75rem;
+.site-footer__top {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem 3rem;
+  text-align: center;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid rgba(43, 38, 35, 0.08);
 }
 
-.color-preset--sunny .footer-newsletter .button {
-  border-radius: 999px;
-  background: var(--sunny-coral, var(--color-button));
-  border-color: transparent;
+.site-footer__column--menu {
+  flex: 1 1 100%;
 }
 
-.color-preset--sunny .site-footer__social a {
+.site-footer__links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.site-footer__links--inline {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.5rem 1.75rem;
+}
+
+.site-footer__links a {
+  font-size: 0.8125rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+}
+
+.site-footer__column--social {
+  flex: 1 1 100%;
+}
+
+.site-footer__text {
+  font-size: 0.875rem;
+  max-width: 28rem;
+  margin: 0 auto;
+  color: var(--color-text-light);
+}
+
+/* Redes — círculos */
+.footer-social {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.65rem;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-social__link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  background: var(--color-background, #fff);
+  color: var(--sunny-coral, var(--color-accent));
+  border: 1px solid rgba(232, 120, 138, 0.25);
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), background 0.3s, color 0.3s, box-shadow 0.3s;
+}
+
+.footer-social__link:hover {
+  transform: translateY(-3px) scale(1.08);
+  background: var(--sunny-coral, var(--color-accent));
+  color: #fff;
+  box-shadow: 0 8px 20px rgba(232, 120, 138, 0.35);
+  opacity: 1;
+}
+
+/* Banda newsletter centrada */
+.site-footer__newsletter-band {
+  padding: 2.5rem 0;
+  text-align: center;
+}
+
+.site-footer__newsletter-title {
+  font-size: clamp(1rem, 2.5vw, 1.25rem);
   font-weight: 600;
+  letter-spacing: 0.02em;
+  text-transform: none;
+  max-width: 28rem;
+  margin: 0 auto 1.25rem;
+  line-height: 1.4;
+}
+
+.footer-newsletter--sunny {
+  max-width: 520px;
+  margin: 0 auto;
+}
+
+.footer-newsletter__row {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  align-items: stretch;
+}
+
+@media (min-width: 550px) {
+  .footer-newsletter__row {
+    flex-direction: row;
+    align-items: center;
+    background: var(--color-background, #fff);
+    border-radius: 999px;
+    padding: 0.35rem 0.35rem 0.35rem 1.25rem;
+    border: 1px solid rgba(232, 120, 138, 0.2);
+    box-shadow: 0 4px 20px rgba(232, 120, 138, 0.08);
+  }
+}
+
+.footer-newsletter__input {
+  flex: 1;
+  border: none;
+  background: transparent;
+  padding: 0.75rem 0;
+  font-size: 0.9375rem;
+  min-width: 0;
+}
+
+.footer-newsletter__input:focus {
+  outline: none;
+}
+
+@media (max-width: 549px) {
+  .footer-newsletter__input {
+    border: 1px solid var(--color-border);
+    border-radius: 999px;
+    padding: 0.75rem 1.25rem;
+    background: var(--color-background);
+  }
+}
+
+.footer-newsletter__btn {
+  border-radius: 999px !important;
+  white-space: nowrap;
+  padding: 0.75rem 1.5rem !important;
+  font-size: 0.8125rem !important;
+  font-weight: 600 !important;
   text-transform: uppercase;
-  font-size: 0.75rem;
   letter-spacing: 0.08em;
+}
+
+.site-footer__payment {
+  text-align: center;
+  opacity: 0.7;
+  margin: 1rem 0;
+}
+
+.site-footer__bottom {
+  text-align: center;
+  padding-top: 1.5rem;
+  border-top: 1px solid rgba(43, 38, 35, 0.06);
+}
+
+.site-footer__copy {
+  font-size: 0.75rem;
+  color: var(--color-text-light);
+  margin: 0;
+  letter-spacing: 0.02em;
+}
+
+/* Footer clásico (otros presets) */
+.site-footer--classic .site-footer__top {
+  display: grid;
+  gap: 2rem;
+  text-align: left;
+  border-bottom: none;
+}
+
+@media (min-width: 750px) {
+  .site-footer--classic .site-footer__top {
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  }
 }
 
 /* Colección página */

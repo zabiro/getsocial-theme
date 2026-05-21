@@ -48,7 +48,7 @@
       <p class="product-card__vendor">{{ product.vendor }}</p>
     {%- endif -%}
     <h3 class="product-card__title">
-      <a href="{{ product.url }}">{{ product.title | escape }}</a>
+      <a href="{{ product.url }}" class="{% if settings.color_preset == 'sunny' or settings.color_preset == 'beauty' %}link-hover-sunny{% endif %}">{{ product.title | escape }}</a>
     </h3>
     <div class="product-card__price">
       {% render 'price', product: product %}

@@ -5,10 +5,11 @@
     "footer": {
       "type": "footer",
       "blocks": {
-        "menu_policies": {
+        "menu_legal": {
           "type": "menu",
           "settings": {
-            "heading": "Legal"
+            "heading": "",
+            "menu": "footer"
           }
         },
         "newsletter": {
@@ -18,23 +19,21 @@
             "placeholder": "Dirección de correo electrónico",
             "button_label": "Suscribirse"
           }
-        },
-        "social_text": {
-          "type": "text",
-          "settings": {
-            "heading": "Síguenos",
-            "text": "<p>Conéctate en redes y descubre novedades tropicales cada semana.</p>"
-          }
         }
       },
       "block_order": [
-        "menu_policies",
-        "social_text",
+        "menu_legal",
         "newsletter"
       ],
       "settings": {
-        "show_payment_icons": true,
+        "layout_style": "tropical",
+        "background": "#fff0e8",
+        "text_color": "#2b2623",
+        "show_wave": true,
+        "social_heading": "Síguenos",
         "show_social": true,
+        "show_payment_icons": false,
+        "credit_text": "",
         "show_powered_by": false
       }
     }

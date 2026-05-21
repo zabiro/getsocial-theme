@@ -29,6 +29,7 @@
   {{ 'components.css' | asset_url | stylesheet_tag }}
   {{ 'theme-modern.css' | asset_url | stylesheet_tag }}
   {{ 'sunny-style.css' | asset_url | stylesheet_tag }}
+  {{ 'sunny-interactions.css' | asset_url | stylesheet_tag }}
   {%- if settings.custom_css != blank -%}<style>{{ settings.custom_css }}</style>{%- endif -%}
   {%- if settings.custom_head_scripts != blank -%}{{ settings.custom_head_scripts }}{%- endif -%}
   <script>document.documentElement.classList.replace('no-js','js');</script>
@@ -90,6 +91,9 @@
     };
   </script>
   <script src="{{ 'theme.js' | asset_url }}" defer></script>
+  {%- if settings.color_preset == 'sunny' or settings.color_preset == 'beauty' -%}
+    <script src="{{ 'sunny-interactions.js' | asset_url }}" defer></script>
+  {%- endif -%}
   {%- if template.name == 'collection' -%}
     <script src="{{ 'collection-ajax.js' | asset_url }}" defer></script>
   {%- endif -%}

@@ -1,55 +1,132 @@
-<footer class="site-footer" role="contentinfo">
-  <div class="page-width">
-    <div class="site-footer__grid">
-      {%- for block in section.blocks -%}
-        <div class="site-footer__column" {{ block.shopify_attributes }}>
-          {%- case block.type -%}
-            {%- when 'text' -%}
-              {%- if block.settings.heading != blank -%}<h3>{{ block.settings.heading }}</h3>{%- endif -%}
-              {%- if block.settings.text != blank -%}<div class="rte">{{ block.settings.text }}</div>{%- endif -%}
-            {%- when 'menu' -%}
-              {%- if block.settings.heading != blank -%}<h3>{{ block.settings.heading }}</h3>{%- endif -%}
-              <ul>
-                {%- for link in block.settings.menu.links -%}
-                  <li><a href="{{ link.url }}">{{ link.title }}</a></li>
-                {%- endfor -%}
-              </ul>
-            {%- when 'newsletter' -%}
-              <h3>{{ block.settings.heading | default: 'Newsletter' }}</h3>
-              {% form 'customer', class: 'footer-newsletter' %}
-                <input type="email" name="contact[email]" placeholder="{{ block.settings.placeholder }}" required>
-                <button type="submit" class="button button--small">{{ block.settings.button_label }}</button>
-              {% endform %}
-          {%- endcase -%}
-        </div>
-      {%- endfor -%}
+<footer
+  class="site-footer site-footer--{{ section.settings.layout_style }}"
+  role="contentinfo"
+  style="--footer-bg: {{ section.settings.background }}; --footer-text: {{ section.settings.text_color }};"
+>
+  {%- if section.settings.show_wave -%}
+    <div class="site-footer__wave" aria-hidden="true">
+      <svg viewBox="0 0 1440 48" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M0,32 C360,64 720,0 1080,24 C1260,36 1380,40 1440,32 L1440,48 L0,48 Z" fill="var(--footer-bg)"/>
+      </svg>
     </div>
+  {%- endif -%}
+
+  <div class="page-width site-footer__shell">
+    {%- if section.settings.footer_logo != blank -%}
+      <div class="site-footer__brand">
+        <a href="{{ routes.root_url }}" class="site-footer__logo-link">
+          {{ section.settings.footer_logo | image_url: width: 400 | image_tag: alt: shop.name, loading: 'lazy', class: 'site-footer__logo-img' }}
+        </a>
+      </div>
+    {%- endif -%}
+
+    <div class="site-footer__top">
+      {%- for block in section.blocks -%}
+        {%- case block.type -%}
+          {%- when 'menu' -%}
+            <div class="site-footer__column site-footer__column--menu" {{ block.shopify_attributes }}>
+              {%- if block.settings.heading != blank -%}
+                <h3 class="site-footer__heading">{{ block.settings.heading }}</h3>
+              {%- endif -%}
+              {%- if block.settings.menu != blank -%}
+                <ul class="site-footer__links site-footer__links--inline">
+                  {%- for link in block.settings.menu.links -%}
+                    <li><a href="{{ link.url }}" class="link-hover-sunny">{{ link.title }}</a></li>
+                  {%- endfor -%}
+                </ul>
+              {%- endif -%}
+            </div>
+          {%- when 'text' -%}
+            <div class="site-footer__column" {{ block.shopify_attributes }}>
+              {%- if block.settings.heading != blank -%}<h3 class="site-footer__heading">{{ block.settings.heading }}</h3>{%- endif -%}
+              {%- if block.settings.text != blank -%}<div class="rte site-footer__text">{{ block.settings.text }}</div>{%- endif -%}
+            </div>
+        {%- endcase -%}
+      {%- endfor -%}
+
+      {%- if section.settings.show_social -%}
+        <div class="site-footer__column site-footer__column--social">
+          <h3 class="site-footer__heading">{{ section.settings.social_heading | default: 'Síguenos' }}</h3>
+          {% render 'footer-social' %}
+        </div>
+      {%- endif -%}
+    </div>
+
+    {%- assign newsletter_block = section.blocks | where: 'type', 'newsletter' | first -%}
+    {%- if newsletter_block -%}
+      <div class="site-footer__newsletter-band" {{ newsletter_block.shopify_attributes }}>
+        <div class="site-footer__newsletter-inner">
+          <h3 class="site-footer__newsletter-title">{{ newsletter_block.settings.heading }}</h3>
+          {% form 'customer', class: 'footer-newsletter footer-newsletter--sunny' %}
+            <input type="hidden" name="contact[tags]" value="newsletter">
+            <div class="footer-newsletter__row">
+              <input
+                type="email"
+                name="contact[email]"
+                class="footer-newsletter__input"
+                placeholder="{{ newsletter_block.settings.placeholder }}"
+                required
+                autocomplete="email"
+              >
+              <button type="submit" class="button footer-newsletter__btn">
+                {{ newsletter_block.settings.button_label }}
+              </button>
+            </div>
+          {% endform %}
+        </div>
+      </div>
+    {%- endif -%}
+
     {%- if section.settings.show_payment_icons -%}
       <div class="site-footer__payment">{% render 'payment-icons' %}</div>
     {%- endif -%}
-    {%- if section.settings.show_social -%}
-      <div class="site-footer__social">
-        {%- if settings.social_instagram != blank -%}<a href="{{ settings.social_instagram }}" rel="noopener">Instagram</a>{%- endif -%}
-        {%- if settings.social_facebook != blank -%}<a href="{{ settings.social_facebook }}" rel="noopener">Facebook</a>{%- endif -%}
-        {%- if settings.social_tiktok != blank -%}<a href="{{ settings.social_tiktok }}" rel="noopener">TikTok</a>{%- endif -%}
-        {%- if settings.social_youtube != blank -%}<a href="{{ settings.social_youtube }}" rel="noopener">YouTube</a>{%- endif -%}
-      </div>
-    {%- endif -%}
-    <p class="site-footer__copy">&copy; {{ 'now' | date: '%Y' }} {{ shop.name }}{% if section.settings.show_powered_by %} · {{ powered_by_link }}{% endif %}</p>
+
+    <div class="site-footer__bottom">
+      <p class="site-footer__copy">
+        &copy; {{ 'now' | date: '%Y' }}, {{ shop.name }}.
+        {%- if section.settings.credit_text != blank -%}
+          {{ section.settings.credit_text }}
+        {%- endif -%}
+        {%- if section.settings.show_powered_by -%} · {{ powered_by_link }}{%- endif -%}
+      </p>
+    </div>
   </div>
 </footer>
-<style>.site-footer__social{display:flex;gap:1rem;flex-wrap:wrap;margin:1.5rem 0;font-size:var(--font-size-small)}</style>
 
 {% schema %}
 {
   "name": "Pie de página",
   "settings": [
-    { "type": "checkbox", "id": "show_payment_icons", "label": "Iconos de pago", "default": true },
-    { "type": "checkbox", "id": "show_social", "label": "Mostrar redes (desde configuración tema)", "default": true },
+    {
+      "type": "select",
+      "id": "layout_style",
+      "label": "Estilo de pie",
+      "options": [
+        { "value": "classic", "label": "Clásico" },
+        { "value": "tropical", "label": "Tropical (estilo Sunny)" }
+      ],
+      "default": "tropical"
+    },
+    { "type": "color", "id": "background", "label": "Fondo", "default": "#fff0e8" },
+    { "type": "color", "id": "text_color", "label": "Color texto", "default": "#2b2623" },
+    { "type": "checkbox", "id": "show_wave", "label": "Onda decorativa superior", "default": true },
+    { "type": "image_picker", "id": "footer_logo", "label": "Logo en pie (opcional)" },
+    { "type": "text", "id": "social_heading", "label": "Título redes", "default": "Síguenos" },
+    { "type": "checkbox", "id": "show_social", "label": "Mostrar redes", "default": true },
+    { "type": "checkbox", "id": "show_payment_icons", "label": "Iconos de pago", "default": false },
+    { "type": "text", "id": "credit_text", "label": "Texto crédito (HTML permitido en tema)", "default": "" },
     { "type": "checkbox", "id": "show_powered_by", "label": "Mostrar Powered by Shopify", "default": false }
   ],
-  "max_blocks": 6,
+  "max_blocks": 8,
   "blocks": [
+    {
+      "type": "menu",
+      "name": "Menú",
+      "settings": [
+        { "type": "text", "id": "heading", "label": "Título (opcional)" },
+        { "type": "link_list", "id": "menu", "label": "Menú" }
+      ]
+    },
     {
       "type": "text",
       "name": "Texto",
@@ -59,28 +136,38 @@
       ]
     },
     {
-      "type": "menu",
-      "name": "Menú",
-      "settings": [
-        { "type": "text", "id": "heading", "label": "Título" },
-        { "type": "link_list", "id": "menu", "label": "Menú" }
-      ]
-    },
-    {
       "type": "newsletter",
       "name": "Newsletter",
+      "limit": 1,
       "settings": [
-        { "type": "text", "id": "heading", "label": "Título", "default": "Suscríbete" },
-        { "type": "text", "id": "placeholder", "label": "Placeholder email", "default": "tu@email.com" },
-        { "type": "text", "id": "button_label", "label": "Texto botón", "default": "Enviar" }
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Título",
+          "default": "Sé el primero en disfrutar nuestros lanzamientos"
+        },
+        {
+          "type": "text",
+          "id": "placeholder",
+          "label": "Placeholder email",
+          "default": "Dirección de correo electrónico"
+        },
+        { "type": "text", "id": "button_label", "label": "Texto botón", "default": "Suscribirse" }
       ]
     }
   ],
   "default": {
+    "settings": {
+      "layout_style": "tropical",
+      "background": "#fff0e8",
+      "show_wave": true,
+      "show_social": true,
+      "show_payment_icons": false
+    },
     "blocks": [
-      { "type": "text" },
       { "type": "menu" },
-      { "type": "newsletter" }
+      { "type": "newsletter" },
+      { "type": "menu" }
     ]
   }
 }

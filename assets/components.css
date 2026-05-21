@@ -220,6 +220,7 @@ html.newsletter-popup-open{overflow:hidden}
 .site-header__wishlist,.site-header__compare{display:flex;align-items:center;gap:.15rem}
 .site-header__count:empty{display:none}
 .site-header{transition:transform .35s}
+.site-header{transition:transform .35s cubic-bezier(.4,0,.2,1)}
 .site-header--hidden{transform:translateY(-100%)}
 
 /* === Quick view === */
