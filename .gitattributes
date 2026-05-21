@@ -1,0 +1,2 @@
+# Evitar BOM en JSON del tema (Shopify falla la validación con UTF-8 BOM)
+*.json text eol=lf working-tree-encoding=UTF-8
