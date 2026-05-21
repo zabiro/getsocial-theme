@@ -1,4 +1,4 @@
-[
+﻿[
   {
     "name": "theme_info",
     "theme_name": "GetSocial Theme",
@@ -199,10 +199,10 @@
         "id": "page_width",
         "min": 1000,
         "max": 1600,
-        "step": 50,
+        "step": 10,
         "unit": "px",
         "label": "t:settings_schema.layout.settings.page_width.label",
-        "default": 1300
+        "default": 1320
       },
       {
         "type": "range",

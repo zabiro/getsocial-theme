@@ -29,11 +29,11 @@
     "font_heading_weight": "600",
     "font_body_scale": 100,
     "font_body_line_height": 1.6,
-    "page_width": 1300,
+    "page_width": 1320,
     "section_spacing": 64,
     "grid_gap": 24,
     "border_radius": 12,
-    "button_radius": 999,
+    "button_radius": 40,
     "enable_animations": true,
     "image_ratio": "portrait",
     "card_image_hover": "second_image",
@@ -156,7 +156,7 @@
       "header_background": "#fffbf8",
       "header_layout": "logo_center",
       "border_radius": 12,
-      "button_radius": 999,
+      "button_radius": 40,
       "show_breadcrumbs": false
     },
     "Deporte (Sport)": {
