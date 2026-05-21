@@ -30,6 +30,8 @@
     "low_stock": "¡Solo quedan {{ count }} unidades!",
     "product": {
       "add_to_cart": "Añadir al carrito",
+      "buy_now": "Comprar ahora",
+      "quantity": "Cantidad",
       "sold_out": "Agotado",
       "on_sale": "Oferta",
       "sku": "SKU",

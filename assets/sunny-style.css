@@ -202,25 +202,258 @@ body.color-preset--sunny .announcement-bar {
   color: var(--sunny-coral, var(--color-accent));
 }
 
-.color-preset--sunny .product-gallery__viewer {
-  background: #faf8f6;
-  box-shadow: 0 4px 24px rgba(45, 42, 38, 0.06);
-  border-radius: 20px;
+/* ——— Ficha de producto «viva» (estilo Sunny) ——— */
+.color-preset--sunny .main-product--vibrant,
+.color-preset--beauty .main-product--vibrant {
+  background: linear-gradient(165deg, var(--sunny-blush, #fce4ec) 0%, var(--sunny-peach, #fff0e8) 45%, var(--sunny-cream, #fffbf8) 100%);
 }
 
-.color-preset--sunny .product-gallery__thumb {
-  border-radius: 14px;
-  border-color: rgba(45, 42, 38, 0.12);
+.color-preset--sunny .main-product--vibrant .product-main,
+.color-preset--beauty .main-product--vibrant .product-main {
+  padding: 1.5rem 0 2.5rem;
 }
 
-.color-preset--sunny .product-gallery__thumb.is-active {
+@media (min-width: 990px) {
+  .color-preset--sunny .main-product--vibrant .product-main,
+  .color-preset--beauty .main-product--vibrant .product-main {
+    padding: 2.5rem 0 3.5rem;
+    gap: 3rem;
+  }
+}
+
+.color-preset--sunny .product-gallery,
+.color-preset--beauty .product-gallery {
+  --product-thumb-size: 3.5rem;
+}
+
+.color-preset--sunny .product-gallery__viewer,
+.color-preset--beauty .product-gallery__viewer {
+  background: #fff;
+  border: 3px solid var(--sunny-coral, var(--color-accent));
+  border-radius: 28px;
+  box-shadow: 0 12px 40px rgba(232, 120, 138, 0.18);
+  padding: 0.75rem;
+}
+
+.color-preset--sunny .product-gallery__thumb,
+.color-preset--beauty .product-gallery__thumb {
+  border-radius: 50%;
+  border-width: 3px;
+  border-color: rgba(232, 120, 138, 0.35);
+  background: #fff;
+}
+
+.color-preset--sunny .product-gallery__thumb.is-active,
+.color-preset--beauty .product-gallery__thumb.is-active {
   border-color: var(--sunny-coral, var(--color-accent));
-  box-shadow: 0 0 0 1px var(--sunny-coral, var(--color-accent));
+  box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.9), 0 4px 12px rgba(232, 120, 138, 0.35);
 }
 
-.color-preset--sunny .product-gallery__arrow:hover:not(:disabled) {
+.color-preset--sunny .product-gallery__arrow,
+.color-preset--beauty .product-gallery__arrow {
   border-color: var(--sunny-coral, var(--color-accent));
   color: var(--sunny-coral, var(--color-accent));
+  background: #fff;
+}
+
+.color-preset--sunny .product-gallery__arrow:hover:not(:disabled),
+.color-preset--beauty .product-gallery__arrow:hover:not(:disabled) {
+  background: var(--sunny-coral, var(--color-accent));
+  color: #fff;
+}
+
+.color-preset--sunny .main-product--vibrant .product-info h1,
+.color-preset--beauty .main-product--vibrant .product-info h1 {
+  font-size: clamp(1.125rem, 2.6vw, 1.75rem);
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  line-height: 1.15;
+  color: #ff9eb5;
+  text-shadow:
+    2px 2px 0 #7a2d42,
+    -1px 0 0 #7a2d42,
+    0 1px 0 #fff;
+  margin-bottom: 0.35rem;
+}
+
+.color-preset--sunny .main-product--vibrant .product-info__price,
+.color-preset--beauty .main-product--vibrant .product-info__price {
+  margin: 0.25rem 0 1.25rem;
+}
+
+.color-preset--sunny .main-product--vibrant .product-info__price .price__current,
+.color-preset--beauty .main-product--vibrant .product-info__price .price__current {
+  font-size: clamp(2rem, 5vw, 2.875rem);
+  font-weight: 800;
+  color: #e83857;
+  letter-spacing: -0.02em;
+}
+
+.color-preset--sunny .main-product--vibrant .product-info__sku,
+.color-preset--sunny .main-product--vibrant .product-info__stock,
+.color-preset--beauty .main-product--vibrant .product-info__sku,
+.color-preset--beauty .main-product--vibrant .product-info__stock {
+  font-size: 0.8125rem;
+  margin-bottom: 0.5rem;
+}
+
+.color-preset--sunny .main-product--vibrant .product-option legend,
+.color-preset--beauty .main-product--vibrant .product-option legend {
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 0.6875rem;
+  letter-spacing: 0.14em;
+  color: var(--color-text);
+  margin-bottom: 0.5rem;
+}
+
+.color-preset--sunny .main-product--vibrant .product-option__value span,
+.color-preset--beauty .main-product--vibrant .product-option__value span {
+  border-radius: 999px;
+  border-width: 2px;
+  font-weight: 600;
+  font-size: 0.8125rem;
+  padding: 0.45rem 1rem;
+}
+
+.color-preset--sunny .main-product--vibrant .product-option__value input:checked + span,
+.color-preset--beauty .main-product--vibrant .product-option__value input:checked + span {
+  background: var(--sunny-coral, var(--color-accent));
+  border-color: var(--sunny-coral, var(--color-accent));
+  color: #fff;
+}
+
+.color-preset--sunny .main-product--vibrant .product-form__qty,
+.color-preset--beauty .main-product--vibrant .product-form__qty {
+  margin: 1.25rem 0 1.5rem;
+  gap: 0.75rem;
+}
+
+.color-preset--sunny .main-product--vibrant .product-form__qty label,
+.color-preset--beauty .main-product--vibrant .product-form__qty label {
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 0.6875rem;
+  letter-spacing: 0.12em;
+  width: 100%;
+  margin-bottom: 0.25rem;
+  flex-basis: 100%;
+}
+
+.color-preset--sunny .main-product--vibrant .product-form__qty-btn,
+.color-preset--beauty .main-product--vibrant .product-form__qty-btn {
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  border: 2px solid var(--sunny-coral, var(--color-accent));
+  background: #fff;
+  color: var(--sunny-coral, var(--color-accent));
+  font-size: 1.25rem;
+  line-height: 1;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+}
+
+.color-preset--sunny .main-product--vibrant .product-form__qty-btn:hover,
+.color-preset--beauty .main-product--vibrant .product-form__qty-btn:hover {
+  background: var(--sunny-coral, var(--color-accent));
+  color: #fff;
+}
+
+.color-preset--sunny .main-product--vibrant .product-form__qty input,
+.color-preset--beauty .main-product--vibrant .product-form__qty input {
+  width: 3rem;
+  text-align: center;
+  font-weight: 700;
+  font-size: 1.125rem;
+  border: none;
+  background: transparent;
+}
+
+.color-preset--sunny .main-product--vibrant .product-form__actions,
+.color-preset--beauty .main-product--vibrant .product-form__actions {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-top: 0.5rem;
+}
+
+.color-preset--sunny .main-product--vibrant .button--atc,
+.color-preset--sunny .main-product--vibrant .button--buy-now,
+.color-preset--beauty .main-product--vibrant .button--atc,
+.color-preset--beauty .main-product--vibrant .button--buy-now {
+  border-radius: 999px !important;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-weight: 700;
+  font-size: 0.8125rem;
+  padding: 1.05rem 1.5rem !important;
+}
+
+.color-preset--sunny .main-product--vibrant .button--atc,
+.color-preset--beauty .main-product--vibrant .button--atc {
+  background: #fff !important;
+  color: #2b2623 !important;
+  border: 2px solid #2b2623 !important;
+}
+
+.color-preset--sunny .main-product--vibrant .button--atc:not(:disabled):hover,
+.color-preset--beauty .main-product--vibrant .button--atc:not(:disabled):hover {
+  background: var(--sunny-peach, #fff0e8) !important;
+}
+
+.color-preset--sunny .main-product--vibrant .button--atc:disabled,
+.color-preset--beauty .main-product--vibrant .button--atc:disabled {
+  opacity: 1 !important;
+  cursor: not-allowed;
+}
+
+.color-preset--sunny .main-product--vibrant .button--buy-now,
+.color-preset--beauty .main-product--vibrant .button--buy-now {
+  background: var(--sunny-coral, var(--color-accent)) !important;
+  color: #fff !important;
+  border: none !important;
+  box-shadow: 0 8px 24px rgba(232, 120, 138, 0.4);
+}
+
+.color-preset--sunny .main-product--vibrant .button--buy-now:hover:not(:disabled),
+.color-preset--beauty .main-product--vibrant .button--buy-now:hover:not(:disabled) {
+  background: var(--sunny-coral-dark, #d45f72) !important;
+  transform: translateY(-1px);
+}
+
+.color-preset--sunny .main-product--vibrant .button--buy-now:disabled,
+.color-preset--beauty .main-product--vibrant .button--buy-now:disabled {
+  opacity: 0.55;
+  box-shadow: none;
+}
+
+.color-preset--sunny .main-product--vibrant .product-benefits,
+.color-preset--beauty .main-product--vibrant .product-benefits {
+  margin-top: 1.75rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid rgba(232, 120, 138, 0.2);
+}
+
+.color-preset--sunny .main-product--vibrant .product-benefits li::before,
+.color-preset--beauty .main-product--vibrant .product-benefits li::before {
+  content: '✦';
+  color: var(--sunny-coral, var(--color-accent));
+}
+
+.color-preset--sunny .main-product--vibrant .product-info__lead,
+.color-preset--beauty .main-product--vibrant .product-info__lead {
+  margin-top: 1.5rem;
+  line-height: 1.6;
+  font-size: 0.9375rem;
+  color: var(--color-text);
+}
+
+.color-preset--sunny .main-product--vibrant .product-form__dynamic-checkout,
+.color-preset--beauty .main-product--vibrant .product-form__dynamic-checkout {
+  margin-top: 0.75rem;
 }
 
 .color-preset--sunny .product-card__info {

@@ -1,6 +1,6 @@
 <script type="application/json" data-product-json>{{ product | json }}</script>
 
-<section class="main-product section-spacing" data-product-section data-product-id="{{ product.id }}" data-product-handle="{{ product.handle }}">
+<section class="main-product section-spacing{% if settings.color_preset == 'sunny' or settings.color_preset == 'beauty' %} main-product--vibrant{% endif %}" data-product-section data-product-id="{{ product.id }}" data-product-handle="{{ product.handle }}">
   <div class="page-width product-main">
     <div class="product-gallery product-gallery--{{ settings.product_gallery_layout }}" data-product-gallery>
       {%- if settings.product_gallery_layout contains 'thumbnails' and product.media.size > 0 -%}
@@ -96,17 +96,6 @@
         </p>
       {%- endif -%}
 
-      {%- assign benefit_blocks = section.blocks | where: 'type', 'benefit' -%}
-      {%- if benefit_blocks.size > 0 -%}
-        <ul class="product-benefits">
-          {%- for block in benefit_blocks -%}
-            {%- if block.settings.text != blank -%}
-              <li {{ block.shopify_attributes }}>{{ block.settings.text }}</li>
-            {%- endif -%}
-          {%- endfor -%}
-        </ul>
-      {%- endif -%}
-
       {%- form 'product', product, id: 'product-form', data-product-form-el: '' -%}
         <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}" data-variant-input>
 
@@ -133,24 +122,59 @@
         {%- endunless -%}
 
         <div class="product-form__qty">
-          <label for="Quantity">{{ 'general.quantity' | t }}</label>
-          <button type="button" data-qty-minus>−</button>
+          <label for="Quantity">{{ 'products.product.quantity' | t }}</label>
+          <button type="button" class="product-form__qty-btn" data-qty-minus aria-label="−">−</button>
           <input type="number" id="Quantity" name="quantity" value="1" min="1" data-qty-input>
-          <button type="button" data-qty-plus>+</button>
+          <button type="button" class="product-form__qty-btn" data-qty-plus aria-label="+">+</button>
         </div>
 
-        <button type="submit" name="add" class="button button--full" data-add-to-cart{% unless product.selected_or_first_available_variant.available %} disabled{% endunless %}>
-          {%- if product.selected_or_first_available_variant.available -%}
-            {{ 'products.product.add_to_cart' | t }}
-          {%- else -%}
-            {{ 'products.product.sold_out' | t }}
-          {%- endif -%}
-        </button>
+        <div class="product-form__actions">
+          <button
+            type="submit"
+            name="add"
+            class="button button--full button--atc"
+            data-add-to-cart
+            data-label-available="{{ 'products.product.add_to_cart' | t }}"
+            data-label-sold="{{ 'products.product.sold_out' | t }}"
+            {% unless product.selected_or_first_available_variant.available %} disabled{% endunless %}
+          >
+            {%- if product.selected_or_first_available_variant.available -%}
+              {{ 'products.product.add_to_cart' | t }}
+            {%- else -%}
+              {{ 'products.product.sold_out' | t }}
+            {%- endif -%}
+          </button>
+          <button
+            type="button"
+            class="button button--full button--buy-now"
+            data-buy-now
+            {% unless product.selected_or_first_available_variant.available %} disabled{% endunless %}
+          >
+            {{ 'products.product.buy_now' | t }}
+          </button>
+        </div>
 
         {%- if section.settings.show_dynamic_checkout -%}
-          {{ form | payment_button }}
+          <div class="product-form__dynamic-checkout">
+            {{ form | payment_button }}
+          </div>
         {%- endif -%}
       {%- endform -%}
+
+      {%- assign benefit_blocks = section.blocks | where: 'type', 'benefit' -%}
+      {%- if benefit_blocks.size > 0 -%}
+        <ul class="product-benefits">
+          {%- for block in benefit_blocks -%}
+            {%- if block.settings.text != blank -%}
+              <li {{ block.shopify_attributes }}>{{ block.settings.text }}</li>
+            {%- endif -%}
+          {%- endfor -%}
+        </ul>
+      {%- elsif settings.color_preset == 'sunny' or settings.color_preset == 'beauty' -%}
+        {%- if product.description != blank -%}
+          <div class="product-info__lead rte">{{ product.description }}</div>
+        {%- endif -%}
+      {%- endif -%}
 
       {%- for block in section.blocks -%}
         {%- case block.type -%}

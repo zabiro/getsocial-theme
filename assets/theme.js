@@ -200,6 +200,23 @@
     }
   }
 
+  /* --- Comprar ahora (checkout directo) --- */
+  $('[data-buy-now]')?.addEventListener('click', async () => {
+    const variantInput = $('[data-variant-input]');
+    const qtyInput = $('[data-qty-input]');
+    if (!variantInput?.value || $('[data-buy-now]').disabled) return;
+    try {
+      await fetch('/cart/add.js', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ id: variantInput.value, quantity: Number(qtyInput?.value || 1) }),
+      });
+      window.location.href = '/checkout';
+    } catch (err) {
+      console.error(err);
+    }
+  });
+
   /* --- Product JSON variants (basic) --- */
   const productJson = $('[data-product-json]');
   if (productJson) {
@@ -222,10 +239,14 @@
               priceEl.innerHTML = `<span class="price__current">${Shopify.formatMoney(variant.price)}</span>`;
             }
             const atc = $('[data-add-to-cart]');
+            const buyNow = $('[data-buy-now]');
             if (atc) {
               atc.disabled = !variant.available;
-              atc.textContent = variant.available ? atc.dataset.labelInStock || 'Añadir al carrito' : 'Agotado';
+              atc.textContent = variant.available
+                ? (atc.dataset.labelAvailable || 'Añadir al carrito')
+                : (atc.dataset.labelSold || 'Agotado');
             }
+            if (buyNow) buyNow.disabled = !variant.available;
           }
         });
       });
