@@ -8,6 +8,8 @@ Add-Type -AssemblyName System.IO.Compression.FileSystem
 $root = Split-Path $PSScriptRoot -Parent
 Set-Location $root
 
+& (Join-Path $PSScriptRoot 'strip-json-bom.ps1') | Out-Null
+
 $version = '1.6.0'
 $themeOnlyZip = "getsocial-theme-v$version.zip"
 $clientZip = "getsocial-theme-client-v$version.zip"
