@@ -19,6 +19,7 @@
     "skip_to_content": "Ir al contenido",
     "share": "Compartir",
     "copy_link": "Copiar enlace",
+    "link_copied": "Enlace copiado",
     "pagination": {
       "previous": "Anterior",
       "next": "Siguiente"

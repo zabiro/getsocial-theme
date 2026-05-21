@@ -100,6 +100,7 @@ h1{font-size:var(--font-size-h1)}h2{font-size:var(--font-size-h2)}h3{font-size:v
 @media(min-width:750px){.site-footer__grid{grid-template-columns:repeat(4,1fr)}}
 .animations-enabled .fade-in{animation:fadeIn .6s ease both}
 @keyframes fadeIn{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+.main-product.section-spacing{padding-top:var(--section-pt,var(--section-spacing));padding-bottom:var(--section-pb,var(--section-spacing))}
 .product-main{display:grid;gap:2rem}
 @media(min-width:990px){.product-main{grid-template-columns:1fr 1fr;align-items:start}}
 .product-gallery{width:100%;min-width:0}

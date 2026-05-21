@@ -1,7 +1,118 @@
-<div class="social-share">
-  <span>{{ 'general.share' | t }}</span>
-  <a href="https://www.facebook.com/sharer.php?u={{ shop.url }}{{ product.url }}" target="_blank" rel="noopener">Facebook</a>
-  <a href="https://twitter.com/intent/tweet?url={{ shop.url }}{{ product.url }}&text={{ product.title | url_param_escape }}" target="_blank" rel="noopener">X</a>
-  <a href="https://pinterest.com/pin/create/button/?url={{ shop.url }}{{ product.url }}&media={{ product.featured_image | image_url: width: 800 }}&description={{ product.title | url_param_escape }}" target="_blank" rel="noopener">Pinterest</a>
-  <button type="button" data-copy-link data-url="{{ shop.url }}{{ product.url }}">{{ 'general.copy_link' | t }}</button>
+{%- comment -%}
+  Compartir producto — iconos SVG + ajustes desde bloque «Compartir en redes».
+  product (requerido), block (opcional)
+{%- endcomment -%}
+{%- liquid
+  assign share_url = shop.url | append: product.url
+  assign share_title = product.title | url_param_escape
+  assign share_image = product.featured_image | image_url: width: 1200
+
+  assign show_heading = true
+  assign heading = 'general.share' | t
+  assign heading_size = 'small'
+  assign alignment = 'left'
+  assign show_facebook = true
+  assign show_x = true
+  assign show_pinterest = true
+  assign show_whatsapp = false
+  assign show_copy_link = true
+  assign show_copy_label = false
+  assign icon_style = 'circle'
+  assign icon_px = 20
+  assign icon_gap = 12
+  assign margin_top = 24
+  assign margin_bottom = 16
+  assign padding_top = 16
+  assign padding_bottom = 0
+  assign icon_color = ''
+  assign icon_bg = ''
+
+  if block
+    assign s = block.settings
+    assign show_heading = s.show_heading
+    if s.heading != blank
+      assign heading = s.heading
+    endif
+    assign heading_size = s.heading_size | default: 'small'
+    assign alignment = s.alignment | default: 'left'
+    assign show_facebook = s.show_facebook
+    assign show_x = s.show_x
+    assign show_pinterest = s.show_pinterest
+    assign show_whatsapp = s.show_whatsapp
+    assign show_copy_link = s.show_copy_link
+    assign show_copy_label = s.show_copy_label
+    assign icon_style = s.icon_style | default: 'circle'
+    assign icon_px = s.icon_size | default: 20
+    assign icon_gap = s.icon_gap | default: 12
+    assign margin_top = s.margin_top | default: 24
+    assign margin_bottom = s.margin_bottom | default: 16
+    assign padding_top = s.padding_top | default: 16
+    assign padding_bottom = s.padding_bottom | default: 0
+    assign icon_color = s.icon_color
+    assign icon_bg = s.icon_bg
+  endif
+-%}
+
+<div
+  class="social-share social-share--{{ icon_style }} social-share--align-{{ alignment }} social-share--heading-{{ heading_size }}"
+  style="
+    --share-mt: {{ margin_top }}px;
+    --share-mb: {{ margin_bottom }}px;
+    --share-pt: {{ padding_top }}px;
+    --share-pb: {{ padding_bottom }}px;
+    --share-gap: {{ icon_gap }}px;
+    --share-icon-size: {{ icon_px }}px;
+    {%- if icon_color != blank and icon_color != 'rgba(0,0,0,0)' -%}
+      --share-icon-color: {{ icon_color }};
+    {%- endif -%}
+    {%- if icon_bg != blank and icon_bg != 'rgba(0,0,0,0)' -%}
+      --share-icon-bg: {{ icon_bg }};
+    {%- endif -%}
+  "
+  {% if block %}{{ block.shopify_attributes }}{% endif %}
+>
+  {%- if show_heading != false -%}
+    <span class="social-share__label">{{ heading }}</span>
+  {%- endif -%}
+
+  <ul class="social-share__list" role="list">
+    {%- if show_facebook != false -%}
+      <li>
+        <a href="https://www.facebook.com/sharer.php?u={{ share_url | url_param_escape }}" class="social-share__btn" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+          {% render 'icon-social', network: 'facebook', size: icon_px %}
+        </a>
+      </li>
+    {%- endif -%}
+    {%- if show_x != false -%}
+      <li>
+        <a href="https://twitter.com/intent/tweet?url={{ share_url | url_param_escape }}&text={{ share_title }}" class="social-share__btn" target="_blank" rel="noopener noreferrer" aria-label="X">
+          {% render 'icon-social', network: 'x', size: icon_px %}
+        </a>
+      </li>
+    {%- endif -%}
+    {%- if show_pinterest != false -%}
+      <li>
+        <a href="https://pinterest.com/pin/create/button/?url={{ share_url | url_param_escape }}&media={{ share_image | url_param_escape }}&description={{ share_title }}" class="social-share__btn" target="_blank" rel="noopener noreferrer" aria-label="Pinterest">
+          {% render 'icon-social', network: 'pinterest', size: icon_px %}
+        </a>
+      </li>
+    {%- endif -%}
+    {%- if show_whatsapp -%}
+      <li>
+        <a href="https://wa.me/?text={{ share_title }}%20{{ share_url | url_param_escape }}" class="social-share__btn" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
+          {% render 'icon-social', network: 'whatsapp', size: icon_px %}
+        </a>
+      </li>
+    {%- endif -%}
+    {%- if show_copy_link != false -%}
+      <li>
+        <button type="button" class="social-share__btn social-share__btn--copy" data-copy-link data-url="{{ share_url }}" aria-label="{{ 'general.copy_link' | t }}">
+          {% render 'icon-social', network: 'link', size: icon_px %}
+          {%- if show_copy_label -%}
+            <span class="social-share__copy-text">{{ 'general.copy_link' | t }}</span>
+          {%- endif -%}
+        </button>
+      </li>
+    {%- endif -%}
+  </ul>
 </div>

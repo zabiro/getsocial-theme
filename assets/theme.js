@@ -153,9 +153,22 @@
 
   /* --- Copy link --- */
   $$('[data-copy-link]').forEach((btn) => {
-    btn.addEventListener('click', () => {
-      navigator.clipboard?.writeText(btn.dataset.url);
-      btn.textContent = '✓';
+    btn.addEventListener('click', async () => {
+      const url = btn.dataset.url;
+      if (!url) return;
+      try {
+        await navigator.clipboard?.writeText(url);
+        btn.classList.add('is-copied');
+        const label = btn.querySelector('.social-share__copy-text');
+        const prev = label?.textContent;
+        if (label) label.textContent = '✓';
+        setTimeout(() => {
+          btn.classList.remove('is-copied');
+          if (label && prev) label.textContent = prev;
+        }, 2000);
+      } catch {
+        /* noop */
+      }
     });
   });
 

@@ -1,6 +1,12 @@
 <script type="application/json" data-product-json>{{ product | json }}</script>
 
-<section class="main-product section-spacing{% if settings.color_preset == 'sunny' or settings.color_preset == 'beauty' %} main-product--vibrant{% endif %}" data-product-section data-product-id="{{ product.id }}" data-product-handle="{{ product.handle }}">
+<section
+  class="main-product section-spacing{% if settings.color_preset == 'sunny' or settings.color_preset == 'beauty' %} main-product--vibrant{% endif %}"
+  data-product-section
+  data-product-id="{{ product.id }}"
+  data-product-handle="{{ product.handle }}"
+  style="--section-pt: {{ section.settings.padding_top }}px; --section-pb: {{ section.settings.padding_bottom }}px;"
+>
   <div class="page-width product-main">
     <div class="product-gallery product-gallery--{{ settings.product_gallery_layout }}" data-product-gallery>
       {%- if settings.product_gallery_layout contains 'thumbnails' and product.media.size > 0 -%}
@@ -187,10 +193,13 @@
               <button type="button" class="size-chart-link" data-size-chart-open data-size-chart-target="size-chart-{{ block.id }}" {{ block.shopify_attributes }}>{{ block.settings.label }}</button>
               <div id="size-chart-{{ block.id }}" hidden class="rte size-chart-source">{{ block.settings.page.content }}</div>
             {%- endif -%}
+          {%- when 'share' -%}
+            {% render 'social-share', product: product, block: block %}
         {%- endcase -%}
       {%- endfor -%}
 
-      {%- if settings.product_show_share -%}
+      {%- assign has_share_block = section.blocks | where: 'type', 'share' | size -%}
+      {%- if has_share_block == 0 and settings.product_show_share -%}
         {% render 'social-share', product: product %}
       {%- endif -%}
 
@@ -235,6 +244,28 @@
   "tag": "section",
   "class": "section-main-product",
   "settings": [
+    { "type": "header", "content": "Espaciado de la sección" },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Margen superior",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Margen inferior",
+      "default": 36
+    },
+    { "type": "header", "content": "Compra" },
     { "type": "checkbox", "id": "show_dynamic_checkout", "label": "Botones de pago dinámico", "default": true }
   ],
   "blocks": [
@@ -269,6 +300,118 @@
         { "type": "page", "id": "page", "label": "Página con tabla" }
       ]
     },
+    {
+      "type": "share",
+      "name": "Compartir en redes",
+      "limit": 1,
+      "settings": [
+        { "type": "header", "content": "Contenido" },
+        { "type": "checkbox", "id": "show_heading", "label": "Mostrar título", "default": true },
+        { "type": "text", "id": "heading", "label": "Título", "default": "Compartir" },
+        {
+          "type": "select",
+          "id": "heading_size",
+          "label": "Tamaño del título",
+          "options": [
+            { "value": "small", "label": "Pequeño" },
+            { "value": "medium", "label": "Mediano" },
+            { "value": "large", "label": "Grande" }
+          ],
+          "default": "small"
+        },
+        {
+          "type": "select",
+          "id": "alignment",
+          "label": "Alineación",
+          "options": [
+            { "value": "left", "label": "Izquierda" },
+            { "value": "center", "label": "Centro" }
+          ],
+          "default": "left"
+        },
+        { "type": "header", "content": "Redes (activar / desactivar)" },
+        { "type": "checkbox", "id": "show_facebook", "label": "Facebook", "default": true },
+        { "type": "checkbox", "id": "show_x", "label": "X (Twitter)", "default": true },
+        { "type": "checkbox", "id": "show_pinterest", "label": "Pinterest", "default": true },
+        { "type": "checkbox", "id": "show_whatsapp", "label": "WhatsApp", "default": false },
+        { "type": "checkbox", "id": "show_copy_link", "label": "Copiar enlace", "default": true },
+        { "type": "checkbox", "id": "show_copy_label", "label": "Texto junto al icono copiar", "default": false },
+        { "type": "header", "content": "Estilo de iconos" },
+        {
+          "type": "select",
+          "id": "icon_style",
+          "label": "Estilo",
+          "options": [
+            { "value": "circle", "label": "Círculos (Sunny)" },
+            { "value": "minimal", "label": "Minimal" }
+          ],
+          "default": "circle"
+        },
+        {
+          "type": "range",
+          "id": "icon_size",
+          "min": 16,
+          "max": 32,
+          "step": 2,
+          "unit": "px",
+          "label": "Tamaño icono",
+          "default": 20
+        },
+        {
+          "type": "range",
+          "id": "icon_gap",
+          "min": 4,
+          "max": 32,
+          "step": 2,
+          "unit": "px",
+          "label": "Espacio entre iconos",
+          "default": 12
+        },
+        { "type": "color", "id": "icon_color", "label": "Color icono" },
+        { "type": "color", "id": "icon_bg", "label": "Fondo del botón" },
+        { "type": "header", "content": "Espaciado del bloque" },
+        {
+          "type": "range",
+          "id": "margin_top",
+          "min": 0,
+          "max": 80,
+          "step": 4,
+          "unit": "px",
+          "label": "Margen superior",
+          "default": 24
+        },
+        {
+          "type": "range",
+          "id": "margin_bottom",
+          "min": 0,
+          "max": 80,
+          "step": 4,
+          "unit": "px",
+          "label": "Margen inferior",
+          "default": 16
+        },
+        {
+          "type": "range",
+          "id": "padding_top",
+          "min": 0,
+          "max": 48,
+          "step": 4,
+          "unit": "px",
+          "label": "Padding superior",
+          "default": 16
+        },
+        {
+          "type": "range",
+          "id": "padding_bottom",
+          "min": 0,
+          "max": 48,
+          "step": 4,
+          "unit": "px",
+          "label": "Padding inferior",
+          "default": 0
+        }
+      ]
+    },
     { "type": "@app" }
   ],
   "default": {
@@ -279,6 +422,7 @@
       { "type": "benefit", "settings": { "text": "Mejora textura, tono y luminosidad." } },
       { "type": "trust", "settings": { "icon": "🚚", "text": "Envío gratis +100€" } },
       { "type": "trust", "settings": { "icon": "↩️", "text": "Devolución 30 días" } },
+      { "type": "share", "settings": { "heading": "Compartir", "icon_style": "circle" } },
       { "type": "tab", "settings": { "title": "Descripción", "content": "<p>Información del producto.</p>" } },
       { "type": "tab", "settings": { "title": "Envíos", "content": "<p>24-48h laborables.</p>" } }
     ]

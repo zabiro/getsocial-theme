@@ -201,7 +201,22 @@ html.newsletter-popup-open{overflow:hidden}
 .product-tabs__item{border-bottom:1px solid var(--color-border)}
 .product-trust{list-style:none;padding:0;margin:1rem 0;display:flex;flex-wrap:wrap;gap:1rem}
 .product-trust li{font-size:var(--font-size-small)}
-.social-share{display:flex;gap:1rem;align-items:center;margin:1rem 0;font-size:var(--font-size-small)}
+.social-share{display:flex;flex-wrap:wrap;align-items:center;gap:.75rem 1rem;margin-top:var(--share-mt,1.5rem);margin-bottom:var(--share-mb,1rem);padding-top:var(--share-pt,1rem);padding-bottom:var(--share-pb,0);font-size:var(--font-size-small)}
+.social-share--align-center{justify-content:center}
+.social-share--align-center .social-share__list{justify-content:center}
+.social-share__label{font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:var(--color-text-light);flex:0 0 auto}
+.social-share--heading-medium .social-share__label{font-size:.875rem}
+.social-share--heading-large .social-share__label{font-size:1rem;color:var(--color-text)}
+.social-share__list{display:flex;flex-wrap:wrap;align-items:center;gap:var(--share-gap,.75rem);list-style:none;margin:0;padding:0}
+.social-share__btn{display:inline-flex;align-items:center;justify-content:center;gap:.35rem;width:2.5rem;height:2.5rem;padding:0;border:1px solid var(--color-border);border-radius:50%;background:var(--share-icon-bg,var(--color-background));color:var(--share-icon-color,var(--color-text));cursor:pointer;transition:transform .2s,border-color .2s,background .2s,color .2s;text-decoration:none}
+.social-share__btn svg{width:var(--share-icon-size,20px);height:var(--share-icon-size,20px)}
+.social-share__btn:hover{border-color:var(--color-primary);color:var(--color-primary);transform:translateY(-2px)}
+.social-share__btn--copy{width:auto;min-width:2.5rem;padding:0 .65rem;border-radius:999px}
+.social-share__copy-text{font-size:.75rem;font-weight:600;white-space:nowrap}
+.social-share--minimal .social-share__btn{border:none;background:transparent;border-radius:8px}
+.social-share--minimal .social-share__btn:hover{background:var(--color-background-secondary)}
+.social-share--circle .social-share__btn{box-shadow:0 2px 8px rgba(0,0,0,.06)}
+.social-share__btn.is-copied{border-color:var(--color-success);color:var(--color-success)}
 .swatches__list{display:flex;gap:.35rem;flex-wrap:wrap}
 .swatch{border:1px solid var(--color-border);background:var(--color-background-secondary);padding:.35rem .6rem;border-radius:var(--button-radius);cursor:pointer}
 .swatch.is-selected{border-color:var(--color-primary)}

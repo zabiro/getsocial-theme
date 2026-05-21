@@ -456,6 +456,26 @@ body.color-preset--sunny .announcement-bar {
   margin-top: 0.75rem;
 }
 
+.color-preset--sunny .social-share__btn,
+.color-preset--beauty .social-share__btn {
+  border-color: rgba(232, 120, 138, 0.35);
+  color: var(--sunny-coral, var(--color-accent));
+  background: #fff;
+}
+
+.color-preset--sunny .social-share__btn:hover,
+.color-preset--beauty .social-share__btn:hover {
+  background: var(--sunny-coral, var(--color-accent));
+  color: #fff;
+  border-color: var(--sunny-coral, var(--color-accent));
+}
+
+.color-preset--sunny .social-share__label,
+.color-preset--beauty .social-share__label {
+  color: var(--color-text);
+  letter-spacing: 0.1em;
+}
+
 .color-preset--sunny .product-card__info {
   text-align: center;
   padding: 1rem 0.5rem;
