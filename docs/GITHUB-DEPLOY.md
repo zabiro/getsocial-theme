@@ -54,6 +54,10 @@ Sin `SHOPIFY_THEME_ID`, el workflow crea/actualiza un **tema sin publicar**.
 2. **Actions → Deploy GetSocial Theme → Run workflow** (workflow_dispatch).
 3. Debe quedar en verde. En **Temas** verás el tema actualizado.
 
+### Aviso Node 20 / Node 24 en Actions
+
+GitHub migra los runners a **Node 24** (junio 2026). El workflow ya usa `FORCE_JAVASCRIPT_ACTIONS_TO_NODE24=true` y Node 24 para Shopify CLI. Detalle: [deprecation of Node 20](https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/).
+
 ### Errores frecuentes
 
 | Error | Solución |
