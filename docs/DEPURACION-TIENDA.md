@@ -5,7 +5,8 @@
 | Mensaje | Causa | Arreglo |
 |---------|--------|---------|
 | `font_face can only be used with a font drop` | Fuentes en `settings_data` inválidas + `font_face` sin comprobar | `css-variables.liquid` corregido |
-| `Could not find asset snippets/card-product.liquid` | Snippet no sincronizado o nombre distinto | Uso de `product-card.liquid` (estándar) |
+| `Nesting too deep` en card-product | Bucle infinito card-product ↔ product-card | Eliminado `card-product.liquid`; solo `product-card.liquid` |
+| `Could not find asset snippets/card-product.liquid` | Snippet incorrecto | Uso de `product-card.liquid` |
 
 ## Qué hacer en Shopify (importante)
 

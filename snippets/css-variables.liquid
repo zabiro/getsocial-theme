@@ -20,9 +20,9 @@
   assign header_background = settings.header_background
   assign header_text = settings.header_text
 
-  assign font_heading_family = '"Playfair Display", Georgia, serif'
-  assign font_body_family = 'Inter, system-ui, -apple-system, sans-serif'
-  assign font_nav_family = 'Inter, system-ui, sans-serif'
+  assign font_heading_family = 'Inter, system-ui, -apple-system, BlinkMacSystemFont, sans-serif'
+  assign font_body_family = 'Inter, system-ui, -apple-system, BlinkMacSystemFont, sans-serif'
+  assign font_nav_family = 'Inter, system-ui, -apple-system, sans-serif'
   assign preset_heading_scale = heading_scale
   assign preset_body_scale = body_scale
 
@@ -42,8 +42,8 @@
   unless settings.color_preset == 'custom' or settings.color_preset == blank
     case settings.color_preset
       when 'fashion'
-        assign font_heading_family = '"Playfair Display", Georgia, serif'
-        assign font_body_family = 'Inter, system-ui, sans-serif'
+        assign font_heading_family = 'Inter, system-ui, -apple-system, sans-serif'
+        assign font_body_family = 'Inter, system-ui, -apple-system, sans-serif'
         assign preset_heading_scale = 1.05
         assign color_primary = '#1a1a1a'
         assign color_accent = '#c9a962'

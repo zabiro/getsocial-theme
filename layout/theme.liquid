@@ -18,7 +18,7 @@
   <link rel="preconnect" href="https://fonts.shopifycdn.com" crossorigin>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
   {{ content_for_header }}
 
@@ -27,6 +27,7 @@
   {%- render 'license-admin-notice' -%}
   {{ 'base.css' | asset_url | stylesheet_tag }}
   {{ 'components.css' | asset_url | stylesheet_tag }}
+  {{ 'theme-modern.css' | asset_url | stylesheet_tag }}
   {%- if settings.custom_css != blank -%}<style>{{ settings.custom_css }}</style>{%- endif -%}
   {%- if settings.custom_head_scripts != blank -%}{{ settings.custom_head_scripts }}{%- endif -%}
   <script>document.documentElement.classList.replace('no-js','js');</script>
