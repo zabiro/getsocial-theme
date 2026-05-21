@@ -4,9 +4,17 @@
   assign card_style = settings.product_card_style
   assign show_second = settings.product_card_show_second_image
   assign product_url = product.url
+  if product_url == blank
+    assign product_url = '/products/' | append: product.handle
+  endif
 -%}
-<article class="product-card product-card--{{ card_style }} {{ ratio_class }}" data-product-card data-product-handle="{{ product.handle }}">
-  <a href="{{ product_url }}" class="product-card__link" aria-label="{{ product.title | escape }}"></a>
+<article
+  class="product-card product-card--{{ card_style }} {{ ratio_class }}"
+  data-product-card
+  data-product-handle="{{ product.handle }}"
+  data-product-url="{{ product_url }}"
+>
+  <a href="{{ product_url }}" class="product-card__link" aria-label="{{ product.title | escape }}" tabindex="-1"></a>
 
   <div class="product-card__actions-top">
     {% render 'wishlist-button', product: product %}

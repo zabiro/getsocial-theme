@@ -33,6 +33,25 @@
     try { await addToCart(btn.dataset.quickAdd); } catch (err) { console.error(err); }
   });
 
+  /* Clic en tarjeta → ficha de producto (respaldo si el enlace queda tapado) */
+  document.addEventListener('click', (e) => {
+    if (e.defaultPrevented) return;
+    if (e.target.closest('.product-card__link')) return;
+    const interactive = e.target.closest(
+      'button, [data-quick-add], [data-quick-view], [data-wishlist-toggle], [data-compare-toggle], .card-action, input, select, textarea, label'
+    );
+    if (interactive) return;
+    const card = e.target.closest('[data-product-card]');
+    if (!card) return;
+    const url = card.dataset.productUrl || card.querySelector('.product-card__link')?.getAttribute('href');
+    if (!url || url === '#') return;
+    if (e.metaKey || e.ctrlKey || e.shiftKey || e.button === 1) {
+      window.open(url, '_blank');
+      return;
+    }
+    window.location.assign(url);
+  });
+
   /* --- Mobile menu --- */
   const mobileMenu = $('[data-mobile-menu]');
   $$('[data-mobile-menu-open]').forEach((b) => b.addEventListener('click', () => mobileMenu?.classList.add('is-open')));
