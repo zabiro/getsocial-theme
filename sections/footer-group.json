@@ -1,4 +1,4 @@
-﻿{
+{
   "type": "footer",
   "name": "Grupo pie",
   "sections": {
@@ -33,7 +33,6 @@
         "social_heading": "Síguenos",
         "show_social": true,
         "show_payment_icons": false,
-        "credit_text": "",
         "show_powered_by": false
       }
     }
