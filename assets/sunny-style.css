@@ -672,14 +672,10 @@ body.color-preset--sunny .announcement-bar {
   padding: 0;
 }
 
-/* Texto en scroll tropical */
-.color-preset--sunny .scrolling-text {
+/* Texto en scroll tropical — degradado opcional en ajustes de sección */
+.color-preset--sunny .scrolling-text:not(.scrolling-text--gradient) {
   background: var(--sunny-blush, #fce4ec) !important;
   color: var(--color-text) !important;
-  font-weight: 600;
-  font-size: 0.8125rem;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
 }
 
 /* ========== FOOTER estilo Sunny Hunny ========== */

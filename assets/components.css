@@ -98,9 +98,15 @@
 .promo-grid__content{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:flex-end;padding:1.25rem;background:linear-gradient(transparent,var(--promo-bg,rgba(0,0,0,.35)))}
 
 /* === Scrolling text === */
-.scrolling-text{overflow:hidden;padding:.75rem 0}
+.scrolling-text{overflow:hidden;padding:var(--scroll-pt,12px) 0;font-size:var(--scroll-font-size,1rem);font-weight:var(--scroll-font-weight,700);letter-spacing:var(--scroll-letter-spacing,.06em);text-transform:var(--scroll-text-transform,uppercase)}
+.scrolling-text--gradient{background:linear-gradient(90deg,var(--scroll-bg-start,#f5a88a) 0%,var(--scroll-bg-end,#ffe566) 100%)!important}
 .scrolling-text__track{display:flex;width:max-content;animation:marquee var(--speed,25s) linear infinite}
-.scrolling-text__content{display:flex;gap:2rem;padding-right:2rem;white-space:nowrap}
+.scrolling-text__content{display:flex;align-items:center;gap:var(--scroll-gap,1.75rem);padding-right:var(--scroll-gap,1.75rem);white-space:nowrap}
+.scrolling-text__word{display:inline-flex;align-items:center;line-height:1.2}
+.scrolling-text__icon{display:inline-flex;align-items:center;justify-content:center;flex-shrink:0;color:inherit}
+.scrolling-text__icon-svg{display:inline-flex;align-items:center;justify-content:center}
+.scrolling-text__icon-svg svg{width:100%;height:100%;display:block}
+.scrolling-text__icon-img{width:var(--scroll-icon-size,18px);height:var(--scroll-icon-size,18px);object-fit:contain;display:block}
 @keyframes marquee{to{transform:translateX(-50%)}}
 
 /* === Collection list === */

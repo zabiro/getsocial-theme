@@ -16,6 +16,30 @@
         "show_carousel_nav": true
       }
     },
+    "marquee_aloha": {
+      "type": "scrolling-text",
+      "blocks": {
+        "t1": { "type": "text", "settings": { "text": "ALOHA" } },
+        "i1": { "type": "icon", "settings": { "icon_preset": "star8" } },
+        "t2": { "type": "text", "settings": { "text": "ALOHA" } },
+        "i2": { "type": "icon", "settings": { "icon_preset": "star8" } },
+        "t3": { "type": "text", "settings": { "text": "ALOHA" } },
+        "i3": { "type": "icon", "settings": { "icon_preset": "star8" } },
+        "t4": { "type": "text", "settings": { "text": "ALOHA" } }
+      },
+      "block_order": ["t1", "i1", "t2", "i2", "t3", "i3", "t4"],
+      "settings": {
+        "enable_gradient": true,
+        "gradient_start": "#f5a88a",
+        "gradient_end": "#ffe566",
+        "text_color": "#1a1a1a",
+        "font_size": 1.125,
+        "font_weight": "800",
+        "icon_size": 18,
+        "item_gap": 28,
+        "speed": 28
+      }
+    },
     "collection_tabs": {
       "type": "collection-tabs",
       "blocks": {
@@ -84,6 +108,7 @@
   },
   "order": [
     "hero_products",
+    "marquee_aloha",
     "collection_tabs",
     "tropical",
     "spotlight",

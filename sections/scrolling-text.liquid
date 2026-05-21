@@ -1,10 +1,61 @@
-<section class="scrolling-text" style="background:{{ section.settings.background }};color:{{ section.settings.text_color }};--speed:{{ section.settings.speed }}s">
+{%- liquid
+  assign use_gradient = section.settings.enable_gradient
+  assign icon_px = section.settings.icon_size | default: 18
+  assign sep_icon = section.settings.separator_icon | default: 'star8'
+-%}
+<section
+  class="scrolling-text{% if use_gradient %} scrolling-text--gradient{% endif %}"
+  style="
+    --speed: {{ section.settings.speed }}s;
+    --scroll-gap: {{ section.settings.item_gap }}px;
+    --scroll-icon-size: {{ icon_px }}px;
+    --scroll-font-size: {{ section.settings.font_size }}rem;
+    --scroll-letter-spacing: {{ section.settings.letter_spacing }}em;
+    --scroll-pt: {{ section.settings.padding_vertical }}px;
+    color: {{ section.settings.text_color }};
+    --scroll-font-weight: {{ section.settings.font_weight }};
+    --scroll-text-transform: {{ section.settings.text_transform }};
+    {%- unless use_gradient -%}
+      background: {{ section.settings.background }};
+    {%- else -%}
+      --scroll-bg-start: {{ section.settings.gradient_start }};
+      --scroll-bg-end: {{ section.settings.gradient_end }};
+    {%- endunless -%}
+  "
+>
   <div class="scrolling-text__track" data-marquee aria-hidden="true">
-    {%- for i in (1..4) -%}
+    {%- for repeat in (1..section.settings.duplicate_count) -%}
       <span class="scrolling-text__content">
         {%- for block in section.blocks -%}
-          <span {{ block.shopify_attributes }}>{{ block.settings.text }}</span>
-          {%- unless forloop.last -%}<span class="scrolling-text__sep">{{ section.settings.separator }}</span>{%- endunless -%}
+          {%- case block.type -%}
+            {%- when 'text' -%}
+              {%- if block.settings.text != blank -%}
+                <span class="scrolling-text__word" {{ block.shopify_attributes }}>{{ block.settings.text }}</span>
+              {%- endif -%}
+            {%- when 'icon' -%}
+              {%- assign block_icon_sz = block.settings.icon_size | plus: 0 -%}
+              {%- if block_icon_sz < 1 -%}{%- assign block_icon_sz = icon_px -%}{%- endif -%}
+              <span class="scrolling-text__icon" {{ block.shopify_attributes }}>
+                {% render 'scrolling-text-icon',
+                  icon: block.settings.icon_preset,
+                  image: block.settings.icon_image,
+                  size: block_icon_sz
+                %}
+              </span>
+          {%- endcase -%}
+          {%- if section.settings.auto_icon_between_text and block.type == 'text' -%}
+            {%- assign next_index = forloop.index0 | plus: 1 -%}
+            {%- assign next_block = section.blocks[next_index] -%}
+            {%- if next_block.type == 'text' and next_block.settings.text != blank -%}
+              <span class="scrolling-text__icon scrolling-text__icon--auto">
+                {% render 'scrolling-text-icon',
+                  icon: sep_icon,
+                  image: section.settings.separator_image,
+                  size: icon_px
+                %}
+              </span>
+            {%- endif -%}
+          {%- endif -%}
         {%- endfor -%}
       </span>
     {%- endfor -%}
@@ -13,16 +64,254 @@
 
 {% schema %}
 {
-  "name": "Texto en scroll",
+  "name": "Texto en scroll (marquee)",
+  "tag": "section",
+  "class": "section-scrolling-text",
+  "max_blocks": 24,
   "settings": [
-    { "type": "color", "id": "background", "label": "Fondo", "default": "#1a1a1a" },
-    { "type": "color", "id": "text_color", "label": "Texto", "default": "#ffffff" },
-    { "type": "text", "id": "separator", "label": "Separador", "default": "•" },
-    { "type": "range", "id": "speed", "min": 10, "max": 60, "step": 5, "unit": "s", "label": "Velocidad", "default": 25 }
+    { "type": "header", "content": "Fondo" },
+    {
+      "type": "checkbox",
+      "id": "enable_gradient",
+      "label": "Fondo en degradado (estilo Sunny)",
+      "default": true
+    },
+    {
+      "type": "color",
+      "id": "gradient_start",
+      "label": "Degradado — inicio",
+      "default": "#f5a88a"
+    },
+    {
+      "type": "color",
+      "id": "gradient_end",
+      "label": "Degradado — fin",
+      "default": "#ffe566"
+    },
+    {
+      "type": "color",
+      "id": "background",
+      "label": "Fondo sólido (si degradado desactivado)",
+      "default": "#fce4ec"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Color texto e iconos",
+      "default": "#1a1a1a"
+    },
+    { "type": "header", "content": "Iconos entre palabras" },
+    {
+      "type": "paragraph",
+      "content": "Añade bloques «Icono» entre textos, o activa inserción automática con el icono por defecto."
+    },
+    {
+      "type": "checkbox",
+      "id": "auto_icon_between_text",
+      "label": "Insertar icono automático entre bloques de texto",
+      "default": false,
+      "info": "Desactiva si solo usas bloques Icono manualmente."
+    },
+    {
+      "type": "select",
+      "id": "separator_icon",
+      "label": "Icono automático (preset)",
+      "options": [
+        { "value": "star8", "label": "Estrella 8 puntas (Sunny)" },
+        { "value": "star4", "label": "Estrella 4 puntas" },
+        { "value": "asterisk", "label": "Asterisco" },
+        { "value": "heart", "label": "Corazón" },
+        { "value": "flower", "label": "Flor" },
+        { "value": "dot", "label": "Punto" }
+      ],
+      "default": "star8"
+    },
+    {
+      "type": "image_picker",
+      "id": "separator_image",
+      "label": "Icono automático — imagen personalizada",
+      "info": "PNG/SVG transparente. Sustituye el preset si está subida."
+    },
+    {
+      "type": "range",
+      "id": "icon_size",
+      "min": 10,
+      "max": 48,
+      "step": 2,
+      "unit": "px",
+      "label": "Tamaño iconos (por defecto)",
+      "default": 18
+    },
+    { "type": "header", "content": "Tipografía y movimiento" },
+    {
+      "type": "range",
+      "id": "font_size",
+      "min": 0.625,
+      "max": 2,
+      "step": 0.0625,
+      "unit": "rem",
+      "label": "Tamaño texto",
+      "default": 1.125
+    },
+    {
+      "type": "select",
+      "id": "font_weight",
+      "label": "Peso fuente",
+      "options": [
+        { "value": "500", "label": "Medio" },
+        { "value": "600", "label": "Semi-bold" },
+        { "value": "700", "label": "Bold" },
+        { "value": "800", "label": "Extra bold" }
+      ],
+      "default": "800"
+    },
+    {
+      "type": "range",
+      "id": "letter_spacing",
+      "min": 0,
+      "max": 0.3,
+      "step": 0.02,
+      "unit": "em",
+      "label": "Espacio entre letras",
+      "default": 0.06
+    },
+    {
+      "type": "select",
+      "id": "text_transform",
+      "label": "Mayúsculas",
+      "options": [
+        { "value": "uppercase", "label": "Sí (ALOHA)" },
+        { "value": "none", "label": "No" }
+      ],
+      "default": "uppercase"
+    },
+    {
+      "type": "range",
+      "id": "item_gap",
+      "min": 8,
+      "max": 80,
+      "step": 4,
+      "unit": "px",
+      "label": "Espacio entre elementos",
+      "default": 28
+    },
+    {
+      "type": "range",
+      "id": "speed",
+      "min": 8,
+      "max": 80,
+      "step": 2,
+      "unit": "s",
+      "label": "Duración del ciclo (más = más lento)",
+      "default": 28
+    },
+    {
+      "type": "range",
+      "id": "duplicate_count",
+      "min": 2,
+      "max": 6,
+      "step": 1,
+      "label": "Repeticiones en bucle",
+      "default": 4,
+      "info": "Más repeticiones = scroll más continuo sin huecos"
+    },
+    {
+      "type": "range",
+      "id": "padding_vertical",
+      "min": 4,
+      "max": 32,
+      "step": 2,
+      "unit": "px",
+      "label": "Padding vertical",
+      "default": 12
+    },
+    {
+      "type": "text",
+      "id": "separator",
+      "label": "Separador texto (legacy, no usar con iconos)",
+      "default": "•",
+      "info": "Solo si no usas bloques Icono."
+    }
   ],
   "blocks": [
-    { "type": "text", "name": "Texto", "settings": [{ "type": "text", "id": "text", "label": "Texto", "default": "ENVÍO GRATIS" }] }
+    {
+      "type": "text",
+      "name": "Texto",
+      "settings": [
+        { "type": "text", "id": "text", "label": "Texto", "default": "ALOHA" }
+      ]
+    },
+    {
+      "type": "icon",
+      "name": "Icono",
+      "settings": [
+        {
+          "type": "select",
+          "id": "icon_preset",
+          "label": "Icono",
+          "options": [
+            { "value": "star8", "label": "Estrella 8 puntas (Sunny)" },
+            { "value": "star4", "label": "Estrella 4 puntas" },
+            { "value": "asterisk", "label": "Asterisco" },
+            { "value": "heart", "label": "Corazón" },
+            { "value": "flower", "label": "Flor" },
+            { "value": "dot", "label": "Punto" }
+          ],
+          "default": "star8"
+        },
+        {
+          "type": "image_picker",
+          "id": "icon_image",
+          "label": "O sube tu imagen (PNG/SVG)",
+          "info": "Tiene prioridad sobre el preset."
+        },
+        {
+          "type": "range",
+          "id": "icon_size",
+          "min": 0,
+          "max": 48,
+          "step": 2,
+          "unit": "px",
+          "label": "Tamaño (0 = usar global)",
+          "default": 0
+        }
+      ]
+    }
   ],
-  "presets": [{ "name": "Texto en scroll", "blocks": [{ "type": "text" }, { "type": "text" }, { "type": "text" }] }]
+  "presets": [
+    {
+      "name": "Marquee Sunny (ALOHA)",
+      "settings": {
+        "enable_gradient": true,
+        "gradient_start": "#f5a88a",
+        "gradient_end": "#ffe566",
+        "text_color": "#1a1a1a",
+        "font_size": 1.125,
+        "font_weight": "800",
+        "letter_spacing": 0.06,
+        "text_transform": "uppercase",
+        "icon_size": 18,
+        "item_gap": 28,
+        "speed": 28
+      },
+      "blocks": [
+        { "type": "text", "settings": { "text": "ALOHA" } },
+        { "type": "icon", "settings": { "icon_preset": "star8" } },
+        { "type": "text", "settings": { "text": "ALOHA" } },
+        { "type": "icon", "settings": { "icon_preset": "star8" } },
+        { "type": "text", "settings": { "text": "ALOHA" } },
+        { "type": "icon", "settings": { "icon_preset": "star8" } },
+        { "type": "text", "settings": { "text": "ALOHA" } }
+      ]
+    },
+    {
+      "name": "Texto en scroll",
+      "blocks": [
+        { "type": "text", "settings": { "text": "ENVÍO GRATIS" } },
+        { "type": "icon", "settings": { "icon_preset": "star8" } },
+        { "type": "text", "settings": { "text": "NUEVO" } }
+      ]
+    }
+  ]
 }
 {% endschema %}
