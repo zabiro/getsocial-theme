@@ -202,7 +202,7 @@
         "step": 50,
         "unit": "px",
         "label": "t:settings_schema.layout.settings.page_width.label",
-        "default": 1320
+        "default": 1300
       },
       {
         "type": "range",
@@ -706,8 +706,7 @@
         "type": "text",
         "id": "license_api_url",
         "label": "URL API de verificación",
-        "info": "Ej: https://tu-dominio.com/getsocial-license/verify.php?key={key}&shop={shop}",
-        "default": ""
+        "info": "Ej: https://tu-dominio.com/getsocial-license/verify.php?key={key}&shop={shop}"
       },
       {
         "type": "text",
