@@ -198,6 +198,10 @@ body.color-preset--sunny .announcement-bar {
   text-align: center;
 }
 
+.color-preset--sunny .product-card:hover .product-card__title {
+  color: var(--sunny-coral, var(--color-accent));
+}
+
 .color-preset--sunny .product-card__info {
   text-align: center;
   padding: 1rem 0.5rem;

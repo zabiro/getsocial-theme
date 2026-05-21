@@ -66,7 +66,10 @@
         close();
         document.querySelector('[data-cart-drawer]')?.classList.add('is-open');
         const cart = await (await fetch(`${root}cart.js`)).json();
-        document.querySelectorAll('[data-cart-count]').forEach((c) => { c.textContent = cart.item_count; });
+        document.querySelectorAll('[data-cart-count]').forEach((c) => {
+          c.textContent = cart.item_count;
+          c.hidden = cart.item_count === 0;
+        });
       });
     } catch (e) {
       body.innerHTML = '<p>Error loading product</p>';

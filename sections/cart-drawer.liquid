@@ -59,7 +59,7 @@
         <p class="cart-drawer__subtotal"><span>{{ 'general.subtotal' | t }}</span><span>{{ cart.total_price | money }}</span></p>
         {% render 'payment-icons' %}
         <a href="{{ routes.cart_url }}" class="button button--secondary button--full">{{ 'general.cart' | t }}</a>
-        <a href="/checkout" class="button button--full">{{ 'general.checkout' | t }}</a>
+        <a href="{{ routes.checkout_url }}" class="button button--full">{{ 'general.checkout' | t }}</a>
       </div>
     {%- endif -%}
   </div>

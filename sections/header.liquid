@@ -73,10 +73,17 @@
             {% render 'icon-account' %}
           </a>
         {%- endif -%}
-        <a href="{{ routes.cart_url }}" class="site-header__icon-btn site-header__cart" data-cart-open aria-label="{{ 'general.cart' | t }}">
-          {% render 'icon-cart' %}
-          <span class="site-header__count" data-cart-count{% if cart.item_count == 0 %} hidden{% endif %}>{{ cart.item_count }}</span>
-        </a>
+        {%- if settings.cart_type == 'drawer' or settings.cart_type == 'notification' -%}
+          <button type="button" class="site-header__icon-btn site-header__cart" data-cart-open aria-label="{{ 'general.cart' | t }}">
+            {% render 'icon-cart' %}
+            <span class="site-header__count" data-cart-count{% if cart.item_count == 0 %} hidden{% endif %}>{{ cart.item_count }}</span>
+          </button>
+        {%- else -%}
+          <a href="{{ routes.cart_url }}" class="site-header__icon-btn site-header__cart" aria-label="{{ 'general.cart' | t }}">
+            {% render 'icon-cart' %}
+            <span class="site-header__count" data-cart-count{% if cart.item_count == 0 %} hidden{% endif %}>{{ cart.item_count }}</span>
+          </a>
+        {%- endif -%}
       </div>
     </div>
   </div>

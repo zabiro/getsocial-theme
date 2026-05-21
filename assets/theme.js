@@ -25,12 +25,12 @@
     openCart();
   };
 
-  $$('[data-quick-add]').forEach((btn) => {
-    btn.addEventListener('click', async (e) => {
-      e.preventDefault();
-      e.stopPropagation();
-      try { await addToCart(btn.dataset.quickAdd); } catch (err) { console.error(err); }
-    });
+  document.addEventListener('click', async (e) => {
+    const btn = e.target.closest('[data-quick-add]');
+    if (!btn?.dataset?.quickAdd) return;
+    e.preventDefault();
+    e.stopPropagation();
+    try { await addToCart(btn.dataset.quickAdd); } catch (err) { console.error(err); }
   });
 
   /* --- Mobile menu --- */
