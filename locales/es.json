@@ -18,7 +18,11 @@
     "back_to_top": "Volver arriba",
     "skip_to_content": "Ir al contenido",
     "share": "Compartir",
-    "copy_link": "Copiar enlace"
+    "copy_link": "Copiar enlace",
+    "pagination": {
+      "previous": "Anterior",
+      "next": "Siguiente"
+    }
   },
   "products": {
     "quick_view": "Vista rápida",

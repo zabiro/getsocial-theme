@@ -205,10 +205,22 @@ body.color-preset--sunny .announcement-bar {
 .color-preset--sunny .product-gallery__viewer {
   background: #faf8f6;
   box-shadow: 0 4px 24px rgba(45, 42, 38, 0.06);
+  border-radius: 20px;
+}
+
+.color-preset--sunny .product-gallery__thumb {
+  border-radius: 14px;
+  border-color: rgba(45, 42, 38, 0.12);
 }
 
 .color-preset--sunny .product-gallery__thumb.is-active {
   border-color: var(--sunny-coral, var(--color-accent));
+  box-shadow: 0 0 0 1px var(--sunny-coral, var(--color-accent));
+}
+
+.color-preset--sunny .product-gallery__arrow:hover:not(:disabled) {
+  border-color: var(--sunny-coral, var(--color-accent));
+  color: var(--sunny-coral, var(--color-accent));
 }
 
 .color-preset--sunny .product-card__info {
