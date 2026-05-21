@@ -10,7 +10,7 @@
       {%- assign collection = section.settings.collection -%}
       {%- if collection != blank -%}
         {%- for product in collection.products limit: section.settings.products_to_show -%}
-          {% render 'card-product', product: product, card_index: forloop.index %}
+          {% render 'product-card', product: product, card_index: forloop.index %}
         {%- endfor -%}
       {%- else -%}
         {%- for i in (1..section.settings.products_to_show) -%}

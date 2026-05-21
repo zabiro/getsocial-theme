@@ -10,7 +10,7 @@
       <div class="grid grid--4">
         {%- for item in search.results -%}
           {%- if item.object_type == 'product' -%}
-            {% render 'card-product', product: item, card_index: forloop.index %}
+            {% render 'product-card', product: item, card_index: forloop.index %}
           {%- endif -%}
         {%- endfor -%}
       </div>

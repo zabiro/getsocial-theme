@@ -4,7 +4,7 @@
       <h2>{{ section.settings.heading | default: 'También te puede gustar' }}</h2>
       <div class="grid grid--4">
         {%- for product in recommendations.products -%}
-          {% render 'card-product', product: product, card_index: forloop.index %}
+          {% render 'product-card', product: product, card_index: forloop.index %}
         {%- endfor -%}
       </div>
     </div>
