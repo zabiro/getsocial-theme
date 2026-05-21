@@ -63,7 +63,12 @@
 
     {%- paginate collection.products by section.settings.products_per_page -%}
       <div class="collection-grid-wrap" data-collection-grid-wrap>
-        <div class="grid grid--{{ section.settings.columns_desktop }}" data-collection-grid>
+        <div
+          class="grid collection-grid"
+          data-collection-grid
+          data-responsive-grid
+          style="--cols-m: {{ section.settings.columns_mobile | default: 2 }}; --cols-t: {{ section.settings.columns_tablet | default: 2 }}; --cols-d: {{ section.settings.columns_desktop | default: 4 }};"
+        >
           {%- for product in collection.products -%}
             {% render 'product-card', product: product, card_index: forloop.index %}
           {%- else -%}

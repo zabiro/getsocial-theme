@@ -25,6 +25,11 @@
       "next": "Next"
     }
   },
+  "sections": {
+    "collection_tabs": {
+      "empty": "Add «Collection tab» blocks and pick a collection for each."
+    }
+  },
   "products": {
     "quick_view": "Quick view",
     "view_product": "View product",

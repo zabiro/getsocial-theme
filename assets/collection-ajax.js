@@ -143,11 +143,16 @@
   }
 
   function bindGridToggle() {
-    const grid = $('[data-collection-grid]');
+    const grid = $('[data-collection-grid]', root);
+    const setGridCols = (cols) => {
+      if (!grid) return;
+      grid.style.setProperty('--cols-m', cols);
+      grid.style.setProperty('--cols-t', cols);
+      grid.style.setProperty('--cols-d', cols);
+    };
     $$('[data-grid-toggle] [data-cols]', root).forEach((btn) => {
       btn.addEventListener('click', () => {
-        grid?.classList.remove('grid--2', 'grid--3', 'grid--4');
-        grid?.classList.add(`grid--${btn.dataset.cols}`);
+        setGridCols(btn.dataset.cols);
         $$('[data-grid-toggle] [data-cols]', root).forEach((b) => b.classList.toggle('is-active', b === btn));
       });
     });

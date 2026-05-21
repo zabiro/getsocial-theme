@@ -1,0 +1,76 @@
+{%- comment -%}
+  Grid o carrusel de productos con columnas responsive.
+  Parámetros: collection, product_list, limit, layout, cols_mobile, cols_tablet, cols_desktop, show_nav, unique_id
+{%- endcomment -%}
+{%- liquid
+  assign layout_mode = layout | default: 'carousel'
+  assign cols_m = columns_mobile | default: 2
+  assign cols_t = columns_tablet | default: 2
+  assign cols_d = columns_desktop | default: 4
+  assign product_limit = limit | default: 8
+  assign showcase_id = unique_id | default: section.id | default: 'showcase'
+-%}
+
+{%- if layout_mode == 'carousel' -%}
+  <div
+    class="product-carousel"
+    data-product-carousel
+    style="--cols-m: {{ cols_m }}; --cols-t: {{ cols_t }}; --cols-d: {{ cols_d }};"
+  >
+    <div class="product-carousel__track" data-carousel-track>
+      {%- if collection != blank and collection.products_count > 0 -%}
+        {%- for product in collection.products limit: product_limit -%}
+          <div class="product-carousel__slide">
+            {% render 'product-card', product: product, card_index: forloop.index %}
+          </div>
+        {%- endfor -%}
+      {%- elsif product_list != blank -%}
+        {%- for product in product_list limit: product_limit -%}
+          <div class="product-carousel__slide">
+            {% render 'product-card', product: product, card_index: forloop.index %}
+          </div>
+        {%- endfor -%}
+      {%- else -%}
+        {%- for i in (1..product_limit) -%}
+          <div class="product-carousel__slide">
+            <article class="product-card ratio-portrait">
+              <div class="product-card__media">
+                <img src="{{ 'placeholder-product-' | append: i | append: '.svg' | asset_url }}" alt="" class="product-card__image product-card__placeholder" loading="lazy" width="600" height="800">
+              </div>
+              <div class="product-card__info"><h3 class="product-card__title">Producto {{ i }}</h3></div>
+            </article>
+          </div>
+        {%- endfor -%}
+      {%- endif -%}
+    </div>
+    {%- if show_nav -%}
+      <button type="button" class="product-carousel__btn product-carousel__btn--prev" data-carousel-prev aria-label="{{ 'general.pagination.previous' | t }}">‹</button>
+      <button type="button" class="product-carousel__btn product-carousel__btn--next" data-carousel-next aria-label="{{ 'general.pagination.next' | t }}">›</button>
+    {%- endif -%}
+  </div>
+{%- else -%}
+  <div
+    class="grid product-showcase__grid"
+    data-responsive-grid
+    style="--cols-m: {{ cols_m }}; --cols-t: {{ cols_t }}; --cols-d: {{ cols_d }};"
+  >
+    {%- if collection != blank and collection.products_count > 0 -%}
+      {%- for product in collection.products limit: product_limit -%}
+        {% render 'product-card', product: product, card_index: forloop.index %}
+      {%- endfor -%}
+    {%- elsif product_list != blank -%}
+      {%- for product in product_list limit: product_limit -%}
+        {% render 'product-card', product: product, card_index: forloop.index %}
+      {%- endfor -%}
+    {%- else -%}
+      {%- for i in (1..product_limit) -%}
+        <article class="product-card ratio-portrait">
+          <div class="product-card__media">
+            <img src="{{ 'placeholder-product-' | append: i | append: '.svg' | asset_url }}" alt="" class="product-card__image product-card__placeholder" loading="lazy" width="600" height="800">
+          </div>
+          <div class="product-card__info"><h3 class="product-card__title">Producto {{ i }}</h3></div>
+        </article>
+      {%- endfor -%}
+    {%- endif -%}
+  </div>
+{%- endif -%}

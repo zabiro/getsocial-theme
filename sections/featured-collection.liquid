@@ -1,27 +1,26 @@
-<section class="featured-collection section-spacing fade-in">
+<section
+  class="featured-collection section-spacing fade-in"
+  style="--section-pt: {{ section.settings.padding_top }}px; --section-pb: {{ section.settings.padding_bottom }}px;"
+>
   <div class="page-width">
-    <div class="section-header" style="display:flex;justify-content:space-between;align-items:end;margin-bottom:2rem;flex-wrap:wrap;gap:1rem">
+    <div class="section-header featured-collection__header">
       {%- if section.settings.heading != blank -%}<h2>{{ section.settings.heading }}</h2>{%- endif -%}
       {%- if section.settings.show_view_all and section.settings.collection != blank -%}
         <a href="{{ section.settings.collection.url }}" class="button button--secondary">{{ 'general.view_all' | t }}</a>
       {%- endif -%}
     </div>
-    <div class="grid grid--{{ section.settings.columns_desktop }}">
-      {%- assign collection = section.settings.collection -%}
-      {%- if collection != blank -%}
-        {%- for product in collection.products limit: section.settings.products_to_show -%}
-          {% render 'product-card', product: product, card_index: forloop.index %}
-        {%- endfor -%}
-      {%- else -%}
-        {%- for i in (1..section.settings.products_to_show) -%}
-          <article class="product-card">
-            <div class="product-card__media ratio-portrait">
-              <img src="{{ 'placeholder-product-' | append: i | append: '.svg' | asset_url }}" alt="" class="product-card__image product-card__placeholder" loading="lazy" width="600" height="800">
-            </div>
-            <div class="product-card__info"><h3>Producto ejemplo {{ i }}</h3></div>
-          </article>
-        {%- endfor -%}
-      {%- endif -%}
+
+    <div class="featured-collection__showcase{% if section.settings.layout == 'carousel' %} featured-collection__showcase--carousel{% endif %}">
+      {% render 'product-showcase',
+        collection: section.settings.collection,
+        limit: section.settings.products_to_show,
+        layout: section.settings.layout,
+        columns_mobile: section.settings.columns_mobile,
+        columns_tablet: section.settings.columns_tablet,
+        columns_desktop: section.settings.columns_desktop,
+        show_nav: section.settings.show_nav,
+        unique_id: section.id
+      %}
     </div>
   </div>
 </section>
@@ -29,17 +28,76 @@
 {% schema %}
 {
   "name": "Colección destacada",
+  "tag": "section",
   "settings": [
     { "type": "text", "id": "heading", "label": "Título", "default": "Productos destacados" },
     { "type": "collection", "id": "collection", "label": "Colección" },
     { "type": "range", "id": "products_to_show", "min": 2, "max": 24, "step": 1, "label": "Productos a mostrar", "default": 8 },
-    { "type": "select", "id": "columns_desktop", "label": "Columnas (escritorio)", "options": [
-      { "value": "2", "label": "2" },
-      { "value": "3", "label": "3" },
-      { "value": "4", "label": "4" }
-    ], "default": "4" },
-    { "type": "checkbox", "id": "show_view_all", "label": "Mostrar enlace ver todo", "default": true }
+    {
+      "type": "select",
+      "id": "layout",
+      "label": "Modo",
+      "options": [
+        { "value": "carousel", "label": "Carrusel" },
+        { "value": "grid", "label": "Grid" }
+      ],
+      "default": "grid"
+    },
+    { "type": "checkbox", "id": "show_nav", "label": "Flechas carrusel", "default": true },
+    { "type": "header", "content": "Columnas visibles" },
+    {
+      "type": "range",
+      "id": "columns_mobile",
+      "min": 1,
+      "max": 3,
+      "step": 1,
+      "label": "Columnas móvil",
+      "default": 2
+    },
+    {
+      "type": "range",
+      "id": "columns_tablet",
+      "min": 1,
+      "max": 4,
+      "step": 1,
+      "label": "Columnas tablet",
+      "default": 2
+    },
+    {
+      "type": "select",
+      "id": "columns_desktop",
+      "label": "Columnas escritorio",
+      "options": [
+        { "value": "2", "label": "2" },
+        { "value": "3", "label": "3" },
+        { "value": "4", "label": "4" },
+        { "value": "5", "label": "5" }
+      ],
+      "default": "4"
+    },
+    { "type": "checkbox", "id": "show_view_all", "label": "Mostrar enlace ver todo", "default": true },
+    { "type": "header", "content": "Espaciado" },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Margen superior",
+      "default": 48
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Margen inferior",
+      "default": 48
+    }
   ],
-  "presets": [{ "name": "Colección destacada" }]
+  "presets": [{ "name": "Colección destacada", "settings": { "layout": "carousel", "columns_mobile": 2 } }]
 }
 {% endschema %}

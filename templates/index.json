@@ -16,6 +16,24 @@
         "show_carousel_nav": true
       }
     },
+    "collection_tabs": {
+      "type": "collection-tabs",
+      "blocks": {
+        "tab1": { "type": "tab", "settings": { "label": "Exfoliantes" } },
+        "tab2": { "type": "tab", "settings": { "label": "Hidratantes" } },
+        "tab3": { "type": "tab", "settings": { "label": "Aceites" } }
+      },
+      "block_order": ["tab1", "tab2", "tab3"],
+      "settings": {
+        "heading": "Nuestros productos",
+        "layout": "carousel",
+        "columns_mobile": 2,
+        "columns_tablet": 2,
+        "columns_desktop": "4",
+        "products_to_show": 8,
+        "show_nav": true
+      }
+    },
     "tropical": {
       "type": "tropical-showcase",
       "settings": {
@@ -66,6 +84,7 @@
   },
   "order": [
     "hero_products",
+    "collection_tabs",
     "tropical",
     "spotlight",
     "banner_collage",

@@ -33,7 +33,26 @@
     { "type": "checkbox", "id": "enable_mobile_filter_drawer", "label": "Cajón de filtros en móvil", "default": true, "info": "En escritorio los filtros siguen en barra lateral" },
     { "type": "checkbox", "id": "enable_sticky_filter_bar", "label": "Barra horizontal de filtros activos", "default": true },
     { "type": "range", "id": "products_per_page", "min": 8, "max": 48, "step": 4, "label": "Productos por página", "default": 24 },
-    { "type": "select", "id": "columns_desktop", "label": "Columnas", "options": [
+    { "type": "header", "content": "Grid de productos" },
+    {
+      "type": "range",
+      "id": "columns_mobile",
+      "min": 1,
+      "max": 3,
+      "step": 1,
+      "label": "Columnas en móvil",
+      "default": 2
+    },
+    {
+      "type": "range",
+      "id": "columns_tablet",
+      "min": 2,
+      "max": 4,
+      "step": 1,
+      "label": "Columnas en tablet",
+      "default": 2
+    },
+    { "type": "select", "id": "columns_desktop", "label": "Columnas en escritorio", "options": [
       { "value": "2", "label": "2" },
       { "value": "3", "label": "3" },
       { "value": "4", "label": "4" }

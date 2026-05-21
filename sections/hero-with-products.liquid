@@ -46,32 +46,16 @@
 
   {%- if section.settings.show_product_carousel -%}
     <div class="hero-with-products__carousel-wrap page-width">
-      <div class="product-carousel product-carousel--hero" data-product-carousel>
-        <div class="product-carousel__track" data-carousel-track>
-          {%- if collection != blank and collection.products_count > 0 -%}
-            {%- for product in collection.products limit: product_limit -%}
-              <div class="product-carousel__slide">
-                {% render 'product-card', product: product, card_index: forloop.index %}
-              </div>
-            {%- endfor -%}
-          {%- else -%}
-            {%- for i in (1..product_limit) -%}
-              <div class="product-carousel__slide">
-                <article class="product-card ratio-portrait">
-                  <div class="product-card__media">
-                    <img src="{{ 'placeholder-product-' | append: i | append: '.svg' | asset_url }}" alt="" class="product-card__image product-card__placeholder" loading="lazy" width="600" height="800">
-                  </div>
-                  <div class="product-card__info"><h3 class="product-card__title">Producto ejemplo {{ i }}</h3></div>
-                </article>
-              </div>
-            {%- endfor -%}
-          {%- endif -%}
-        </div>
-        {%- if section.settings.show_carousel_nav -%}
-          <button type="button" class="product-carousel__btn product-carousel__btn--prev" data-carousel-prev aria-label="Anterior">‹</button>
-          <button type="button" class="product-carousel__btn product-carousel__btn--next" data-carousel-next aria-label="Siguiente">›</button>
-        {%- endif -%}
-      </div>
+      {% render 'product-showcase',
+        collection: collection,
+        limit: product_limit,
+        layout: 'carousel',
+        columns_mobile: section.settings.columns_mobile,
+        columns_tablet: section.settings.columns_tablet,
+        columns_desktop: section.settings.columns_desktop,
+        show_nav: section.settings.show_carousel_nav,
+        unique_id: section.id | append: '-hero'
+      %}
     </div>
   {%- endif -%}
 </section>
@@ -96,7 +80,38 @@
     { "type": "checkbox", "id": "show_product_carousel", "label": "Mostrar carrusel de productos", "default": true },
     { "type": "collection", "id": "collection", "label": "Colección" },
     { "type": "range", "id": "products_to_show", "min": 2, "max": 12, "step": 1, "label": "Productos en carrusel", "default": 5 },
-    { "type": "checkbox", "id": "show_carousel_nav", "label": "Flechas anterior/siguiente", "default": true }
+    { "type": "checkbox", "id": "show_carousel_nav", "label": "Flechas anterior/siguiente", "default": true },
+    { "type": "header", "content": "Columnas del carrusel" },
+    {
+      "type": "range",
+      "id": "columns_mobile",
+      "min": 1,
+      "max": 3,
+      "step": 1,
+      "label": "Columnas móvil",
+      "default": 2
+    },
+    {
+      "type": "range",
+      "id": "columns_tablet",
+      "min": 1,
+      "max": 4,
+      "step": 1,
+      "label": "Columnas tablet",
+      "default": 2
+    },
+    {
+      "type": "select",
+      "id": "columns_desktop",
+      "label": "Columnas escritorio",
+      "options": [
+        { "value": "2", "label": "2" },
+        { "value": "3", "label": "3" },
+        { "value": "4", "label": "4" },
+        { "value": "5", "label": "5" }
+      ],
+      "default": "5"
+    }
   ],
   "presets": [
     {

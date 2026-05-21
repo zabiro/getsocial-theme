@@ -25,6 +25,11 @@
       "next": "Siguiente"
     }
   },
+  "sections": {
+    "collection_tabs": {
+      "empty": "Añade bloques «Pestaña / colección» y elige una colección en cada uno."
+    }
+  },
   "products": {
     "quick_view": "Vista rápida",
     "view_product": "Ver producto",
