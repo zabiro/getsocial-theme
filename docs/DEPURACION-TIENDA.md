@@ -6,7 +6,11 @@
 |---------|--------|---------|
 | `font_face can only be used with a font drop` | Fuentes en `settings_data` inválidas + `font_face` sin comprobar | `css-variables.liquid` corregido |
 | `Nesting too deep` en card-product | Bucle infinito card-product ↔ product-card | Eliminado `card-product.liquid`; solo `product-card.liquid` |
-| `Could not find asset snippets/card-product.liquid` | Snippet incorrecto | Uso de `product-card.liquid` |
+| `Could not find asset snippets/card-product.liquid` | `product-card.liquid` quedó como alias tras sync Shopify→GitHub | Restaurar contenido completo en `product-card.liquid` (no llamar a `card-product`) |
+
+## Sync GitHub ↔ Shopify
+
+Si en GitHub aparece el commit **"Update from Shopify"**, puede sobrescribir `product-card.liquid` y romper colecciones. Tras cada fix en GitHub: **Temas → Actualizar desde GitHub** (no editar snippets en el editor de código de Shopify si usas GitHub como fuente).
 
 ## Qué hacer en Shopify (importante)
 
