@@ -5,12 +5,41 @@
     "footer": {
       "type": "footer",
       "blocks": {
-        "text": { "type": "text", "settings": { "heading": "Sobre nosotros", "text": "<p>Tu tienda personalizada con GetSocial Theme.</p>" } },
-        "menu": { "type": "menu", "settings": { "heading": "Enlaces" } },
-        "newsletter": { "type": "newsletter", "settings": { "heading": "Newsletter" } }
+        "menu_policies": {
+          "type": "menu",
+          "settings": {
+            "heading": "Legal"
+          }
+        },
+        "newsletter": {
+          "type": "newsletter",
+          "settings": {
+            "heading": "Sé el primero en disfrutar nuestros lanzamientos",
+            "placeholder": "Dirección de correo electrónico",
+            "button_label": "Suscribirse"
+          }
+        },
+        "social_text": {
+          "type": "text",
+          "settings": {
+            "heading": "Síguenos",
+            "text": "<p>Conéctate en redes y descubre novedades tropicales cada semana.</p>"
+          }
+        }
       },
-      "block_order": ["text", "menu", "newsletter"]
+      "block_order": [
+        "menu_policies",
+        "social_text",
+        "newsletter"
+      ],
+      "settings": {
+        "show_payment_icons": true,
+        "show_social": true,
+        "show_powered_by": false
+      }
     }
   },
-  "order": ["footer"]
+  "order": [
+    "footer"
+  ]
 }

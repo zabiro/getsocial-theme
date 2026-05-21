@@ -1,0 +1,463 @@
+/**
+ * Estilo inspirado en Sunny Hunny (sunny.com.co)
+ * Belleza tropical · cabecera centrada · hero editorial · tarjetas limpias
+ */
+
+body.color-preset--sunny,
+body.color-preset--beauty {
+  --sunny-coral: #e8788a;
+  --sunny-coral-dark: #d45f72;
+  --sunny-cream: #fffbf8;
+  --sunny-peach: #fff0e8;
+  --sunny-blush: #fce4ec;
+  --sunny-gradient: linear-gradient(135deg, #fff5f0 0%, #ffe8ef 50%, #fffbf8 100%);
+}
+
+/* Barra superior tipo EXFOLIA · HIDRATA · SUAVIZA */
+.color-preset--sunny .announcement-bar,
+body.color-preset--sunny .announcement-bar {
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  font-size: 0.6875rem;
+  font-weight: 600;
+  padding: 0.65rem 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.color-preset--sunny .announcement-bar a,
+.color-preset--sunny .announcement-bar p {
+  letter-spacing: inherit;
+}
+
+/* Cabecera centrada, limpia */
+.color-preset--sunny .site-header {
+  border-bottom: none;
+  box-shadow: none;
+}
+
+.color-preset--sunny .site-header__inner {
+  min-height: 5rem;
+  padding: 0.5rem 0;
+}
+
+.color-preset--sunny .site-header__logo {
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.color-preset--sunny .site-header__logo img {
+  max-height: 3.5rem;
+  width: auto;
+  margin: 0 auto;
+}
+
+.color-preset--sunny .site-header--logo_center .site-header__inner {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+}
+
+.color-preset--sunny .site-header--logo_center .site-header__menu-toggle {
+  justify-self: start;
+}
+
+.color-preset--sunny .site-header--logo_center .site-header__nav {
+  display: none;
+}
+
+@media (min-width: 990px) {
+  .color-preset--sunny .site-header--logo_center .site-header__inner {
+    grid-template-columns: 1fr auto 1fr;
+  }
+
+  .color-preset--sunny .site-header--logo_center .site-header__nav {
+    display: flex;
+    justify-self: center;
+    grid-column: 1 / -1;
+    grid-row: 2;
+    justify-content: center;
+    gap: 2rem;
+    padding-top: 0.25rem;
+    font-size: 0.8125rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+  }
+
+  .color-preset--sunny .site-header--logo_center .site-header__logo {
+    grid-column: 2;
+    grid-row: 1;
+  }
+
+  .color-preset--sunny .site-header--logo_center .site-header__icons {
+    grid-column: 3;
+    grid-row: 1;
+    justify-self: end;
+  }
+
+  .color-preset--sunny .site-header--logo_center .site-header__menu-toggle {
+    grid-column: 1;
+    grid-row: 1;
+  }
+}
+
+.color-preset--sunny .site-header__count {
+  background: var(--sunny-coral, var(--color-accent));
+}
+
+.color-preset--sunny .mega-menu {
+  border-radius: var(--border-radius);
+  box-shadow: 0 16px 48px rgba(232, 120, 138, 0.15);
+}
+
+/* Hero tropical */
+.color-preset--sunny .hero {
+  min-height: var(--hero-min-height, 85vh);
+}
+
+.color-preset--sunny .hero__overlay {
+  background: linear-gradient(
+    to bottom,
+    rgba(255, 251, 248, 0.15) 0%,
+    rgba(45, 38, 35, 0.45) 100%
+  );
+}
+
+.color-preset--sunny .hero__content {
+  text-align: center;
+  max-width: 42rem;
+  margin: 0 auto;
+}
+
+.color-preset--sunny .hero__subheading {
+  text-transform: uppercase;
+  letter-spacing: 0.25em;
+  font-size: 0.75rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  opacity: 0.95;
+}
+
+.color-preset--sunny .hero h1 {
+  font-size: clamp(2.5rem, 6vw, 4rem);
+  font-weight: 700;
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+  text-transform: none;
+}
+
+.color-preset--sunny .hero__content p {
+  font-size: 1.125rem;
+  line-height: 1.6;
+  margin-top: 1rem;
+  opacity: 0.92;
+}
+
+.color-preset--sunny .hero .button {
+  border-radius: 999px;
+  padding: 0.9rem 2rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 0.8125rem;
+  background: var(--sunny-coral, var(--color-button));
+  border-color: transparent;
+}
+
+.color-preset--sunny .hero .button--secondary {
+  background: rgba(255, 255, 255, 0.2);
+  border: 2px solid #fff;
+  color: #fff;
+  backdrop-filter: blur(4px);
+}
+
+/* Colección / grid productos */
+.color-preset--sunny .featured-collection .section-header h2,
+.color-preset--sunny .collection-header h1 {
+  text-align: center;
+  width: 100%;
+  font-weight: 700;
+}
+
+.color-preset--sunny .featured-collection .section-header {
+  justify-content: center !important;
+  flex-direction: column;
+  text-align: center;
+  gap: 0.5rem;
+}
+
+.color-preset--sunny .product-card__media {
+  border-radius: 12px;
+  background: var(--sunny-peach, var(--color-background-secondary));
+}
+
+.color-preset--sunny .product-card__title {
+  font-size: 0.9375rem;
+  font-weight: 600;
+  text-align: center;
+}
+
+.color-preset--sunny .product-card__info {
+  text-align: center;
+  padding: 1rem 0.5rem;
+}
+
+.color-preset--sunny .product-card__price {
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.15rem;
+  font-size: 0.875rem;
+}
+
+.color-preset--sunny .product-card__price::before {
+  content: 'Precio habitual';
+  display: block;
+  font-size: 0.6875rem;
+  color: var(--color-text-light);
+  font-weight: 400;
+}
+
+.color-preset--sunny .badge--soldout {
+  background: var(--color-text);
+  border-radius: 999px;
+  padding: 0.35rem 0.75rem;
+  font-size: 0.6875rem;
+}
+
+.color-preset--sunny .badge--sale {
+  background: var(--sunny-coral, var(--color-sale));
+  border-radius: 999px;
+}
+
+.color-preset--sunny .product-card__quick-add {
+  border-radius: 999px;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+/* Sección tropical showcase */
+.tropical-showcase {
+  position: relative;
+  overflow: hidden;
+  background: var(--tropical-bg, var(--sunny-gradient, var(--color-background-secondary)));
+  padding: clamp(3rem, 8vw, 6rem) 0;
+}
+
+.tropical-showcase__inner {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  max-width: 36rem;
+  margin: 0 auto;
+}
+
+.tropical-showcase__tagline {
+  font-size: clamp(1.25rem, 3vw, 1.75rem);
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  line-height: 1.3;
+  margin: 0 0 0.5rem;
+  color: var(--color-text);
+}
+
+.tropical-showcase__tagline span {
+  color: var(--sunny-coral, var(--color-accent));
+}
+
+.tropical-showcase__subtitle {
+  font-size: 1.0625rem;
+  color: var(--color-text-light);
+  margin: 0;
+}
+
+.tropical-showcase__decor {
+  position: absolute;
+  pointer-events: none;
+  opacity: 0.85;
+  max-width: 180px;
+  height: auto;
+}
+
+.tropical-showcase__decor--left {
+  left: 2%;
+  bottom: 10%;
+  transform: rotate(-12deg);
+}
+
+.tropical-showcase__decor--right {
+  right: 2%;
+  top: 15%;
+  transform: rotate(8deg);
+}
+
+.tropical-showcase__cta {
+  margin-top: 1.5rem;
+}
+
+.tropical-showcase__cta .button {
+  border-radius: 999px;
+}
+
+/* Producto destacado estilo Sunny */
+.color-preset--sunny .featured-product {
+  background: var(--sunny-cream, var(--color-background));
+}
+
+.color-preset--sunny .featured-product__grid {
+  display: grid;
+  gap: 2.5rem;
+  align-items: center;
+}
+
+@media (min-width: 990px) {
+  .color-preset--sunny .featured-product__grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+  }
+}
+
+.color-preset--sunny .featured-product__media {
+  border-radius: 16px;
+  overflow: hidden;
+  background: var(--sunny-peach);
+}
+
+.color-preset--sunny .featured-product__media img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.color-preset--sunny .featured-product__label {
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  font-size: 0.75rem;
+  color: var(--sunny-coral, var(--color-accent));
+  font-weight: 700;
+  margin: 0 0 0.5rem;
+}
+
+.color-preset--sunny .featured-product__info h2 {
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  font-weight: 700;
+  margin-bottom: 0.75rem;
+}
+
+.color-preset--sunny .featured-product__benefits {
+  list-style: none;
+  padding: 0;
+  margin: 1.25rem 0 1.5rem;
+}
+
+.color-preset--sunny .featured-product__benefits li {
+  position: relative;
+  padding-left: 1.5rem;
+  margin-bottom: 0.65rem;
+  line-height: 1.5;
+  color: var(--color-text);
+}
+
+.color-preset--sunny .featured-product__benefits li::before {
+  content: '✦';
+  position: absolute;
+  left: 0;
+  color: var(--sunny-coral, var(--color-accent));
+  font-size: 0.75rem;
+  top: 0.15rem;
+}
+
+.color-preset--sunny .featured-product .button {
+  border-radius: 999px;
+  width: 100%;
+  max-width: 280px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 0.8125rem;
+  font-weight: 600;
+}
+
+/* Banner collage / imagen ancha */
+.color-preset--sunny .image-with-text--banner .image-with-text__grid img {
+  border-radius: 0;
+  width: 100%;
+}
+
+.color-preset--sunny .image-with-text--banner {
+  padding: 0;
+}
+
+.color-preset--sunny .image-with-text--banner .page-width {
+  max-width: none;
+  padding: 0;
+}
+
+/* Texto en scroll tropical */
+.color-preset--sunny .scrolling-text {
+  background: var(--sunny-blush, #fce4ec) !important;
+  color: var(--color-text) !important;
+  font-weight: 600;
+  font-size: 0.8125rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+/* Footer newsletter */
+.color-preset--sunny .site-footer {
+  background: var(--sunny-peach, var(--color-background-secondary));
+  border-top: none;
+}
+
+.color-preset--sunny .site-footer h3 {
+  font-size: 0.8125rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+.color-preset--sunny .footer-newsletter input {
+  border-radius: 999px;
+  border: 1px solid var(--color-border);
+  padding: 0.75rem 1.25rem;
+  width: 100%;
+  max-width: 320px;
+  margin-bottom: 0.75rem;
+}
+
+.color-preset--sunny .footer-newsletter .button {
+  border-radius: 999px;
+  background: var(--sunny-coral, var(--color-button));
+  border-color: transparent;
+}
+
+.color-preset--sunny .site-footer__social a {
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+}
+
+/* Colección página */
+.color-preset--sunny .collection-toolbar {
+  background: var(--sunny-cream);
+  border-color: rgba(232, 120, 138, 0.2);
+}
+
+.color-preset--sunny .button:not(.button--secondary) {
+  background: var(--sunny-coral, var(--color-button));
+  border-color: var(--sunny-coral, var(--color-button));
+  border-radius: 999px;
+}
+
+.color-preset--sunny .breadcrumbs {
+  display: none;
+}
+
+/* Rich text newsletter home */
+.color-preset--sunny .rich-text-section {
+  background: var(--sunny-gradient) !important;
+  text-align: center;
+  border-radius: var(--border-radius);
+}

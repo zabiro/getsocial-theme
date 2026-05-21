@@ -1,0 +1,59 @@
+<section
+  class="tropical-showcase section-spacing fade-in"
+  style="--tropical-bg: {{ section.settings.background }};"
+>
+  {%- if section.settings.decor_left != blank -%}
+    {{ section.settings.decor_left | image_url: width: 400 | image_tag: class: 'tropical-showcase__decor tropical-showcase__decor--left', loading: 'lazy', alt: '' }}
+  {%- endif -%}
+  {%- if section.settings.decor_right != blank -%}
+    {{ section.settings.decor_right | image_url: width: 400 | image_tag: class: 'tropical-showcase__decor tropical-showcase__decor--right', loading: 'lazy', alt: '' }}
+  {%- endif -%}
+
+  <div class="page-width tropical-showcase__inner">
+    {%- if section.settings.line_1 != blank -%}
+      <p class="tropical-showcase__tagline">
+        {{ section.settings.line_1 }}
+        {%- if section.settings.line_1_accent != blank -%}
+          <span>{{ section.settings.line_1_accent }}</span>
+        {%- endif -%}
+      </p>
+    {%- endif -%}
+    {%- if section.settings.subtitle != blank -%}
+      <p class="tropical-showcase__subtitle">{{ section.settings.subtitle }}</p>
+    {%- endif -%}
+    {%- if section.settings.button_label != blank -%}
+      <div class="tropical-showcase__cta">
+        <a href="{{ section.settings.button_link | default: routes.all_products_collection_url }}" class="button">
+          {{ section.settings.button_label }}
+        </a>
+      </div>
+    {%- endif -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Escaparate tropical",
+  "tag": "section",
+  "settings": [
+    { "type": "color", "id": "background", "label": "Fondo", "default": "#fff0e8" },
+    { "type": "text", "id": "line_1", "label": "Línea principal", "default": "FOOD FOR YOUR SKIN ·" },
+    { "type": "text", "id": "line_1_accent", "label": "Texto destacado (misma línea)", "default": "Tropical glow, everyday!" },
+    { "type": "text", "id": "subtitle", "label": "Subtítulo", "default": "" },
+    { "type": "text", "id": "button_label", "label": "Botón" },
+    { "type": "url", "id": "button_link", "label": "Enlace botón" },
+    { "type": "image_picker", "id": "decor_left", "label": "Decoración izquierda (flor, etc.)" },
+    { "type": "image_picker", "id": "decor_right", "label": "Decoración derecha" }
+  ],
+  "presets": [
+    {
+      "name": "Escaparate tropical",
+      "settings": {
+        "line_1": "FOOD FOR YOUR SKIN ·",
+        "line_1_accent": "Tropical glow, everyday!",
+        "background": "#fff0e8"
+      }
+    }
+  ]
+}
+{% endschema %}

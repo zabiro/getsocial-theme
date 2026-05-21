@@ -19,6 +19,7 @@
           { "value": "custom", "label": "Personalizado" },
           { "value": "fashion", "label": "Moda" },
           { "value": "beauty", "label": "Belleza" },
+          { "value": "sunny", "label": "Belleza tropical (estilo Sunny)" },
           { "value": "electronics", "label": "Electrónica" },
           { "value": "home", "label": "Hogar" },
           { "value": "food", "label": "Gourmet / Food" },
