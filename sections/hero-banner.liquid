@@ -12,7 +12,7 @@
     {%- elsif section.settings.image != blank -%}
       {{ section.settings.image | image_url: width: 2000 | image_tag: loading: 'eager', sizes: '100vw' }}
     {%- else -%}
-      {{ 'lifestyle-1' | placeholder_svg_tag }}
+      {% render 'section-placeholder', placeholder_type: 'hero', class: 'hero__image section-placeholder', loading: 'eager', width: 2000, height: 1100, alt: section.settings.heading %}
     {%- endif -%}
   </div>
   <div class="hero__overlay"></div>

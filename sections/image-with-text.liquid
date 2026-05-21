@@ -5,7 +5,7 @@
         {%- if section.settings.image != blank -%}
           {{ section.settings.image | image_url: width: 1200 | image_tag: loading: 'lazy', class: 'fade-in', style: 'border-radius:var(--border-radius)' }}
         {%- else -%}
-          {{ 'image' | placeholder_svg_tag }}
+          {% render 'section-placeholder', placeholder_type: 'lifestyle', class: 'image-with-text__img section-placeholder', width: 1200, height: 900, alt: section.settings.heading %}
         {%- endif -%}
       </div>
       <div style="direction:ltr">

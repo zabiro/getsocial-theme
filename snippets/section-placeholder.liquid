@@ -1,0 +1,42 @@
+{%- comment -%}
+  Imagen placeholder para secciones del home.
+  placeholder_type: hero | banner_large | banner_small | collection | lifestyle | video | lookbook | slide
+  placeholder_index: 1-6 (opcional, rota variantes)
+{%- endcomment -%}
+{%- liquid
+  assign idx = placeholder_index | default: 1
+  assign asset_name = 'placeholder-hero.svg'
+
+  case placeholder_type
+    when 'banner_large', 'large'
+      assign asset_name = 'placeholder-banner-large.svg'
+    when 'banner_small', 'small', 'medium'
+      assign asset_name = 'placeholder-banner-small.svg'
+    when 'collection'
+      assign n = idx | modulo: 3 | plus: 1
+      assign asset_name = 'placeholder-collection-' | append: n | append: '.svg'
+    when 'lifestyle'
+      assign asset_name = 'placeholder-lifestyle.svg'
+    when 'video'
+      assign asset_name = 'placeholder-video.svg'
+    when 'lookbook'
+      assign asset_name = 'placeholder-lookbook.svg'
+    when 'slide'
+      assign n = idx | modulo: 3 | plus: 1
+      assign asset_name = 'placeholder-slide-' | append: n | append: '.svg'
+    else
+      assign asset_name = 'placeholder-hero.svg'
+  endcase
+
+  assign img_class = class | default: 'section-placeholder'
+  assign img_loading = loading | default: 'lazy'
+  assign img_alt = alt | default: ''
+-%}
+<img
+  src="{{ asset_name | asset_url }}"
+  alt="{{ img_alt | escape }}"
+  class="{{ img_class }}"
+  loading="{{ img_loading }}"
+  width="{{ width | default: 1200 }}"
+  height="{{ height | default: 800 }}"
+>

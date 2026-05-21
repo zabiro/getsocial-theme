@@ -9,7 +9,16 @@
           {{ block.shopify_attributes }}
         >
           {%- if block.settings.image != blank -%}
-            {{ block.settings.image | image_url: width: 900 | image_tag: loading: 'lazy' }}
+            {{ block.settings.image | image_url: width: 900 | image_tag: loading: 'lazy', class: 'promo-grid__img' }}
+          {%- else -%}
+            {% render 'section-placeholder',
+              placeholder_type: block.settings.size,
+              placeholder_index: forloop.index,
+              class: 'promo-grid__img section-placeholder',
+              width: 900,
+              height: 700,
+              alt: block.settings.heading
+            %}
           {%- endif -%}
           <div class="promo-grid__content" style="color:{{ block.settings.text_color }}">
             {%- if block.settings.subheading != blank -%}<span>{{ block.settings.subheading }}</span>{%- endif -%}

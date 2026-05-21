@@ -61,6 +61,10 @@ h1{font-size:var(--font-size-h1)}h2{font-size:var(--font-size-h2)}h3{font-size:v
 .site-header__count{position:absolute;top:-6px;right:-8px;min-width:1.1rem;height:1.1rem;padding:0 4px;font-size:.65rem;line-height:1.1rem;text-align:center;background:var(--color-accent);color:#fff;border-radius:50%}
 .hero{position:relative;display:flex;align-items:center;overflow:hidden;min-height:var(--hero-min-height,70vh)}
 .hero__media{position:absolute;inset:0}
+.hero__media img,.hero__media video,.hero__image{width:100%;height:100%;object-fit:cover}
+.section-placeholder{width:100%;height:100%;object-fit:cover;display:block}
+.promo-grid__img,.collection-list__media img,.slideshow__slide img,.slideshow__img,.video-banner__cover,.shop-look__img,.image-with-text__img{width:100%;height:100%;object-fit:cover}
+.hero__media{position:absolute;inset:0}
 .hero__media img,.hero__media video{width:100%;height:100%;object-fit:cover}
 .hero__overlay{position:absolute;inset:0;background:var(--hero-overlay,rgba(0,0,0,.35))}
 .hero__content{position:relative;z-index:2;width:100%;padding:3rem 0;color:var(--hero-text,#fff)}

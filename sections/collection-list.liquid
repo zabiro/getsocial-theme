@@ -15,7 +15,14 @@
             {%- elsif coll.featured_image -%}
               {{ coll.featured_image | image_url: width: 600 | image_tag: loading: 'lazy' }}
             {%- else -%}
-              {{ 'collection-1' | placeholder_svg_tag }}
+              {% render 'section-placeholder',
+                placeholder_type: 'collection',
+                placeholder_index: forloop.index,
+                class: 'collection-list__img section-placeholder',
+                width: 600,
+                height: 750,
+                alt: block.settings.title
+              %}
             {%- endif -%}
             <div class="collection-list__overlay"></div>
           </div>

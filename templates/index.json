@@ -14,52 +14,101 @@
       "settings": {
         "subheading": "Nueva temporada 2026",
         "heading": "Eleva tu estilo",
-        "description": "Colección exclusiva — edición limitada.",
+        "description": "Colección exclusiva — edición limitada. Descubre piezas pensadas para el día a día con un acabado premium.",
         "button_label": "Comprar ahora",
+        "button_link": "/collections/all",
         "button_label_2": "Ver lookbook",
-        "content_alignment": "center"
+        "button_link_2": "/collections/all",
+        "content_alignment": "center",
+        "min_height": 75,
+        "overlay_opacity": 40,
+        "text_color": "#ffffff"
       }
     },
     "promo": {
       "type": "promo-grid",
+      "settings": { "layout": "hero_side" },
       "blocks": {
-        "b1": { "type": "banner", "settings": { "size": "large", "heading": "Mujer", "subheading": "Nuevo" } },
-        "b2": { "type": "banner", "settings": { "size": "small", "heading": "Hombre" } },
-        "b3": { "type": "banner", "settings": { "size": "small", "heading": "Accesorios" } }
+        "b1": { "type": "banner", "settings": { "size": "large", "heading": "Mujer", "subheading": "Nuevo", "button_label": "Descubrir", "link": "/collections/all" } },
+        "b2": { "type": "banner", "settings": { "size": "small", "heading": "Hombre", "button_label": "Ver más", "link": "/collections/all" } },
+        "b3": { "type": "banner", "settings": { "size": "small", "heading": "Accesorios", "button_label": "Ver más", "link": "/collections/all" } }
       },
       "block_order": ["b1", "b2", "b3"]
     },
     "collections": {
       "type": "collection-list",
-      "settings": { "heading": "Comprar por categoría", "columns": "3" }
+      "settings": { "heading": "Comprar por categoría", "columns": "3", "card_style": "overlay" },
+      "blocks": {
+        "c1": { "type": "collection", "settings": { "title": "Mujer", "button_label": "Ver colección" } },
+        "c2": { "type": "collection", "settings": { "title": "Hombre", "button_label": "Ver colección" } },
+        "c3": { "type": "collection", "settings": { "title": "Accesorios", "button_label": "Ver colección" } }
+      },
+      "block_order": ["c1", "c2", "c3"]
     },
     "featured": {
       "type": "featured-collection",
-      "settings": { "heading": "Más vendidos", "products_to_show": 8, "columns_desktop": "4" }
+      "settings": {
+        "heading": "Más vendidos",
+        "products_to_show": 8,
+        "columns_desktop": "4",
+        "show_view_all": true
+      }
     },
     "countdown": {
       "type": "countdown-timer",
-      "settings": { "heading": "Flash sale", "end_date": "2026-12-31 23:59" }
+      "settings": {
+        "heading": "Flash sale",
+        "subheading": "Solo por tiempo limitado",
+        "end_date": "2026-12-31 23:59",
+        "button_label": "Aprovechar oferta",
+        "button_link": "/collections/all"
+      }
     },
     "lookbook": {
       "type": "shop-the-look",
-      "settings": { "heading": "Shop the look" }
+      "settings": {
+        "heading": "Shop the look"
+      }
     },
     "image_text": {
       "type": "image-with-text",
-      "settings": { "heading": "Nuestra historia", "layout": "image_left" }
+      "settings": {
+        "heading": "Nuestra historia",
+        "subheading": "GetSocial Theme",
+        "text": "<p>Somos una marca que apuesta por calidad, diseño y una experiencia de compra fluida. Cada colección nace con un propósito: que te sientas bien, dentro y fuera.</p>",
+        "button_label": "Conocer más",
+        "button_link": "/pages/about",
+        "layout": "image_left"
+      }
     },
     "video": {
       "type": "video-banner",
-      "settings": { "heading": "Descubre la colección", "height": 55 }
+      "settings": {
+        "heading": "Descubre la colección",
+        "button_label": "Ver productos",
+        "button_link": "/collections/all",
+        "height": 55,
+        "alignment": "center"
+      }
     },
     "multicolumn": {
       "type": "multicolumn",
-      "settings": { "heading": "Por qué elegirnos" }
+      "settings": { "heading": "Por qué elegirnos" },
+      "blocks": {
+        "m1": { "type": "column", "settings": { "heading": "Envío rápido", "text": "<p>Entrega en 24-72h según tu zona.</p>" } },
+        "m2": { "type": "column", "settings": { "heading": "Calidad premium", "text": "<p>Materiales seleccionados y acabados cuidados.</p>" } },
+        "m3": { "type": "column", "settings": { "heading": "Soporte dedicado", "text": "<p>Te ayudamos antes y después de tu compra.</p>" } }
+      },
+      "block_order": ["m1", "m2", "m3"]
     },
     "testimonials": {
       "type": "testimonials",
-      "settings": { "heading": "Reseñas de clientes" }
+      "settings": { "heading": "Reseñas de clientes" },
+      "blocks": {
+        "r1": { "type": "review", "settings": { "text": "Excelente calidad y envío rapidísimo.", "author": "María G.", "rating": 5 } },
+        "r2": { "type": "review", "settings": { "text": "La tienda se ve increíble en móvil.", "author": "Carlos R.", "rating": 5 } }
+      },
+      "block_order": ["r1", "r2"]
     },
     "logos": {
       "type": "logo-list",
@@ -67,7 +116,12 @@
     },
     "faq": {
       "type": "faq",
-      "settings": { "heading": "Preguntas frecuentes" }
+      "settings": { "heading": "Preguntas frecuentes" },
+      "blocks": {
+        "q1": { "type": "question", "settings": { "question": "¿Cuánto tarda el envío?", "answer": "<p>Entre 2 y 5 días laborables según destino.</p>" } },
+        "q2": { "type": "question", "settings": { "question": "¿Puedo devolver un producto?", "answer": "<p>Sí, tienes 30 días para devoluciones.</p>" } }
+      },
+      "block_order": ["q1", "q2"]
     },
     "blog": {
       "type": "blog-posts",
@@ -77,7 +131,7 @@
       "type": "rich-text",
       "blocks": {
         "h": { "type": "heading", "settings": { "heading": "Únete a la comunidad" } },
-        "t": { "type": "text", "settings": { "text": "<p>Recibe ofertas exclusivas.</p>" } }
+        "t": { "type": "text", "settings": { "text": "<p>Recibe ofertas exclusivas y acceso anticipado a lanzamientos.</p>" } }
       },
       "block_order": ["h", "t"],
       "settings": { "alignment": "center", "background": "#f7f7f7" }

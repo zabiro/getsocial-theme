@@ -91,7 +91,8 @@
 .promo-grid__item--large{grid-row:span 2}
 .promo-grid__layout--2x2{grid-template-columns:1fr 1fr}
 .promo-grid__layout--3col{grid-template-columns:repeat(3,1fr)}
-.promo-grid__item{position:relative;display:block;overflow:hidden;border-radius:var(--border-radius);min-height:220px}
+.promo-grid__item{position:relative;display:block;overflow:hidden;border-radius:var(--border-radius);min-height:220px;background:var(--color-background-secondary)}
+.promo-grid__item .promo-grid__img,.promo-grid__item .section-placeholder{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 .promo-grid__item img{width:100%;height:100%;object-fit:cover;transition:transform .5s}
 .promo-grid__item:hover img{transform:scale(1.05)}
 .promo-grid__content{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:flex-end;padding:1.25rem;background:linear-gradient(transparent,var(--promo-bg,rgba(0,0,0,.35)))}
