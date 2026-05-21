@@ -191,6 +191,8 @@ html.newsletter-popup-open{overflow:hidden}
 .product-option__value span{display:inline-block;padding:.4rem .85rem;border:1px solid var(--color-border);border-radius:var(--button-radius);cursor:pointer}
 .product-option__value input{position:absolute;opacity:0}
 .product-option__value input:checked+span{border-color:var(--color-primary);background:var(--color-primary);color:#fff}
+.product-option--color .product-option__values{gap:.4rem}
+.product-option--color .product-option__value span{min-width:2.5rem;text-align:center}
 .product-form__qty{display:flex;align-items:center;gap:.5rem;margin:1rem 0}
 .product-form__qty button{width:2rem;height:2rem;border:1px solid var(--color-border);background:0;cursor:pointer}
 .product-tabs{margin-top:2rem}

@@ -110,13 +110,15 @@
       {%- form 'product', product, id: 'product-form', data-product-form-el: '' -%}
         <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}" data-variant-input>
 
-        {%- if settings.product_card_show_swatches -%}
-          {% render 'swatches', product: product %}
-        {%- endif -%}
-
+        {%- comment -%} Swatches solo en tarjetas; en PDP un solo bloque por opción {%- endcomment -%}
         {%- unless product.has_only_default_variant -%}
           {%- for option in product.options_with_values -%}
-            <fieldset class="product-option" data-option-index="{{ forloop.index0 }}">
+            {%- assign option_down = option.name | downcase -%}
+            {%- assign is_color_option = false -%}
+            {%- if option_down contains 'color' or option_down contains 'colour' or option_down contains 'couleur' -%}
+              {%- assign is_color_option = true -%}
+            {%- endif -%}
+            <fieldset class="product-option{% if is_color_option %} product-option--color{% endif %}" data-option-index="{{ forloop.index0 }}">
               <legend>{{ option.name }}</legend>
               <div class="product-option__values">
                 {%- for value in option.values -%}
