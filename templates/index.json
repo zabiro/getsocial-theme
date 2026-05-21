@@ -1,54 +1,159 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "scrolling": {
       "type": "scrolling-text",
       "blocks": {
-        "t1": { "type": "text", "settings": { "text": "ENVÍO GRATIS +100€" } },
-        "t2": { "type": "text", "settings": { "text": "DEVOLUCIÓN 30 DÍAS" } },
-        "t3": { "type": "text", "settings": { "text": "NOVEDADES CADA SEMANA" } }
+        "t1": {
+          "type": "text",
+          "settings": {
+            "text": "ENVÍO GRATIS +100€"
+          }
+        },
+        "t2": {
+          "type": "text",
+          "settings": {
+            "text": "DEVOLUCIÓN 30 DÍAS"
+          }
+        },
+        "t3": {
+          "type": "text",
+          "settings": {
+            "text": "NOVEDADES CADA SEMANA"
+          }
+        }
       },
-      "block_order": ["t1", "t2", "t3"]
+      "block_order": [
+        "t1",
+        "t2",
+        "t3"
+      ],
+      "settings": {
+        "background": "#1a1a1a",
+        "text_color": "#ffffff",
+        "separator": "•",
+        "speed": 25
+      }
     },
     "hero": {
       "type": "hero-banner",
       "settings": {
+        "min_height": 75,
+        "overlay_opacity": 40,
+        "text_color": "#ffffff",
         "subheading": "Nueva temporada 2026",
         "heading": "Eleva tu estilo",
         "description": "Colección exclusiva — edición limitada. Descubre piezas pensadas para el día a día con un acabado premium.",
+        "content_alignment": "center",
         "button_label": "Comprar ahora",
         "button_link": "/collections/all",
         "button_label_2": "Ver lookbook",
-        "button_link_2": "/collections/all",
-        "content_alignment": "center",
-        "min_height": 75,
-        "overlay_opacity": 40,
-        "text_color": "#ffffff"
+        "button_link_2": "/collections/all"
       }
     },
     "promo": {
       "type": "promo-grid",
-      "settings": { "layout": "hero_side" },
       "blocks": {
-        "b1": { "type": "banner", "settings": { "size": "large", "heading": "Mujer", "subheading": "Nuevo", "button_label": "Descubrir", "link": "/collections/all" } },
-        "b2": { "type": "banner", "settings": { "size": "small", "heading": "Hombre", "button_label": "Ver más", "link": "/collections/all" } },
-        "b3": { "type": "banner", "settings": { "size": "small", "heading": "Accesorios", "button_label": "Ver más", "link": "/collections/all" } }
+        "b1": {
+          "type": "banner",
+          "settings": {
+            "image": "shopify://shop_images/Photoroom_20251016_173443.jpg",
+            "subheading": "Nuevo",
+            "heading": "Mujer",
+            "button_label": "Descubrir",
+            "link": "/collections/all",
+            "size": "large",
+            "text_color": "#ffffff",
+            "overlay_color": "#00000040"
+          }
+        },
+        "b2": {
+          "type": "banner",
+          "settings": {
+            "image": "shopify://shop_images/Photoroom_20250613_163027.jpg",
+            "subheading": "",
+            "heading": "Hombre",
+            "button_label": "Ver más",
+            "link": "/collections/all",
+            "size": "small",
+            "text_color": "#ffffff",
+            "overlay_color": "#00000040"
+          }
+        },
+        "b3": {
+          "type": "banner",
+          "settings": {
+            "subheading": "",
+            "heading": "Accesorios",
+            "button_label": "Ver más",
+            "link": "/collections/all",
+            "size": "small",
+            "text_color": "#ffffff",
+            "overlay_color": "#00000040"
+          }
+        }
       },
-      "block_order": ["b1", "b2", "b3"]
+      "block_order": [
+        "b1",
+        "b2",
+        "b3"
+      ],
+      "settings": {
+        "layout": "hero_side"
+      }
     },
     "collections": {
       "type": "collection-list",
-      "settings": { "heading": "Comprar por categoría", "columns": "3", "card_style": "overlay" },
       "blocks": {
-        "c1": { "type": "collection", "settings": { "title": "Mujer", "button_label": "Ver colección" } },
-        "c2": { "type": "collection", "settings": { "title": "Hombre", "button_label": "Ver colección" } },
-        "c3": { "type": "collection", "settings": { "title": "Accesorios", "button_label": "Ver colección" } }
+        "c1": {
+          "type": "collection",
+          "settings": {
+            "collection": "",
+            "title": "Mujer",
+            "button_label": "Ver colección"
+          }
+        },
+        "c2": {
+          "type": "collection",
+          "settings": {
+            "collection": "",
+            "title": "Hombre",
+            "button_label": "Ver colección"
+          }
+        },
+        "c3": {
+          "type": "collection",
+          "settings": {
+            "collection": "",
+            "title": "Accesorios",
+            "button_label": "Ver colección"
+          }
+        }
       },
-      "block_order": ["c1", "c2", "c3"]
+      "block_order": [
+        "c1",
+        "c2",
+        "c3"
+      ],
+      "settings": {
+        "heading": "Comprar por categoría",
+        "columns": "3",
+        "card_style": "overlay"
+      }
     },
     "featured": {
       "type": "featured-collection",
       "settings": {
         "heading": "Más vendidos",
+        "collection": "",
         "products_to_show": 8,
         "columns_desktop": "4",
         "show_view_all": true
@@ -61,7 +166,9 @@
         "subheading": "Solo por tiempo limitado",
         "end_date": "2026-12-31 23:59",
         "button_label": "Aprovechar oferta",
-        "button_link": "/collections/all"
+        "button_link": "/collections/all",
+        "background": "#1a1a1a",
+        "text_color": "#ffffff"
       }
     },
     "lookbook": {
@@ -73,68 +180,176 @@
     "image_text": {
       "type": "image-with-text",
       "settings": {
-        "heading": "Nuestra historia",
+        "layout": "image_left",
+        "full_width": false,
         "subheading": "GetSocial Theme",
+        "heading": "Nuestra historia",
         "text": "<p>Somos una marca que apuesta por calidad, diseño y una experiencia de compra fluida. Cada colección nace con un propósito: que te sientas bien, dentro y fuera.</p>",
         "button_label": "Conocer más",
-        "button_link": "/pages/about",
-        "layout": "image_left"
+        "button_link": "/pages/about"
       }
     },
     "video": {
       "type": "video-banner",
       "settings": {
+        "video_url": "",
+        "height": 55,
+        "overlay_opacity": 30,
         "heading": "Descubre la colección",
         "button_label": "Ver productos",
         "button_link": "/collections/all",
-        "height": 55,
         "alignment": "center"
       }
     },
     "multicolumn": {
       "type": "multicolumn",
-      "settings": { "heading": "Por qué elegirnos" },
       "blocks": {
-        "m1": { "type": "column", "settings": { "heading": "Envío rápido", "text": "<p>Entrega en 24-72h según tu zona.</p>" } },
-        "m2": { "type": "column", "settings": { "heading": "Calidad premium", "text": "<p>Materiales seleccionados y acabados cuidados.</p>" } },
-        "m3": { "type": "column", "settings": { "heading": "Soporte dedicado", "text": "<p>Te ayudamos antes y después de tu compra.</p>" } }
+        "m1": {
+          "type": "column",
+          "settings": {
+            "icon": "",
+            "heading": "Envío rápido",
+            "text": "<p>Entrega en 24-72h según tu zona.</p>",
+            "link_label": "",
+            "link": "",
+            "text_alignment": "center"
+          }
+        },
+        "m2": {
+          "type": "column",
+          "settings": {
+            "icon": "",
+            "heading": "Calidad premium",
+            "text": "<p>Materiales seleccionados y acabados cuidados.</p>",
+            "link_label": "",
+            "link": "",
+            "text_alignment": "center"
+          }
+        },
+        "m3": {
+          "type": "column",
+          "settings": {
+            "icon": "",
+            "heading": "Soporte dedicado",
+            "text": "<p>Te ayudamos antes y después de tu compra.</p>",
+            "link_label": "",
+            "link": "",
+            "text_alignment": "center"
+          }
+        }
       },
-      "block_order": ["m1", "m2", "m3"]
+      "block_order": [
+        "m1",
+        "m2",
+        "m3"
+      ],
+      "settings": {
+        "heading": "Por qué elegirnos",
+        "heading_alignment": "center",
+        "columns": "3",
+        "background_color": "rgba(0,0,0,0)"
+      }
     },
     "testimonials": {
       "type": "testimonials",
-      "settings": { "heading": "Reseñas de clientes" },
       "blocks": {
-        "r1": { "type": "review", "settings": { "text": "Excelente calidad y envío rapidísimo.", "author": "María G.", "rating": 5 } },
-        "r2": { "type": "review", "settings": { "text": "La tienda se ve increíble en móvil.", "author": "Carlos R.", "rating": 5 } }
+        "r1": {
+          "type": "review",
+          "settings": {
+            "rating": 5,
+            "text": "Excelente calidad y envío rapidísimo.",
+            "author": "María G.",
+            "role": ""
+          }
+        },
+        "r2": {
+          "type": "review",
+          "settings": {
+            "rating": 5,
+            "text": "La tienda se ve increíble en móvil.",
+            "author": "Carlos R.",
+            "role": ""
+          }
+        }
       },
-      "block_order": ["r1", "r2"]
+      "block_order": [
+        "r1",
+        "r2"
+      ],
+      "settings": {
+        "heading": "Reseñas de clientes",
+        "background": "#f7f7f7"
+      }
     },
     "logos": {
       "type": "logo-list",
-      "settings": { "heading": "Featured in" }
+      "settings": {
+        "heading": "Featured in",
+        "enable_scroll": true
+      }
     },
     "faq": {
       "type": "faq",
-      "settings": { "heading": "Preguntas frecuentes" },
       "blocks": {
-        "q1": { "type": "question", "settings": { "question": "¿Cuánto tarda el envío?", "answer": "<p>Entre 2 y 5 días laborables según destino.</p>" } },
-        "q2": { "type": "question", "settings": { "question": "¿Puedo devolver un producto?", "answer": "<p>Sí, tienes 30 días para devoluciones.</p>" } }
+        "q1": {
+          "type": "question",
+          "settings": {
+            "question": "¿Cuánto tarda el envío?",
+            "answer": "<p>Entre 2 y 5 días laborables según destino.</p>"
+          }
+        },
+        "q2": {
+          "type": "question",
+          "settings": {
+            "question": "¿Puedo devolver un producto?",
+            "answer": "<p>Sí, tienes 30 días para devoluciones.</p>"
+          }
+        }
       },
-      "block_order": ["q1", "q2"]
+      "block_order": [
+        "q1",
+        "q2"
+      ],
+      "settings": {
+        "heading": "Preguntas frecuentes",
+        "open_first": true
+      }
     },
     "blog": {
       "type": "blog-posts",
-      "settings": { "heading": "Desde el blog", "posts_to_show": 3 }
+      "settings": {
+        "heading": "Desde el blog",
+        "blog": "",
+        "posts_to_show": 3,
+        "columns": "3"
+      }
     },
     "newsletter": {
       "type": "rich-text",
       "blocks": {
-        "h": { "type": "heading", "settings": { "heading": "Únete a la comunidad" } },
-        "t": { "type": "text", "settings": { "text": "<p>Recibe ofertas exclusivas y acceso anticipado a lanzamientos.</p>" } }
+        "h": {
+          "type": "heading",
+          "settings": {
+            "heading": "Únete a la comunidad",
+            "heading_tag": "h2"
+          }
+        },
+        "t": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Recibe ofertas exclusivas y acceso anticipado a lanzamientos.</p>"
+          }
+        }
       },
-      "block_order": ["h", "t"],
-      "settings": { "alignment": "center", "background": "#f7f7f7" }
+      "block_order": [
+        "h",
+        "t"
+      ],
+      "settings": {
+        "background": "#f7f7f7",
+        "alignment": "center",
+        "content_width": 700
+      }
     }
   },
   "order": [
