@@ -15,7 +15,9 @@
       {%- else -%}
         {%- for i in (1..section.settings.products_to_show) -%}
           <article class="product-card">
-            <div class="product-card__media ratio-portrait">{{ 'product-' | append: i | placeholder_svg_tag }}</div>
+            <div class="product-card__media ratio-portrait">
+              <img src="{{ 'placeholder-product-' | append: i | append: '.svg' | asset_url }}" alt="" class="product-card__image product-card__placeholder" loading="lazy" width="600" height="800">
+            </div>
             <div class="product-card__info"><h3>Producto ejemplo {{ i }}</h3></div>
           </article>
         {%- endfor -%}
