@@ -65,6 +65,17 @@
         </p>
       {%- endif -%}
 
+      {%- assign benefit_blocks = section.blocks | where: 'type', 'benefit' -%}
+      {%- if benefit_blocks.size > 0 -%}
+        <ul class="product-benefits">
+          {%- for block in benefit_blocks -%}
+            {%- if block.settings.text != blank -%}
+              <li {{ block.shopify_attributes }}>{{ block.settings.text }}</li>
+            {%- endif -%}
+          {%- endfor -%}
+        </ul>
+      {%- endif -%}
+
       {%- form 'product', product, id: 'product-form', data-product-form-el: '' -%}
         <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}" data-variant-input>
 
@@ -174,6 +185,13 @@
       ]
     },
     {
+      "type": "benefit",
+      "name": "Beneficio / bullet",
+      "settings": [
+        { "type": "text", "id": "text", "label": "Texto", "default": "Mejora textura, tono y luminosidad." }
+      ]
+    },
+    {
       "type": "trust",
       "name": "Icono confianza",
       "settings": [
@@ -193,6 +211,10 @@
   ],
   "default": {
     "blocks": [
+      { "type": "benefit", "settings": { "text": "Despigmenta la piel y unifica el tono." } },
+      { "type": "benefit", "settings": { "text": "Estimula la producción de colágeno." } },
+      { "type": "benefit", "settings": { "text": "Rejuvenece la piel." } },
+      { "type": "benefit", "settings": { "text": "Mejora textura, tono y luminosidad." } },
       { "type": "trust", "settings": { "icon": "🚚", "text": "Envío gratis +100€" } },
       { "type": "trust", "settings": { "icon": "↩️", "text": "Devolución 30 días" } },
       { "type": "tab", "settings": { "title": "Descripción", "content": "<p>Información del producto.</p>" } },

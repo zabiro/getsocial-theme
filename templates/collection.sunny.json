@@ -1,0 +1,24 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-collection",
+      "settings": {
+        "enable_filtering": true,
+        "enable_ajax_filters": true,
+        "products_per_page": 24,
+        "columns_desktop": "4"
+      }
+    },
+    "carousel": {
+      "type": "product-carousel",
+      "settings": {
+        "heading": "También te puede interesar",
+        "layout": "carousel",
+        "collection": "",
+        "products_to_show": 5,
+        "show_nav": true
+      }
+    }
+  },
+  "order": ["main", "carousel"]
+}

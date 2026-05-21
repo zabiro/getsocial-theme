@@ -9,7 +9,6 @@
         "heading": "¡Paraíso para tu piel!",
         "description": "Texturas tropicales. Aromas irresistibles. Piel de verano eterno.",
         "button_label": "",
-        "button_link": "",
         "show_product_carousel": true,
         "collection": "",
         "products_to_show": 5,
@@ -21,10 +20,7 @@
       "settings": {
         "background": "#fff0e8",
         "line_1": "FOOD FOR YOUR SKIN ·",
-        "line_1_accent": "Tropical glow, everyday!",
-        "subtitle": "",
-        "button_label": "",
-        "button_link": ""
+        "line_1_accent": "Tropical glow, everyday!"
       }
     },
     "spotlight": {
@@ -39,28 +35,22 @@
       "settings": {
         "heading": "",
         "product": "",
-        "description": "<p>Su fórmula con activos nutritivos y aceites naturales no solo exfolian, también cuidan tu piel cada día.</p>",
+        "description": "<p>Su fórmula con activos nutritivos y aceites naturales no solo exfolian, también cuidan tu piel.</p>",
         "button_label": "Agregar al carrito"
       }
     },
     "banner_collage": {
       "type": "image-with-text",
       "settings": {
-        "layout": "image_left",
         "full_width": true,
         "style": "banner",
-        "subheading": "",
-        "heading": "",
-        "text": "",
-        "button_label": "",
-        "button_link": ""
+        "layout": "image_left"
       }
     },
     "logo_end": {
       "type": "logo-banner",
       "settings": {
-        "full_width": true,
-        "link": ""
+        "full_width": true
       }
     }
   },

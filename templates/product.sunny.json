@@ -1,0 +1,34 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-product",
+      "blocks": {
+        "ben1": { "type": "benefit", "settings": { "text": "Despigmenta la piel y unifica el tono." } },
+        "ben2": { "type": "benefit", "settings": { "text": "Estimula la producción de colágeno." } },
+        "ben3": { "type": "benefit", "settings": { "text": "Rejuvenece la piel." } },
+        "ben4": { "type": "benefit", "settings": { "text": "Mejora textura, tono y luminosidad." } }
+      },
+      "block_order": ["ben1", "ben2", "ben3", "ben4"],
+      "settings": { "show_dynamic_checkout": false }
+    },
+    "faq": {
+      "type": "faq",
+      "settings": { "heading": "¡Aclaremos todo!", "open_first": true },
+      "blocks": {
+        "q1": { "type": "question", "settings": { "question": "¿Por qué exfoliar tu piel?", "answer": "<p>Exfoliar mejora textura, luminosidad y prepara la piel para hidratar.</p>" } },
+        "q2": { "type": "question", "settings": { "question": "¿Cómo usarlo?", "answer": "<p>Aplica sobre piel húmeda con movimientos circulares y enjuaga.</p>" } }
+      },
+      "block_order": ["q1", "q2"]
+    },
+    "pairing": {
+      "type": "product-carousel",
+      "settings": {
+        "heading": "El match perfecto para tu rutina",
+        "layout": "carousel",
+        "products_to_show": 5,
+        "show_nav": true
+      }
+    }
+  },
+  "order": ["main", "faq", "pairing"]
+}

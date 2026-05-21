@@ -1,0 +1,28 @@
+{%- comment -%} Banner ancho con logo/imagen — cierre de home tipo Sunny {%- endcomment -%}
+<section class="logo-banner section-spacing{% if section.settings.full_width %} logo-banner--full{% endif %}">
+  {%- if section.settings.link != blank -%}
+    <a href="{{ section.settings.link }}" class="logo-banner__link">
+  {%- endif -%}
+  {%- if section.settings.image != blank -%}
+    {{ section.settings.image | image_url: width: 2400 | image_tag: loading: 'lazy', sizes: '100vw', class: 'logo-banner__img', alt: section.settings.alt | default: shop.name }}
+  {%- else -%}
+    {% render 'section-placeholder', placeholder_type: 'lifestyle', class: 'logo-banner__img section-placeholder', width: 2000, height: 600, alt: shop.name %}
+  {%- endif -%}
+  {%- if section.settings.link != blank -%}
+    </a>
+  {%- endif -%}
+</section>
+
+{% schema %}
+{
+  "name": "Banner logo / collage",
+  "tag": "section",
+  "settings": [
+    { "type": "image_picker", "id": "image", "label": "Imagen (banner o logo grande)" },
+    { "type": "text", "id": "alt", "label": "Texto alternativo" },
+    { "type": "url", "id": "link", "label": "Enlace (opcional)" },
+    { "type": "checkbox", "id": "full_width", "label": "Ancho completo", "default": true }
+  ],
+  "presets": [{ "name": "Banner logo / collage" }]
+}
+{% endschema %}

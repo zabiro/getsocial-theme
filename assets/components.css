@@ -118,6 +118,31 @@
 .testimonials__stars{color:var(--color-accent);margin-bottom:.5rem}
 .testimonials__nav{display:flex;justify-content:center;gap:1rem;margin-top:1rem}
 
+/* === Product carousel (Sunny-style) === */
+.hero-with-products__hero{position:relative}
+.hero-with-products__carousel-wrap{margin-top:-4rem;position:relative;z-index:5;padding-bottom:2rem}
+.hero-with-products__logo{margin-bottom:1rem}
+.hero-with-products__logo-img{max-width:min(280px,70vw);margin:0 auto;height:auto}
+.product-carousel{position:relative}
+.product-carousel__track{display:flex;gap:var(--grid-gap);overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;-webkit-overflow-scrolling:touch;padding:.5rem 0 1rem;scrollbar-width:none}
+.product-carousel__track::-webkit-scrollbar{display:none}
+.product-carousel__slide{flex:0 0 calc(50% - var(--grid-gap)/2);scroll-snap-align:start;min-width:0}
+@media(min-width:750px){.product-carousel__slide{flex:0 0 calc(33.333% - var(--grid-gap)*2/3)}}
+@media(min-width:990px){.product-carousel__slide{flex:0 0 calc(20% - var(--grid-gap)*4/5)}.product-carousel--hero .product-carousel__slide{flex:0 0 calc(20% - var(--grid-gap)*4/5)}}
+.product-carousel--grid .product-carousel__track{display:grid;overflow:visible;scroll-snap-type:none}
+.product-carousel-section__header{text-align:center;margin-bottom:1.5rem}
+.product-carousel-section__header h2{margin-bottom:.35rem}
+.product-carousel-section__sub{color:var(--color-text-light);margin:0 0 1rem}
+.product-carousel__btn{position:absolute;top:40%;transform:translateY(-50%);width:2.5rem;height:2.5rem;border-radius:50%;border:1px solid var(--color-border);background:var(--color-background);cursor:pointer;z-index:2;font-size:1.25rem;line-height:1}
+.product-carousel__btn--prev{left:-.5rem}
+.product-carousel__btn--next{right:-.5rem}
+.logo-banner{text-align:center}
+.logo-banner--full .logo-banner__img{width:100%;height:auto;display:block}
+.logo-banner__link{display:block}
+.product-benefits{list-style:none;padding:0;margin:1rem 0 1.25rem}
+.product-benefits li{position:relative;padding-left:1.35rem;margin-bottom:.5rem;line-height:1.5}
+.product-benefits li::before{content:'•';position:absolute;left:0;color:var(--color-accent);font-weight:700}
+
 /* === FAQ === */
 .faq__item{border-bottom:1px solid var(--color-border);padding:.75rem 0}
 .faq__item summary{cursor:pointer;font-weight:600}

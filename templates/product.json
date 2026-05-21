@@ -3,21 +3,68 @@
     "main": {
       "type": "main-product",
       "blocks": {
-        "trust1": { "type": "trust", "settings": { "icon": "🚚", "text": "Envío gratis +100€" } },
-        "trust2": { "type": "trust", "settings": { "icon": "↩️", "text": "Devolución 30 días" } },
-        "tab1": { "type": "tab", "settings": { "title": "Descripción", "content": "<p>Detalles del producto.</p>" } },
-        "tab2": { "type": "tab", "settings": { "title": "Envío y devoluciones", "content": "<p>24-48h laborables.</p>" } }
+        "ben1": { "type": "benefit", "settings": { "text": "Despigmenta la piel y unifica el tono." } },
+        "ben2": { "type": "benefit", "settings": { "text": "Estimula la producción de colágeno." } },
+        "ben3": { "type": "benefit", "settings": { "text": "Rejuvenece la piel." } },
+        "ben4": { "type": "benefit", "settings": { "text": "Mejora textura, tono y luminosidad." } },
+        "trust1": { "type": "trust", "settings": { "icon": "🚚", "text": "Envío a todo el país" } },
+        "trust2": { "type": "trust", "settings": { "icon": "✦", "text": "Fórmulas tropicales" } }
       },
-      "block_order": ["trust1", "trust2", "tab1", "tab2"]
+      "block_order": ["ben1", "ben2", "ben3", "ben4", "trust1", "trust2"],
+      "settings": {
+        "show_dynamic_checkout": false
+      }
     },
-    "recommendations": {
-      "type": "product-recommendations",
-      "settings": { "heading": "También te puede gustar", "products_to_show": 4 }
+    "faq": {
+      "type": "faq",
+      "blocks": {
+        "q1": {
+          "type": "question",
+          "settings": {
+            "question": "¿Por qué exfoliar tu piel?",
+            "answer": "<p>Exfoliar es el primer paso para un brillo real. Eliminas células muertas y mejoras la absorción de tus cremas.</p>"
+          }
+        },
+        "q2": {
+          "type": "question",
+          "settings": {
+            "question": "¿Para qué sirve este producto?",
+            "answer": "<p>Cada fórmula está pensada para un ritual concreto. Consulta la descripción del producto para el uso recomendado.</p>"
+          }
+        },
+        "q3": {
+          "type": "question",
+          "settings": {
+            "question": "¿Qué activos incluye?",
+            "answer": "<p>Ingredientes seleccionados con aceites naturales y activos que cuidan la piel día a día.</p>"
+          }
+        },
+        "q4": {
+          "type": "question",
+          "settings": {
+            "question": "¿Cómo unifica el tono de la piel?",
+            "answer": "<p>Los activos trabajan para mejorar visiblemente el tono y la luminosidad con uso constante.</p>"
+          }
+        }
+      },
+      "block_order": ["q1", "q2", "q3", "q4"],
+      "settings": {
+        "heading": "¡Aclaremos todo!",
+        "open_first": true
+      }
     },
-    "recent": {
-      "type": "recently-viewed",
-      "settings": { "heading": "Vistos recientemente" }
+    "pairing": {
+      "type": "product-carousel",
+      "settings": {
+        "heading": "El match perfecto para tu rutina",
+        "subheading": "",
+        "collection": "",
+        "products_to_show": 5,
+        "layout": "carousel",
+        "show_nav": true,
+        "show_view_all": false
+      }
     }
   },
-  "order": ["main", "recommendations", "recent"]
+  "order": ["main", "faq", "pairing"]
 }
