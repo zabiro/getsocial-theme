@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "type": "header",
   "name": "Grupo cabecera",
@@ -6,16 +15,26 @@
       "type": "announcement-bar",
       "settings": {
         "enable": true,
-        "text": "Envío gratis en pedidos superiores a 100€"
+        "text": "Envío gratis en pedidos superiores a 100€",
+        "link": "",
+        "background": "#1a1a1a",
+        "text_color": "#ffffff"
       }
     },
     "header": {
       "type": "header",
       "settings": {
+        "logo": "shopify://shop_images/1_ffdffb9b-3ae3-4ec0-b857-6d7386eb6b49.jpg",
         "menu": "main-menu",
-        "enable_mega_menu": true
+        "enable_mega_menu": true,
+        "mega_menu_title": "",
+        "mega_menu_link": "",
+        "wishlist_link": ""
       }
     }
   },
-  "order": ["announcement", "header"]
+  "order": [
+    "announcement",
+    "header"
+  ]
 }

@@ -91,6 +91,7 @@
         "b3": {
           "type": "banner",
           "settings": {
+            "image": "shopify://shop_images/Photoroom_20250613_150213.jpg",
             "subheading": "",
             "heading": "Accesorios",
             "button_label": "Ver más",
@@ -117,6 +118,7 @@
           "type": "collection",
           "settings": {
             "collection": "",
+            "image": "shopify://shop_images/Photoroom_20250613_163734.jpg",
             "title": "Mujer",
             "button_label": "Ver colección"
           }
@@ -125,6 +127,7 @@
           "type": "collection",
           "settings": {
             "collection": "",
+            "image": "shopify://shop_images/Photoroom_20250807_132722_c962f38f-184f-430c-a845-6521c9b2ccf7.jpg",
             "title": "Hombre",
             "button_label": "Ver colección"
           }
@@ -133,6 +136,7 @@
           "type": "collection",
           "settings": {
             "collection": "",
+            "image": "shopify://shop_images/Photoroom_20250613_162202.jpg",
             "title": "Accesorios",
             "button_label": "Ver colección"
           }
@@ -145,7 +149,7 @@
       ],
       "settings": {
         "heading": "Comprar por categoría",
-        "columns": "3",
+        "columns": "4",
         "card_style": "overlay"
       }
     },
