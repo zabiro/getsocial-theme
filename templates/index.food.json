@@ -1,0 +1,44 @@
+{
+  "sections": {
+    "scrolling": {
+      "type": "scrolling-text",
+      "settings": { "background": "#2e5c3e", "text_color": "#ffffff" },
+      "blocks": {
+        "t1": { "type": "text", "settings": { "text": "PRODUCTO LOCAL" } },
+        "t2": { "type": "text", "settings": { "text": "SIN CONSERVANTES" } }
+      },
+      "block_order": ["t1", "t2"]
+    },
+    "hero": {
+      "type": "hero-banner",
+      "settings": {
+        "subheading": "De la huerta a tu mesa",
+        "heading": "Sabor auténtico",
+        "description": "Gourmet, orgánico y de temporada.",
+        "button_label": "Ver productos",
+        "content_alignment": "center"
+      }
+    },
+    "featured": {
+      "type": "featured-collection",
+      "settings": { "heading": "Esta semana", "products_to_show": 6, "columns_desktop": "3" }
+    },
+    "image_text": {
+      "type": "image-with-text",
+      "settings": { "heading": "Origen y calidad", "layout": "image_right" }
+    },
+    "multicolumn": {
+      "type": "multicolumn",
+      "settings": { "heading": "Nuestros valores", "background_color": "#f4f1ea" }
+    },
+    "faq": {
+      "type": "faq",
+      "settings": { "heading": "Conservación y envíos" }
+    },
+    "blog": {
+      "type": "blog-posts",
+      "settings": { "heading": "Recetas", "posts_to_show": 3 }
+    }
+  },
+  "order": ["scrolling", "hero", "featured", "image_text", "multicolumn", "faq", "blog"]
+}

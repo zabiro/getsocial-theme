@@ -1,0 +1,122 @@
+{
+  "settings_schema": {
+    "colors": {
+      "name": "Colores",
+      "settings": {
+        "header_general": "Paleta general",
+        "color_primary": { "label": "Color primario" },
+        "color_secondary": { "label": "Color secundario" },
+        "color_accent": { "label": "Color de acento" },
+        "color_accent_hover": { "label": "Acento (hover)" },
+        "color_background": { "label": "Fondo principal" },
+        "color_background_secondary": { "label": "Fondo secundario" },
+        "color_text": { "label": "Texto principal" },
+        "color_text_light": { "label": "Texto secundario" },
+        "color_border": { "label": "Bordes" },
+        "color_sale": { "label": "Ofertas / descuentos" },
+        "color_success": { "label": "Éxito / stock" },
+        "header_buttons": "Botones",
+        "color_button": { "label": "Botón primario" },
+        "color_button_text": { "label": "Texto botón primario" },
+        "color_button_secondary": { "label": "Botón secundario" },
+        "color_button_secondary_text": { "label": "Texto botón secundario" }
+      }
+    },
+    "typography": {
+      "name": "Tipografía",
+      "settings": {
+        "font_heading": { "label": "Fuente títulos" },
+        "font_heading_scale": { "label": "Escala títulos" },
+        "font_heading_weight": { "label": "Peso títulos" },
+        "font_body": { "label": "Fuente cuerpo" },
+        "font_body_scale": { "label": "Escala cuerpo" },
+        "font_body_line_height": { "label": "Interlineado" },
+        "font_navigation": { "label": "Fuente navegación" }
+      }
+    },
+    "layout": {
+      "name": "Diseño",
+      "settings": {
+        "page_width": { "label": "Ancho máximo de página" },
+        "section_spacing": { "label": "Espaciado entre secciones" },
+        "grid_gap": { "label": "Espacio entre columnas" },
+        "border_radius": { "label": "Radio de bordes (tarjetas)" },
+        "button_radius": { "label": "Radio de botones" },
+        "enable_animations": { "label": "Activar animaciones" },
+        "image_ratio": { "label": "Proporción de imágenes (tarjetas)" },
+        "card_image_hover": { "label": "Efecto hover en producto" }
+      }
+    },
+    "header": {
+      "name": "Cabecera global",
+      "settings": {
+        "header_layout": { "label": "Distribución" },
+        "header_style": { "label": "Estilo de cabecera" },
+        "header_show_search": { "label": "Mostrar búsqueda" },
+        "header_show_account": { "label": "Mostrar cuenta" },
+        "header_show_wishlist": { "label": "Mostrar favoritos" },
+        "cart_icon_style": { "label": "Icono del carrito" },
+        "header_background": { "label": "Fondo cabecera" },
+        "header_text": { "label": "Texto cabecera" }
+      }
+    },
+    "product_card": {
+      "name": "Tarjeta de producto",
+      "settings": {
+        "product_card_style": { "label": "Estilo de tarjeta" },
+        "product_card_show_vendor": { "label": "Mostrar marca" },
+        "product_card_show_rating": { "label": "Mostrar valoraciones" },
+        "product_card_show_swatches": { "label": "Mostrar variantes (color)" },
+        "product_card_show_quick_add": { "label": "Botón añadir rápido" },
+        "product_card_show_second_image": { "label": "Segunda imagen al hover" },
+        "product_badge_style": { "label": "Etiquetas de producto" },
+        "product_badge_sale_text": { "label": "Texto etiqueta oferta" },
+        "product_badge_soldout_text": { "label": "Texto etiqueta agotado" }
+      }
+    },
+    "product_page": {
+      "name": "Página de producto",
+      "settings": {
+        "product_gallery_layout": { "label": "Galería de imágenes" },
+        "product_enable_zoom": { "label": "Zoom en imagen" },
+        "product_show_sku": { "label": "Mostrar SKU" },
+        "product_show_inventory": { "label": "Mostrar inventario" },
+        "product_show_share": { "label": "Botones compartir" },
+        "product_show_pickup": { "label": "Disponibilidad en tienda" },
+        "product_sticky_add_to_cart": { "label": "Barra fija añadir al carrito" },
+        "product_tabs_count": { "label": "Pestañas de información" }
+      }
+    },
+    "cart": {
+      "name": "Carrito",
+      "settings": {
+        "cart_type": { "label": "Tipo de carrito" },
+        "cart_show_note": { "label": "Nota del pedido" },
+        "cart_show_discount": { "label": "Campo código descuento" },
+        "cart_show_shipping_bar": { "label": "Barra envío gratis" },
+        "cart_free_shipping_threshold": {
+          "label": "Umbral envío gratis",
+          "info": "Importe en la moneda de la tienda (solo número)"
+        },
+        "cart_empty_message": { "label": "Mensaje carrito vacío" },
+        "cart_empty_collection": { "label": "Colección sugerida (vacío)" }
+      }
+    },
+    "social": {
+      "name": "Redes sociales",
+      "settings": {
+        "header_accounts": "Enlaces de redes"
+      }
+    },
+    "advanced": {
+      "name": "Avanzado",
+      "settings": {
+        "predictive_search": { "label": "Búsqueda predictiva" },
+        "show_breadcrumbs": { "label": "Migas de pan" },
+        "back_to_top": { "label": "Botón volver arriba" },
+        "custom_css": { "label": "CSS personalizado" },
+        "custom_head_scripts": { "label": "Scripts en <head>" }
+      }
+    }
+  }
+}

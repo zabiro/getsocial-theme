@@ -1,0 +1,122 @@
+{
+  "settings_schema": {
+    "colors": {
+      "name": "Colors",
+      "settings": {
+        "header_general": "General palette",
+        "color_primary": { "label": "Primary color" },
+        "color_secondary": { "label": "Secondary color" },
+        "color_accent": { "label": "Accent color" },
+        "color_accent_hover": { "label": "Accent (hover)" },
+        "color_background": { "label": "Main background" },
+        "color_background_secondary": { "label": "Secondary background" },
+        "color_text": { "label": "Main text" },
+        "color_text_light": { "label": "Secondary text" },
+        "color_border": { "label": "Borders" },
+        "color_sale": { "label": "Sale / discounts" },
+        "color_success": { "label": "Success / stock" },
+        "header_buttons": "Buttons",
+        "color_button": { "label": "Primary button" },
+        "color_button_text": { "label": "Primary button text" },
+        "color_button_secondary": { "label": "Secondary button" },
+        "color_button_secondary_text": { "label": "Secondary button text" }
+      }
+    },
+    "typography": {
+      "name": "Typography",
+      "settings": {
+        "font_heading": { "label": "Heading font" },
+        "font_heading_scale": { "label": "Heading scale" },
+        "font_heading_weight": { "label": "Heading weight" },
+        "font_body": { "label": "Body font" },
+        "font_body_scale": { "label": "Body scale" },
+        "font_body_line_height": { "label": "Line height" },
+        "font_navigation": { "label": "Navigation font" }
+      }
+    },
+    "layout": {
+      "name": "Layout",
+      "settings": {
+        "page_width": { "label": "Maximum page width" },
+        "section_spacing": { "label": "Section spacing" },
+        "grid_gap": { "label": "Grid gap" },
+        "border_radius": { "label": "Card border radius" },
+        "button_radius": { "label": "Button border radius" },
+        "enable_animations": { "label": "Enable animations" },
+        "image_ratio": { "label": "Image ratio (cards)" },
+        "card_image_hover": { "label": "Product hover effect" }
+      }
+    },
+    "header": {
+      "name": "Global header",
+      "settings": {
+        "header_layout": { "label": "Layout" },
+        "header_style": { "label": "Header style" },
+        "header_show_search": { "label": "Show search" },
+        "header_show_account": { "label": "Show account" },
+        "header_show_wishlist": { "label": "Show wishlist" },
+        "cart_icon_style": { "label": "Cart icon" },
+        "header_background": { "label": "Header background" },
+        "header_text": { "label": "Header text" }
+      }
+    },
+    "product_card": {
+      "name": "Product card",
+      "settings": {
+        "product_card_style": { "label": "Card style" },
+        "product_card_show_vendor": { "label": "Show vendor" },
+        "product_card_show_rating": { "label": "Show ratings" },
+        "product_card_show_swatches": { "label": "Show color swatches" },
+        "product_card_show_quick_add": { "label": "Quick add button" },
+        "product_card_show_second_image": { "label": "Second image on hover" },
+        "product_badge_style": { "label": "Product badges" },
+        "product_badge_sale_text": { "label": "Sale badge text" },
+        "product_badge_soldout_text": { "label": "Sold out badge text" }
+      }
+    },
+    "product_page": {
+      "name": "Product page",
+      "settings": {
+        "product_gallery_layout": { "label": "Image gallery" },
+        "product_enable_zoom": { "label": "Image zoom" },
+        "product_show_sku": { "label": "Show SKU" },
+        "product_show_inventory": { "label": "Show inventory" },
+        "product_show_share": { "label": "Share buttons" },
+        "product_show_pickup": { "label": "Store pickup availability" },
+        "product_sticky_add_to_cart": { "label": "Sticky add to cart bar" },
+        "product_tabs_count": { "label": "Information tabs" }
+      }
+    },
+    "cart": {
+      "name": "Cart",
+      "settings": {
+        "cart_type": { "label": "Cart type" },
+        "cart_show_note": { "label": "Order note" },
+        "cart_show_discount": { "label": "Discount code field" },
+        "cart_show_shipping_bar": { "label": "Free shipping bar" },
+        "cart_free_shipping_threshold": {
+          "label": "Free shipping threshold",
+          "info": "Amount in store currency (numbers only)"
+        },
+        "cart_empty_message": { "label": "Empty cart message" },
+        "cart_empty_collection": { "label": "Suggested collection (empty)" }
+      }
+    },
+    "social": {
+      "name": "Social media",
+      "settings": {
+        "header_accounts": "Social links"
+      }
+    },
+    "advanced": {
+      "name": "Advanced",
+      "settings": {
+        "predictive_search": { "label": "Predictive search" },
+        "show_breadcrumbs": { "label": "Breadcrumbs" },
+        "back_to_top": { "label": "Back to top button" },
+        "custom_css": { "label": "Custom CSS" },
+        "custom_head_scripts": { "label": "Scripts in <head>" }
+      }
+    }
+  }
+}

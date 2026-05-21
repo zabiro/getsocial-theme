@@ -1,0 +1,17 @@
+<section class="main-404 section-spacing" style="text-align:center">
+  <div class="page-width">
+    <h1>404</h1>
+    <p>{{ section.settings.text | default: 'Página no encontrada' }}</p>
+    <a href="{{ routes.root_url }}" class="button">{{ section.settings.button_label | default: 'Volver al inicio' }}</a>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "404",
+  "settings": [
+    { "type": "text", "id": "text", "label": "Texto", "default": "Lo sentimos, esta página no existe." },
+    { "type": "text", "id": "button_label", "label": "Botón", "default": "Volver al inicio" }
+  ]
+}
+{% endschema %}

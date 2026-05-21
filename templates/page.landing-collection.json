@@ -1,0 +1,53 @@
+{
+  "sections": {
+    "hero": {
+      "type": "hero-banner",
+      "settings": {
+        "subheading": "Nueva colección",
+        "heading": "Verano 2026",
+        "description": "Piezas ligeras, colores vivos y tejidos naturales.",
+        "button_label": "Ver colección",
+        "content_alignment": "center"
+      }
+    },
+    "promo": {
+      "type": "promo-grid",
+      "blocks": {
+        "w": { "type": "banner", "settings": { "size": "large", "heading": "Mujer", "subheading": "Nuevo" } },
+        "m": { "type": "banner", "settings": { "size": "small", "heading": "Hombre" } },
+        "k": { "type": "banner", "settings": { "size": "small", "heading": "Kids" } }
+      },
+      "block_order": ["w", "m", "k"]
+    },
+    "featured": {
+      "type": "featured-collection",
+      "settings": {
+        "heading": "Destacados de la colección",
+        "products_to_show": 8,
+        "columns_desktop": "4"
+      }
+    },
+    "look": {
+      "type": "shop-the-look",
+      "settings": { "heading": "Inspírate con estos looks" }
+    },
+    "video": {
+      "type": "video-banner",
+      "settings": {
+        "heading": "El making of",
+        "height": 50,
+        "alignment": "center"
+      }
+    },
+    "cta": {
+      "type": "rich-text",
+      "blocks": {
+        "h": { "type": "heading", "settings": { "heading": "Colección limitada" } },
+        "b": { "type": "button", "settings": { "label": "Comprar ahora", "style": "primary" } }
+      },
+      "block_order": ["h", "b"],
+      "settings": { "alignment": "center", "background": "#f7f7f7" }
+    }
+  },
+  "order": ["hero", "promo", "featured", "look", "video", "cta"]
+}

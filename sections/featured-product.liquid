@@ -1,0 +1,39 @@
+<section class="featured-product section-spacing">
+  <div class="page-width">
+    <div class="featured-product__grid">
+      <div class="featured-product__media">
+        {%- assign fp = section.settings.product -%}
+        {%- if fp != blank and fp.featured_media -%}
+          {{ fp.featured_media | image_url: width: 900 | image_tag: loading: 'lazy' }}
+        {%- else -%}
+          {{ 'product-1' | placeholder_svg_tag }}
+        {%- endif -%}
+      </div>
+      <div class="featured-product__info">
+        {%- if section.settings.heading != blank -%}<p class="featured-product__label">{{ section.settings.heading }}</p>{%- endif -%}
+        {%- if fp != blank -%}
+          <h2><a href="{{ fp.url }}">{{ fp.title }}</a></h2>
+          {% render 'price', product: fp %}
+          <div class="rte" style="margin:1rem 0">{{ fp.description | strip_html | truncate: 200 }}</div>
+          {%- form 'product', fp -%}
+            <input type="hidden" name="id" value="{{ fp.selected_or_first_available_variant.id }}">
+            <button type="submit" class="button"{% unless fp.available %} disabled{% endunless %}>
+              {{ 'products.product.add_to_cart' | t }}
+            </button>
+          {%- endform -%}
+        {%- endif -%}
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Producto destacado",
+  "settings": [
+    { "type": "text", "id": "heading", "label": "Etiqueta", "default": "Producto del mes" },
+    { "type": "product", "id": "product", "label": "Producto" }
+  ],
+  "presets": [{ "name": "Producto destacado" }]
+}
+{% endschema %}

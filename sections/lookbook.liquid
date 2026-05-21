@@ -1,0 +1,58 @@
+<section class="lookbook section-spacing">
+  <div class="page-width">
+    {%- if section.settings.heading != blank -%}<h2 style="text-align:{{ section.settings.heading_align }}">{{ section.settings.heading }}</h2>{%- endif -%}
+    <div class="lookbook__grid lookbook__grid--{{ section.settings.layout }}">
+      {%- for block in section.blocks -%}
+        <div class="lookbook__item" {{ block.shopify_attributes }} style="--col-span:{{ block.settings.column_span }}">
+          {%- if block.settings.image != blank -%}
+            {{ block.settings.image | image_url: width: 800 | image_tag: loading: 'lazy', class: 'lookbook__image' }}
+          {%- endif -%}
+          {%- if block.settings.product != blank -%}
+            <a href="{{ block.settings.product.url }}" class="lookbook__hotspot" style="top:{{ block.settings.hotspot_y }}%;left:{{ block.settings.hotspot_x }}%" data-lookbook-hotspot>
+              <span class="lookbook__dot"></span>
+              <span class="lookbook__tooltip">{{ block.settings.product.title }} — {{ block.settings.product.price | money }}</span>
+            </a>
+          {%- endif -%}
+          {%- if block.settings.caption != blank -%}
+            <p class="lookbook__caption">{{ block.settings.caption }}</p>
+          {%- endif -%}
+        </div>
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Lookbook",
+  "settings": [
+    { "type": "text", "id": "heading", "label": "Título", "default": "Shop the look" },
+    { "type": "select", "id": "heading_align", "label": "Alineación", "options": [
+      { "value": "left", "label": "Izquierda" },
+      { "value": "center", "label": "Centro" }
+    ], "default": "center" },
+    { "type": "select", "id": "layout", "label": "Layout", "options": [
+      { "value": "masonry", "label": "Masonry" },
+      { "value": "grid", "label": "Cuadrícula" }
+    ], "default": "masonry" }
+  ],
+  "blocks": [
+    {
+      "type": "image",
+      "name": "Imagen lookbook",
+      "settings": [
+        { "type": "image_picker", "id": "image", "label": "Imagen" },
+        { "type": "product", "id": "product", "label": "Producto hotspot" },
+        { "type": "range", "id": "hotspot_x", "min": 0, "max": 100, "step": 1, "unit": "%", "label": "Hotspot X", "default": 50 },
+        { "type": "range", "id": "hotspot_y", "min": 0, "max": 100, "step": 1, "unit": "%", "label": "Hotspot Y", "default": 50 },
+        { "type": "text", "id": "caption", "label": "Pie de foto" },
+        { "type": "select", "id": "column_span", "label": "Ancho columna", "options": [
+          { "value": "1", "label": "1" },
+          { "value": "2", "label": "2" }
+        ], "default": "1" }
+      ]
+    }
+  ],
+  "presets": [{ "name": "Lookbook", "blocks": [{ "type": "image" }, { "type": "image" }, { "type": "image" }] }]
+}
+{% endschema %}

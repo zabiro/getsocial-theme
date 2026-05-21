@@ -1,0 +1,62 @@
+{
+  "sections": {
+    "scroll": {
+      "type": "scrolling-text",
+      "settings": { "background": "#8b1538", "text_color": "#ffffff" },
+      "blocks": {
+        "h1": { "type": "text", "settings": { "text": "REGALOS DE NAVIDAD" } },
+        "h2": { "type": "text", "settings": { "text": "ENVÍO ANTES DEL 24" } }
+      },
+      "block_order": ["h1", "h2"]
+    },
+    "hero": {
+      "type": "hero-banner",
+      "settings": {
+        "subheading": "Temporada festiva",
+        "heading": "Encuentra el regalo perfecto",
+        "description": "Ideas para todos los gustos y presupuestos.",
+        "button_label": "Ver regalos",
+        "content_alignment": "center"
+      }
+    },
+    "gifts": {
+      "type": "collection-list",
+      "settings": { "heading": "Comprar por persona", "columns": "3" },
+      "blocks": {
+        "g1": { "type": "collection", "settings": { "title": "Para ella", "button_label": "Ver ideas" } },
+        "g2": { "type": "collection", "settings": { "title": "Para él", "button_label": "Ver ideas" } },
+        "g3": { "type": "collection", "settings": { "title": "Para niños", "button_label": "Ver ideas" } }
+      },
+      "block_order": ["g1", "g2", "g3"]
+    },
+    "countdown": {
+      "type": "countdown-timer",
+      "settings": {
+        "heading": "Pedidos para el 24 antes de",
+        "end_date": "2026-12-20 23:59",
+        "background": "#1a1a1a"
+      }
+    },
+    "featured": {
+      "type": "featured-collection",
+      "settings": {
+        "heading": "Los más regalados",
+        "products_to_show": 8,
+        "columns_desktop": "4"
+      }
+    },
+    "bundles": {
+      "type": "promo-grid",
+      "blocks": {
+        "b1": { "type": "banner", "settings": { "heading": "Sets regalo", "size": "medium" } },
+        "b2": { "type": "banner", "settings": { "heading": "Tarjetas regalo", "size": "medium" } }
+      },
+      "block_order": ["b1", "b2"]
+    },
+    "faq": {
+      "type": "faq",
+      "settings": { "heading": "Envíos navideños" }
+    }
+  },
+  "order": ["scroll", "hero", "gifts", "countdown", "featured", "bundles", "faq"]
+}

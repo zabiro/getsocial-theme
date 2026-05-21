@@ -1,0 +1,46 @@
+{
+  "sections": {
+    "hero": {
+      "type": "hero-banner",
+      "settings": {
+        "subheading": "Ventas mayoristas",
+        "heading": "Partner B2B",
+        "description": "Precios especiales, pedidos mínimos flexibles y soporte dedicado.",
+        "button_label": "Solicitar catálogo",
+        "content_alignment": "left"
+      }
+    },
+    "benefits": {
+      "type": "multicolumn",
+      "settings": { "heading": "Ventajas para distribuidores", "columns": "3" },
+      "blocks": {
+        "b1": { "type": "column", "settings": { "icon": "📦", "heading": "MOQ bajo", "text": "Desde 12 unidades" } },
+        "b2": { "type": "column", "settings": { "icon": "📊", "heading": "Márgenes", "text": "Hasta 45% margen" } },
+        "b3": { "type": "column", "settings": { "icon": "🤝", "heading": "Account manager", "text": "Contacto directo" } }
+      },
+      "block_order": ["b1", "b2", "b3"]
+    },
+    "process": {
+      "type": "image-with-text",
+      "settings": {
+        "heading": "Cómo funciona",
+        "text": "<p>1. Solicita acceso · 2. Recibe catálogo · 3. Haz tu primer pedido</p>",
+        "layout": "image_right"
+      }
+    },
+    "form": {
+      "type": "contact-form",
+      "settings": {
+        "heading": "Formulario de partner",
+        "text": "<p>Cuéntanos sobre tu negocio.</p>",
+        "button_label": "Enviar solicitud",
+        "show_phone": true
+      }
+    },
+    "logos": {
+      "type": "logo-list",
+      "settings": { "heading": "Distribuidores actuales" }
+    }
+  },
+  "order": ["hero", "benefits", "process", "form", "logos"]
+}

@@ -1,0 +1,10 @@
+{%- if settings.enable_wishlist -%}
+  <button
+    type="button"
+    class="card-action"
+    data-wishlist-toggle
+    data-product-handle="{{ product.handle }}"
+    aria-label="{{ 'wishlist.add' | t }}"
+    aria-pressed="false"
+  >♡</button>
+{%- endif -%}

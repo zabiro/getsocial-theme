@@ -1,0 +1,57 @@
+{
+  "sections": {
+    "hero": {
+      "type": "hero-banner",
+      "settings": {
+        "subheading": "Sorteo oficial",
+        "heading": "Gana un pack valorado en 500€",
+        "description": "Participa gratis. Ganador anunciado el 1 de cada mes.",
+        "button_label": "Participar",
+        "content_alignment": "center",
+        "overlay_opacity": 45
+      }
+    },
+    "prize": {
+      "type": "featured-collection",
+      "settings": {
+        "heading": "El pack del sorteo incluye",
+        "products_to_show": 4,
+        "columns_desktop": "4",
+        "show_view_all": false
+      }
+    },
+    "rules": {
+      "type": "rich-text",
+      "blocks": {
+        "h": { "type": "heading", "settings": { "heading": "Bases del sorteo" } },
+        "t": {
+          "type": "text",
+          "settings": {
+            "text": "<ul><li>Mayores de 18 años</li><li>Un participante por email</li><li>Válido en territorio nacional</li><li>No acumulable con otras promos</li></ul>"
+          }
+        }
+      },
+      "block_order": ["h", "t"],
+      "settings": { "alignment": "left", "content_width": 700 }
+    },
+    "form": {
+      "type": "contact-form",
+      "settings": {
+        "heading": "Formulario de participación",
+        "button_label": "¡Quiero participar!",
+        "show_phone": false
+      }
+    },
+    "social": {
+      "type": "multicolumn",
+      "settings": { "heading": "Sigue el sorteo", "columns": "3" },
+      "blocks": {
+        "ig": { "type": "column", "settings": { "icon": "📸", "heading": "Instagram", "text": "@tu_tienda" } },
+        "tt": { "type": "column", "settings": { "icon": "🎵", "heading": "TikTok", "text": "@tu_tienda" } },
+        "mail": { "type": "column", "settings": { "icon": "✉️", "heading": "Newsletter", "text": "Ofertas exclusivas" } }
+      },
+      "block_order": ["ig", "tt", "mail"]
+    }
+  },
+  "order": ["hero", "prize", "rules", "form", "social"]
+}

@@ -1,0 +1,26 @@
+{%- if section.settings.enable -%}
+  <div class="cookie-bar" data-cookie-bar hidden>
+    <div class="page-width cookie-bar__inner">
+      <p>{{ section.settings.text }}</p>
+      <div class="cookie-bar__actions">
+        <button type="button" class="button button--small" data-cookie-accept>{{ section.settings.accept_label }}</button>
+        {%- if section.settings.policy_link != blank -%}
+          <a href="{{ section.settings.policy_link }}">{{ section.settings.policy_label }}</a>
+        {%- endif -%}
+      </div>
+    </div>
+  </div>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Barra de cookies",
+  "settings": [
+    { "type": "checkbox", "id": "enable", "label": "Activar", "default": true },
+    { "type": "richtext", "id": "text", "label": "Texto", "default": "<p>Usamos cookies para mejorar tu experiencia.</p>" },
+    { "type": "text", "id": "accept_label", "label": "Botón aceptar", "default": "Aceptar" },
+    { "type": "text", "id": "policy_label", "label": "Enlace política", "default": "Política de privacidad" },
+    { "type": "url", "id": "policy_link", "label": "URL política" }
+  ]
+}
+{% endschema %}

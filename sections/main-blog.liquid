@@ -1,0 +1,28 @@
+<section class="main-blog section-spacing">
+  <div class="page-width">
+    <h1>{{ blog.title }}</h1>
+    {%- if blog.description != blank -%}<div class="rte">{{ blog.description }}</div>{%- endif -%}
+    <div class="blog-posts__grid grid grid--3">
+      {%- paginate blog.articles by 12 -%}
+        {%- for article in blog.articles -%}
+          <article class="blog-posts__card">
+            <a href="{{ article.url }}">
+              {%- if article.image -%}{{ article.image | image_url: width: 600 | image_tag: loading: 'lazy' }}{%- endif -%}
+              <h2>{{ article.title }}</h2>
+              <time>{{ article.published_at | date: format: 'date' }}</time>
+              <p>{{ article.excerpt | default: article.content | strip_html | truncate: 160 }}</p>
+            </a>
+          </article>
+        {%- endfor -%}
+        {{ paginate | default_pagination }}
+      {%- endpaginate -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Blog",
+  "class": "section-main-blog"
+}
+{% endschema %}

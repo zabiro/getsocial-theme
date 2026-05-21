@@ -1,0 +1,8 @@
+{%- assign compare_url = settings.compare_page.url | default: '/pages/comparar' -%}
+<div class="compare-bar" data-compare-bar>
+  <div class="page-width compare-bar__inner">
+    <span><span data-compare-bar-count>0</span> {{ 'compare.products_selected' | t }}</span>
+    <a href="{{ compare_url }}" class="button button--small">{{ 'compare.view' | t }}</a>
+    <button type="button" class="compare-bar__clear" data-compare-clear-all>{{ 'compare.clear' | t }}</button>
+  </div>
+</div>

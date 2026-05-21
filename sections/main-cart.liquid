@@ -1,0 +1,43 @@
+<section class="main-cart section-spacing">
+  <div class="page-width" style="max-width:720px">
+    <h1>{{ 'cart.title' | t }}</h1>
+    {%- if cart.item_count > 0 -%}
+      <form action="{{ routes.cart_url }}" method="post" id="cart">
+        <table style="width:100%;border-collapse:collapse;margin:2rem 0">
+          <thead>
+            <tr style="border-bottom:1px solid var(--color-border);text-align:left">
+              <th></th><th>Producto</th><th>Cant.</th><th>Total</th>
+            </tr>
+          </thead>
+          <tbody>
+            {%- for item in cart.items -%}
+              <tr style="border-bottom:1px solid var(--color-border)">
+                <td style="padding:1rem 0">{%- if item.image -%}{{ item.image | image_url: width: 80 | image_tag }}{%- endif -%}</td>
+                <td><a href="{{ item.url }}">{{ item.product.title }}</a></td>
+                <td><input type="number" name="updates[]" value="{{ item.quantity }}" min="0" data-index="{{ forloop.index }}"></td>
+                <td>{{ item.final_line_price | money }}</td>
+              </tr>
+            {%- endfor -%}
+          </tbody>
+        </table>
+        {%- if settings.cart_show_note -%}
+          <label for="CartNote">Nota del pedido</label>
+          <textarea id="CartNote" name="note" rows="3" style="width:100%;margin:1rem 0">{{ cart.note }}</textarea>
+        {%- endif -%}
+        <p style="font-size:1.25rem;font-weight:600">{{ 'general.subtotal' | t }}: {{ cart.total_price | money }}</p>
+        <button type="submit" name="update" class="button button--secondary">Actualizar</button>
+        <button type="submit" name="checkout" class="button" style="margin-left:.5rem">{{ 'general.checkout' | t }}</button>
+      </form>
+    {%- else -%}
+      <p>{{ settings.cart_empty_message }}</p>
+      <a href="{{ routes.all_products_collection_url }}" class="button">{{ 'general.continue_shopping' | t }}</a>
+    {%- endif -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Carrito",
+  "class": "section-main-cart"
+}
+{% endschema %}

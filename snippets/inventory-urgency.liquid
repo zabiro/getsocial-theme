@@ -1,0 +1,12 @@
+{%- if settings.show_inventory_urgency and product.available -%}
+  {%- assign v = product.selected_or_first_available_variant -%}
+  {%- if v.inventory_management == 'shopify' and v.inventory_quantity > 0 and v.inventory_quantity <= settings.inventory_urgency_threshold -%}
+    <div class="inventory-urgency" data-inventory-urgency>
+      <p>{{ 'products.low_stock' | t: count: v.inventory_quantity }}</p>
+      <div class="inventory-urgency__bar">
+        {%- assign pct = v.inventory_quantity | times: 100 | divided_by: settings.inventory_urgency_threshold | at_most: 100 -%}
+        <span style="width:{{ pct }}%"></span>
+      </div>
+    </div>
+  {%- endif -%}
+{%- endif -%}

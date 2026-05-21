@@ -1,0 +1,29 @@
+<section class="before-after section-spacing">
+  <div class="page-width">
+    {%- if section.settings.heading != blank -%}<h2 style="text-align:center">{{ section.settings.heading }}</h2>{%- endif -%}
+    <div class="before-after__compare" data-before-after style="--position:{{ section.settings.initial_position }}%">
+      {{ section.settings.image_before | image_url: width: 1200 | image_tag: class: 'before-after__img before-after__img--before', loading: 'lazy' }}
+      <div class="before-after__after">
+        {{ section.settings.image_after | image_url: width: 1200 | image_tag: class: 'before-after__img', loading: 'lazy' }}
+      </div>
+      <input type="range" min="0" max="100" value="{{ section.settings.initial_position }}" class="before-after__slider" data-before-after-slider aria-label="{{ section.settings.heading }}">
+      <span class="before-after__label before-after__label--before">{{ section.settings.label_before }}</span>
+      <span class="before-after__label before-after__label--after">{{ section.settings.label_after }}</span>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Antes / Después",
+  "settings": [
+    { "type": "text", "id": "heading", "label": "Título", "default": "Antes y después" },
+    { "type": "image_picker", "id": "image_before", "label": "Imagen antes" },
+    { "type": "image_picker", "id": "image_after", "label": "Imagen después" },
+    { "type": "text", "id": "label_before", "label": "Etiqueta antes", "default": "Antes" },
+    { "type": "text", "id": "label_after", "label": "Etiqueta después", "default": "Después" },
+    { "type": "range", "id": "initial_position", "min": 0, "max": 100, "step": 5, "unit": "%", "label": "Posición inicial", "default": 50 }
+  ],
+  "presets": [{ "name": "Antes / Después" }]
+}
+{% endschema %}

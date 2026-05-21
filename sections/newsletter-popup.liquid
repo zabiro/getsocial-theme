@@ -1,0 +1,88 @@
+{%- if section.settings.enable -%}
+  <div
+    id="NewsletterPopup-{{ section.id }}"
+    class="newsletter-popup"
+    data-newsletter-popup
+    data-delay="{{ section.settings.delay }}"
+    data-frequency-days="{{ section.settings.frequency_days }}"
+    aria-hidden="true"
+  >
+    <div class="newsletter-popup__overlay" data-popup-close role="button" tabindex="-1" aria-label="{{ 'general.close' | t }}"></div>
+    <div class="newsletter-popup__box" role="dialog" aria-modal="true" aria-labelledby="NewsletterPopupTitle-{{ section.id }}">
+      <button type="button" class="newsletter-popup__close" data-popup-close aria-label="{{ 'general.close' | t }}">&times;</button>
+      {%- if section.settings.image != blank -%}
+        {{ section.settings.image | image_url: width: 400 | image_tag: class: 'newsletter-popup__image' }}
+      {%- endif -%}
+      <h2 id="NewsletterPopupTitle-{{ section.id }}">{{ section.settings.heading }}</h2>
+      <p>{{ section.settings.text }}</p>
+      {% form 'customer', class: 'newsletter-popup__form' %}
+        <input type="hidden" name="contact[tags]" value="newsletter">
+        <input type="email" name="contact[email]" placeholder="{{ section.settings.placeholder }}" required>
+        <button type="submit" class="button">{{ section.settings.button_label }}</button>
+      {% endform %}
+      {%- if section.settings.show_discount_code -%}
+        <p class="newsletter-popup__code"><strong>{{ section.settings.discount_code }}</strong></p>
+      {%- endif -%}
+    </div>
+  </div>
+  <script>
+    (function () {
+      var root = document.getElementById('NewsletterPopup-{{ section.id }}');
+      if (!root || root.dataset.popupInit === '1') return;
+      root.dataset.popupInit = '1';
+
+      var storageKey = 'getsocial_newsletter_popup';
+      var delay = (Number(root.dataset.delay) || 5) * 1000;
+      var freqDays = Number(root.dataset.frequencyDays) || 7;
+      var freqMs = freqDays * 86400000;
+
+      function closePopup() {
+        root.classList.remove('is-open');
+        root.setAttribute('aria-hidden', 'true');
+        document.documentElement.classList.remove('newsletter-popup-open');
+        try { localStorage.setItem(storageKey, String(Date.now())); } catch (e) {}
+      }
+
+      function openPopup() {
+        root.classList.add('is-open');
+        root.setAttribute('aria-hidden', 'false');
+        document.documentElement.classList.add('newsletter-popup-open');
+      }
+
+      var seenAt = 0;
+      try { seenAt = Number(localStorage.getItem(storageKey) || 0); } catch (e) {}
+      if (!seenAt || Date.now() - seenAt > freqMs) {
+        window.setTimeout(openPopup, delay);
+      }
+
+      root.addEventListener('click', function (e) {
+        if (e.target.closest('[data-popup-close]')) {
+          e.preventDefault();
+          closePopup();
+        }
+      });
+
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape' && root.classList.contains('is-open')) closePopup();
+      });
+    })();
+  </script>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Popup newsletter",
+  "settings": [
+    { "type": "checkbox", "id": "enable", "label": "Activar popup", "default": true },
+    { "type": "range", "id": "delay", "min": 0, "max": 60, "step": 5, "unit": "s", "label": "Retraso (segundos)", "default": 5 },
+    { "type": "range", "id": "frequency_days", "min": 1, "max": 30, "step": 1, "label": "No mostrar de nuevo (días)", "default": 7 },
+    { "type": "image_picker", "id": "image", "label": "Imagen" },
+    { "type": "text", "id": "heading", "label": "Título", "default": "10% de descuento" },
+    { "type": "textarea", "id": "text", "label": "Texto", "default": "Suscríbete y recibe tu código" },
+    { "type": "text", "id": "placeholder", "label": "Placeholder email", "default": "tu@email.com" },
+    { "type": "text", "id": "button_label", "label": "Botón", "default": "Obtener descuento" },
+    { "type": "checkbox", "id": "show_discount_code", "label": "Mostrar código", "default": false },
+    { "type": "text", "id": "discount_code", "label": "Código descuento", "default": "WELCOME10" }
+  ]
+}
+{% endschema %}

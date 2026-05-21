@@ -1,0 +1,39 @@
+{%- case template.name -%}
+  {%- when 'product' -%}
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Product",
+        "name": {{ product.title | json }},
+        "image": [{{ product.featured_image | image_url: width: 1200 | json }}],
+        "description": {{ product.description | strip_html | truncate: 500 | json }},
+        "sku": {{ product.selected_or_first_available_variant.sku | json }},
+        "brand": { "@type": "Brand", "name": {{ product.vendor | json }} },
+        "offers": {
+          "@type": "Offer",
+          "url": {{ shop.url | append: product.url | json }},
+          "priceCurrency": {{ cart.currency.iso_code | json }},
+          "price": {{ product.selected_or_first_available_variant.price | divided_by: 100.0 | json }},
+          "availability": "https://schema.org/{% if product.available %}InStock{% else %}OutOfStock{% endif %}"
+        }
+      }
+    </script>
+  {%- when 'article' -%}
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Article",
+        "headline": {{ article.title | json }},
+        "datePublished": {{ article.published_at | date: '%Y-%m-%d' | json }},
+        "author": { "@type": "Person", "name": {{ article.author | json }} }
+      }
+    </script>
+{%- endcase -%}
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": {{ shop.name | json }},
+    "url": {{ shop.url | json }}
+  }
+</script>

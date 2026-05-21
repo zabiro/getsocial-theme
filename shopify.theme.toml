@@ -1,0 +1,5 @@
+# GetSocial Theme — desarrollo local con Shopify CLI
+# Docs: https://shopify.dev/docs/storefronts/themes/tools/cli
+
+[environments.development]
+store = "prueba-tienda-3bmgzfei.myshopify.com"

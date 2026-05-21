@@ -1,0 +1,43 @@
+<section class="blog-posts section-spacing">
+  <div class="page-width">
+    <div class="section-header-row">
+      <h2>{{ section.settings.heading | default: blog.title }}</h2>
+      {%- if section.settings.blog != blank -%}
+        <a href="{{ section.settings.blog.url }}" class="button button--secondary">{{ 'general.view_all' | t }}</a>
+      {%- endif -%}
+    </div>
+    <div class="blog-posts__grid grid grid--{{ section.settings.columns }}">
+      {%- assign blog_obj = section.settings.blog -%}
+      {%- if blog_obj != blank -%}
+        {%- for article in blog_obj.articles limit: section.settings.posts_to_show -%}
+          <article class="blog-posts__card">
+            <a href="{{ article.url }}">
+              {%- if article.image -%}
+                {{ article.image | image_url: width: 600 | image_tag: loading: 'lazy' }}
+              {%- endif -%}
+              <h3>{{ article.title }}</h3>
+              <time datetime="{{ article.published_at | date: '%Y-%m-%d' }}">{{ article.published_at | date: format: 'date' }}</time>
+              <p>{{ article.excerpt | default: article.content | strip_html | truncate: 120 }}</p>
+            </a>
+          </article>
+        {%- endfor -%}
+      {%- endif -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Artículos del blog",
+  "settings": [
+    { "type": "text", "id": "heading", "label": "Título", "default": "Desde el blog" },
+    { "type": "blog", "id": "blog", "label": "Blog" },
+    { "type": "range", "id": "posts_to_show", "min": 2, "max": 6, "step": 1, "label": "Artículos", "default": 3 },
+    { "type": "select", "id": "columns", "label": "Columnas", "options": [
+      { "value": "2", "label": "2" },
+      { "value": "3", "label": "3" }
+    ], "default": "3" }
+  ],
+  "presets": [{ "name": "Artículos del blog" }]
+}
+{% endschema %}

@@ -1,0 +1,26 @@
+{%- if product.options_with_values.size > 0 -%}
+  <div class="swatches" data-product-swatches>
+    {%- for option in product.options_with_values -%}
+      {%- assign option_down = option.name | downcase -%}
+      {%- if option_down contains 'color' or option_down contains 'colour' or option_down contains 'color' -%}
+        <fieldset class="swatches__group">
+          <legend>{{ option.name }}</legend>
+          <div class="swatches__list">
+            {%- for value in option.values -%}
+              {%- assign variant_for_value = product.variants | where: 'option1', value | first -%}
+              <button
+                type="button"
+                class="swatch{% if option.selected_value == value %} is-selected{% endif %}"
+                data-swatch-value="{{ value | escape }}"
+                data-variant-id="{{ variant_for_value.id }}"
+                title="{{ value }}"
+              >
+                <span class="swatch__label">{{ value }}</span>
+              </button>
+            {%- endfor -%}
+          </div>
+        </fieldset>
+      {%- endif -%}
+    {%- endfor -%}
+  </div>
+{%- endif -%}

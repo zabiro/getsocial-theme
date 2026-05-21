@@ -1,0 +1,48 @@
+{
+  "sections": {
+    "scrolling": {
+      "type": "scrolling-text",
+      "blocks": {
+        "t1": { "type": "text", "settings": { "text": "GARANTÍA 2 AÑOS" } },
+        "t2": { "type": "text", "settings": { "text": "ENVÍO 24H" } }
+      },
+      "block_order": ["t1", "t2"]
+    },
+    "hero": {
+      "type": "hero-banner",
+      "settings": {
+        "subheading": "Tech 2026",
+        "heading": "Potencia que necesitas",
+        "description": "Los últimos dispositivos al mejor precio.",
+        "button_label": "Ver ofertas",
+        "content_alignment": "left"
+      }
+    },
+    "promo": {
+      "type": "promo-grid",
+      "blocks": {
+        "b1": { "type": "banner", "settings": { "size": "large", "heading": "Smartphones" } },
+        "b2": { "type": "banner", "settings": { "size": "small", "heading": "Audio" } },
+        "b3": { "type": "banner", "settings": { "size": "small", "heading": "Gaming" } }
+      },
+      "block_order": ["b1", "b2", "b3"]
+    },
+    "featured": {
+      "type": "featured-collection",
+      "settings": { "heading": "Top ventas tech", "products_to_show": 8, "columns_desktop": "4" }
+    },
+    "featured_product": {
+      "type": "featured-product",
+      "settings": { "heading": "Producto estrella", "product": "" }
+    },
+    "multicolumn": {
+      "type": "multicolumn",
+      "settings": { "heading": "Ventajas" }
+    },
+    "faq": {
+      "type": "faq",
+      "settings": { "heading": "Soporte técnico" }
+    }
+  },
+  "order": ["scrolling", "hero", "promo", "featured", "featured_product", "multicolumn", "faq"]
+}

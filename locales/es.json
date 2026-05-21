@@ -1,0 +1,105 @@
+{
+  "general": {
+    "home": "Inicio",
+    "search": "Buscar",
+    "cart": "Carrito",
+    "account": "Cuenta",
+    "close": "Cerrar",
+    "menu": "Menú",
+    "loading": "Cargando…",
+    "view_all": "Ver todo",
+    "add_to_cart": "Añadir al carrito",
+    "sold_out": "Agotado",
+    "unavailable": "No disponible",
+    "quantity": "Cantidad",
+    "subtotal": "Subtotal",
+    "checkout": "Finalizar compra",
+    "continue_shopping": "Seguir comprando",
+    "back_to_top": "Volver arriba",
+    "skip_to_content": "Ir al contenido",
+    "share": "Compartir",
+    "copy_link": "Copiar enlace"
+  },
+  "products": {
+    "quick_view": "Vista rápida",
+    "view_product": "Ver producto",
+    "low_stock": "¡Solo quedan {{ count }} unidades!",
+    "product": {
+      "add_to_cart": "Añadir al carrito",
+      "sold_out": "Agotado",
+      "on_sale": "Oferta",
+      "sku": "SKU",
+      "in_stock": "En stock",
+      "low_stock": "Pocas unidades",
+      "out_of_stock": "Agotado"
+    }
+  },
+  "wishlist": {
+    "title": "Lista de deseos",
+    "add": "Añadir a favoritos",
+    "empty": "Tu lista de deseos está vacía",
+    "hint": "Los favoritos se guardan en este navegador."
+  },
+  "compare": {
+    "title": "Comparar",
+    "add": "Añadir al comparador",
+    "view": "Ver comparación",
+    "clear": "Vaciar",
+    "empty": "No hay productos para comparar",
+    "products_selected": "productos seleccionados",
+    "instructions": "Añade productos con el icono ⇄ en las tarjetas (máx. según configuración del tema)."
+  },
+  "collections": {
+    "products": "productos",
+    "sort": "Ordenar por",
+    "filter": "Filtrar",
+    "filters_title": "Filtros",
+    "apply_filters": "Ver resultados",
+    "clear": "Limpiar filtros",
+    "no_filters": "Activa filtros en Search & Discovery",
+    "empty": "No hay productos con estos filtros"
+  },
+  "cart": {
+    "title": "Tu carrito",
+    "empty": "Tu carrito está vacío",
+    "free_shipping_remaining": "Te faltan {{ amount }} para envío gratis",
+    "free_shipping_achieved": "¡Envío gratis desbloqueado!"
+  },
+  "contact": {
+    "name": "Nombre",
+    "email": "Email",
+    "phone": "Teléfono",
+    "message": "Mensaje",
+    "success": "¡Gracias! Te responderemos pronto."
+  },
+  "sections": {
+    "countdown": {
+      "days": "Días",
+      "hours": "Horas",
+      "minutes": "Min",
+      "seconds": "Seg"
+    }
+  },
+  "password": {
+    "message": "Esta tienda es privada. Introduce la contraseña.",
+    "label": "Contraseña",
+    "placeholder": "Contraseña",
+    "submit": "Entrar",
+    "admin": "¿Eres el dueño?",
+    "admin_link": "Inicia sesión aquí"
+  },
+  "gift_card": {
+    "title": "Tarjeta regalo",
+    "code": "Código",
+    "shop_link": "Ir a la tienda",
+    "expired": "Esta tarjeta ha caducado"
+  },
+  "footer": {
+    "payment_methods": "Métodos de pago"
+  },
+  "blogs": {
+    "comments": {
+      "title": "Comentarios"
+    }
+  }
+}

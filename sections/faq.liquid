@@ -1,0 +1,43 @@
+<section class="faq section-spacing">
+  <div class="page-width" style="max-width:800px;margin:0 auto">
+    {%- if section.settings.heading != blank -%}<h2 style="text-align:center">{{ section.settings.heading }}</h2>{%- endif -%}
+    <div class="faq__list" data-accordion>
+      {%- for block in section.blocks -%}
+        <details class="faq__item" {{ block.shopify_attributes }}{% if forloop.first and section.settings.open_first %} open{% endif %}>
+          <summary>{{ block.settings.question }}</summary>
+          <div class="faq__answer rte">{{ block.settings.answer }}</div>
+        </details>
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "FAQ / Acordeón",
+  "settings": [
+    { "type": "text", "id": "heading", "label": "Título", "default": "Preguntas frecuentes" },
+    { "type": "checkbox", "id": "open_first", "label": "Abrir primera pregunta", "default": true }
+  ],
+  "blocks": [
+    {
+      "type": "question",
+      "name": "Pregunta",
+      "settings": [
+        { "type": "text", "id": "question", "label": "Pregunta", "default": "¿Cuál es el plazo de envío?" },
+        { "type": "richtext", "id": "answer", "label": "Respuesta", "default": "<p>Entregamos en 24-48h laborables.</p>" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "FAQ",
+      "blocks": [
+        { "type": "question" },
+        { "type": "question" },
+        { "type": "question" }
+      ]
+    }
+  ]
+}
+{% endschema %}

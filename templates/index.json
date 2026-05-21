@@ -1,0 +1,103 @@
+{
+  "sections": {
+    "scrolling": {
+      "type": "scrolling-text",
+      "blocks": {
+        "t1": { "type": "text", "settings": { "text": "ENVÍO GRATIS +100€" } },
+        "t2": { "type": "text", "settings": { "text": "DEVOLUCIÓN 30 DÍAS" } },
+        "t3": { "type": "text", "settings": { "text": "NOVEDADES CADA SEMANA" } }
+      },
+      "block_order": ["t1", "t2", "t3"]
+    },
+    "hero": {
+      "type": "hero-banner",
+      "settings": {
+        "subheading": "Nueva temporada 2026",
+        "heading": "Eleva tu estilo",
+        "description": "Colección exclusiva — edición limitada.",
+        "button_label": "Comprar ahora",
+        "button_label_2": "Ver lookbook",
+        "content_alignment": "center"
+      }
+    },
+    "promo": {
+      "type": "promo-grid",
+      "blocks": {
+        "b1": { "type": "banner", "settings": { "size": "large", "heading": "Mujer", "subheading": "Nuevo" } },
+        "b2": { "type": "banner", "settings": { "size": "small", "heading": "Hombre" } },
+        "b3": { "type": "banner", "settings": { "size": "small", "heading": "Accesorios" } }
+      },
+      "block_order": ["b1", "b2", "b3"]
+    },
+    "collections": {
+      "type": "collection-list",
+      "settings": { "heading": "Comprar por categoría", "columns": "3" }
+    },
+    "featured": {
+      "type": "featured-collection",
+      "settings": { "heading": "Más vendidos", "products_to_show": 8, "columns_desktop": "4" }
+    },
+    "countdown": {
+      "type": "countdown-timer",
+      "settings": { "heading": "Flash sale", "end_date": "2026-12-31 23:59" }
+    },
+    "lookbook": {
+      "type": "shop-the-look",
+      "settings": { "heading": "Shop the look" }
+    },
+    "image_text": {
+      "type": "image-with-text",
+      "settings": { "heading": "Nuestra historia", "layout": "image_left" }
+    },
+    "video": {
+      "type": "video-banner",
+      "settings": { "heading": "Descubre la colección", "height": 55 }
+    },
+    "multicolumn": {
+      "type": "multicolumn",
+      "settings": { "heading": "Por qué elegirnos" }
+    },
+    "testimonials": {
+      "type": "testimonials",
+      "settings": { "heading": "Reseñas de clientes" }
+    },
+    "logos": {
+      "type": "logo-list",
+      "settings": { "heading": "Featured in" }
+    },
+    "faq": {
+      "type": "faq",
+      "settings": { "heading": "Preguntas frecuentes" }
+    },
+    "blog": {
+      "type": "blog-posts",
+      "settings": { "heading": "Desde el blog", "posts_to_show": 3 }
+    },
+    "newsletter": {
+      "type": "rich-text",
+      "blocks": {
+        "h": { "type": "heading", "settings": { "heading": "Únete a la comunidad" } },
+        "t": { "type": "text", "settings": { "text": "<p>Recibe ofertas exclusivas.</p>" } }
+      },
+      "block_order": ["h", "t"],
+      "settings": { "alignment": "center", "background": "#f7f7f7" }
+    }
+  },
+  "order": [
+    "scrolling",
+    "hero",
+    "promo",
+    "collections",
+    "featured",
+    "countdown",
+    "lookbook",
+    "image_text",
+    "video",
+    "multicolumn",
+    "testimonials",
+    "logos",
+    "faq",
+    "blog",
+    "newsletter"
+  ]
+}

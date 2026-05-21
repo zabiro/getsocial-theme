@@ -1,0 +1,47 @@
+{
+  "sections": {
+    "hero": {
+      "type": "hero-banner",
+      "settings": {
+        "subheading": "Guía gratuita",
+        "heading": "Descarga la guía definitiva",
+        "description": "Aprende las claves en 15 minutos. Sin spam.",
+        "button_label": "Quiero la guía",
+        "content_alignment": "center",
+        "min_height": 65
+      }
+    },
+    "benefits": {
+      "type": "multicolumn",
+      "settings": { "heading": "Qué incluye", "columns": "3" },
+      "blocks": {
+        "b1": { "type": "column", "settings": { "heading": "Checklist PDF", "text": "Paso a paso imprimible" } },
+        "b2": { "type": "column", "settings": { "heading": "Plantillas", "text": "Emails y redes listos" } },
+        "b3": { "type": "column", "settings": { "heading": "Bonus", "text": "10% en tu primera compra" } }
+      },
+      "block_order": ["b1", "b2", "b3"]
+    },
+    "story": {
+      "type": "image-with-text",
+      "settings": {
+        "heading": "Creado por expertos",
+        "text": "<p>Más de 10.000 lectores ya la usan.</p>",
+        "layout": "image_right"
+      }
+    },
+    "form": {
+      "type": "contact-form",
+      "settings": {
+        "heading": "Recíbela en tu email",
+        "text": "<p>Deja tus datos y te enviamos el enlace al instante.</p>",
+        "button_label": "Enviar y descargar",
+        "show_phone": false
+      }
+    },
+    "logos": {
+      "type": "logo-list",
+      "settings": { "heading": "Visto en", "enable_scroll": true }
+    }
+  },
+  "order": ["hero", "benefits", "story", "form", "logos"]
+}

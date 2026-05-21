@@ -1,0 +1,81 @@
+{%- comment -%} Fragmento AJAX: filtros (drawer móvil + sidebar desktop) + grid {%- endcomment -%}
+<div data-collection-ajax-results>
+  {%- if section.settings.enable_filtering -%}
+    <button type="button" class="collection-filter-trigger button button--secondary" data-filter-drawer-open>
+      {{ 'collections.filter' | t }}
+      {%- assign active_count = 0 -%}
+      {%- for filter in collection.filters -%}
+        {%- assign active_count = active_count | plus: filter.active_values.size -%}
+      {%- endfor -%}
+      {%- if active_count > 0 -%}<span class="collection-filter-trigger__badge">{{ active_count }}</span>{%- endif -%}
+    </button>
+
+    <div class="filter-drawer" data-filter-drawer aria-hidden="true">
+      <div class="filter-drawer__overlay" data-filter-drawer-close></div>
+      <div class="filter-drawer__panel" role="dialog" aria-label="{{ 'collections.filters_title' | t }}">
+        <div class="filter-drawer__header">
+          <h2>{{ 'collections.filters_title' | t }}</h2>
+          <button type="button" class="filter-drawer__close" data-filter-drawer-close aria-label="{{ 'general.close' | t }}">✕</button>
+        </div>
+        {% render 'collection-filters', collection: collection %}
+        <button type="button" class="button button--full filter-drawer__apply" data-filter-drawer-apply>{{ 'collections.apply_filters' | t }}</button>
+      </div>
+    </div>
+  {%- endif -%}
+
+  <div class="collection-main">
+    <div class="collection-toolbar">
+      <span data-results-count>{{ collection.products_count }} {{ 'collections.products' | t }}</span>
+      <div class="collection-toolbar__sort">
+        <label for="SortBy-{{ section.id }}">{{ 'collections.sort' | t }}</label>
+        <select id="SortBy-{{ section.id }}" name="sort_by" data-sort-select>
+          {%- for option in collection.sort_options -%}
+            <option value="{{ option.value }}"{% if option.value == collection.sort_by %} selected{% endif %}>{{ option.name }}</option>
+          {%- endfor -%}
+        </select>
+      </div>
+      <div class="collection-toolbar__view" data-grid-toggle>
+        <button type="button" data-cols="2" aria-label="2">2</button>
+        <button type="button" data-cols="3" aria-label="3">3</button>
+        <button type="button" data-cols="4" class="is-active" aria-label="4">4</button>
+      </div>
+    </div>
+
+    {%- if section.settings.enable_sticky_filter_bar -%}
+      <div class="collection-filter-bar" data-sticky-filter-bar>
+        {%- for filter in collection.filters -%}
+          {%- for value in filter.active_values -%}
+            <a href="{{ value.url_to_remove }}" class="collection-filter-pill" data-filter-remove>{{ value.label }} ×</a>
+          {%- endfor -%}
+        {%- endfor -%}
+        {%- if collection.filters.size > 0 -%}
+          <a href="{{ collection.url }}" class="collection-filter-pill collection-filter-pill--clear">{{ 'collections.clear' | t }}</a>
+        {%- endif -%}
+      </div>
+    {%- endif -%}
+    <div class="collection-active-filters" data-active-filters>
+      {%- for filter in collection.filters -%}
+        {%- for value in filter.active_values -%}
+          <a href="{{ value.url_to_remove }}" class="collection-filter-pill" data-filter-remove>{{ filter.label }}: {{ value.label }} ×</a>
+        {%- endfor -%}
+      {%- endfor -%}
+    </div>
+
+    {%- paginate collection.products by section.settings.products_per_page -%}
+      <div class="collection-grid-wrap" data-collection-grid-wrap>
+        <div class="grid grid--{{ section.settings.columns_desktop }}" data-collection-grid>
+          {%- for product in collection.products -%}
+            {% render 'product-card', product: product %}
+          {%- else -%}
+            <p class="collection-empty">{{ 'collections.empty' | t }}</p>
+          {%- endfor -%}
+        </div>
+        <div class="collection-loading" data-collection-loading hidden>{{ 'general.loading' | t }}</div>
+      </div>
+
+      {%- if paginate.pages > 1 -%}
+        <nav class="pagination" data-collection-pagination>{{ paginate | default_pagination }}</nav>
+      {%- endif -%}
+    {%- endpaginate -%}
+  </div>
+</div>

@@ -1,0 +1,16 @@
+﻿{
+  "type": "footer",
+  "name": "Grupo pie",
+  "sections": {
+    "footer": {
+      "type": "footer",
+      "blocks": {
+        "text": { "type": "text", "settings": { "heading": "Sobre nosotros", "text": "<p>Tu tienda personalizada con GetSocial Theme.</p>" } },
+        "menu": { "type": "menu", "settings": { "heading": "Enlaces" } },
+        "newsletter": { "type": "newsletter", "settings": { "heading": "Newsletter" } }
+      },
+      "block_order": ["text", "menu", "newsletter"]
+    }
+  },
+  "order": ["footer"]
+}

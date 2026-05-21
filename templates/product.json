@@ -1,0 +1,23 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-product",
+      "blocks": {
+        "trust1": { "type": "trust", "settings": { "icon": "🚚", "text": "Envío gratis +100€" } },
+        "trust2": { "type": "trust", "settings": { "icon": "↩️", "text": "Devolución 30 días" } },
+        "tab1": { "type": "tab", "settings": { "title": "Descripción", "content": "<p>Detalles del producto.</p>" } },
+        "tab2": { "type": "tab", "settings": { "title": "Envío y devoluciones", "content": "<p>24-48h laborables.</p>" } }
+      },
+      "block_order": ["trust1", "trust2", "tab1", "tab2"]
+    },
+    "recommendations": {
+      "type": "product-recommendations",
+      "settings": { "heading": "También te puede gustar", "products_to_show": 4 }
+    },
+    "recent": {
+      "type": "recently-viewed",
+      "settings": { "heading": "Vistos recientemente" }
+    }
+  },
+  "order": ["main", "recommendations", "recent"]
+}

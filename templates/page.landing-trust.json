@@ -1,0 +1,62 @@
+{
+  "sections": {
+    "hero": {
+      "type": "rich-text",
+      "blocks": {
+        "h": { "type": "heading", "settings": { "heading": "Miles de clientes felices", "heading_tag": "h1" } },
+        "t": { "type": "text", "settings": { "text": "<p>Valoración media 4.9/5 basada en más de 2.000 reseñas verificadas.</p>" } }
+      },
+      "block_order": ["h", "t"],
+      "settings": { "alignment": "center", "background": "#f7f7f7" }
+    },
+    "reviews": {
+      "type": "testimonials",
+      "settings": { "heading": "Lo que dicen", "background": "#ffffff" }
+    },
+    "stats": {
+      "type": "multicolumn",
+      "settings": { "heading": "En cifras", "columns": "4" },
+      "blocks": {
+        "s1": { "type": "column", "settings": { "heading": "50K+", "text": "Pedidos enviados" } },
+        "s2": { "type": "column", "settings": { "heading": "4.9★", "text": "Valoración media" } },
+        "s3": { "type": "column", "settings": { "heading": "30 días", "text": "Devolución fácil" } },
+        "s4": { "type": "column", "settings": { "heading": "24h", "text": "Respuesta soporte" } }
+      },
+      "block_order": ["s1", "s2", "s3", "s4"]
+    },
+    "logos": {
+      "type": "logo-list",
+      "settings": { "heading": "Confían en nosotros", "enable_scroll": true }
+    },
+    "products": {
+      "type": "featured-collection",
+      "settings": {
+        "heading": "Los más valorados",
+        "products_to_show": 4,
+        "columns_desktop": "4"
+      }
+    },
+    "before_after": {
+      "type": "before-after",
+      "settings": {
+        "heading": "Resultados reales",
+        "label_before": "Antes",
+        "label_after": "Después"
+      }
+    },
+    "faq": {
+      "type": "faq",
+      "settings": { "heading": "Garantías y devoluciones" }
+    },
+    "cta": {
+      "type": "hero-banner",
+      "settings": {
+        "heading": "Únete a nuestra comunidad",
+        "button_label": "Empezar a comprar",
+        "content_alignment": "center",
+        "min_height": 45
+      }
+    }
+  },
+  "order": ["hero", "reviews", "stats", "logos", "products", "before_after", "faq", "cta"]
+}

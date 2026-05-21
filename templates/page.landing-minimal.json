@@ -1,0 +1,54 @@
+{
+  "sections": {
+    "hero": {
+      "type": "hero-banner",
+      "settings": {
+        "heading": "Un producto. Cero distracciones.",
+        "description": "Enfocado en lo esencial.",
+        "button_label": "Comprar",
+        "content_alignment": "center",
+        "min_height": 80,
+        "overlay_opacity": 30
+      }
+    },
+    "product": {
+      "type": "featured-product",
+      "settings": {
+        "heading": "",
+        "product": ""
+      }
+    },
+    "detail": {
+      "type": "image-with-text",
+      "settings": {
+        "heading": "Calidad sin compromiso",
+        "layout": "image_left",
+        "button_label": "Ver detalles"
+      }
+    },
+    "single_review": {
+      "type": "testimonials",
+      "settings": { "heading": "" },
+      "blocks": {
+        "r1": {
+          "type": "review",
+          "settings": {
+            "rating": 5,
+            "text": "El mejor que he probado. Repetiré seguro.",
+            "author": "Cliente verificado"
+          }
+        }
+      },
+      "block_order": ["r1"]
+    },
+    "cta": {
+      "type": "rich-text",
+      "blocks": {
+        "b": { "type": "button", "settings": { "label": "Añadir al carrito", "style": "primary" } }
+      },
+      "block_order": ["b"],
+      "settings": { "alignment": "center" }
+    }
+  },
+  "order": ["hero", "product", "detail", "single_review", "cta"]
+}

@@ -1,0 +1,54 @@
+<section class="testimonials section-spacing" style="background:{{ section.settings.background }}">
+  <div class="page-width">
+    {%- if section.settings.heading != blank -%}<h2 style="text-align:center;margin-bottom:2rem">{{ section.settings.heading }}</h2>{%- endif -%}
+    <div class="testimonials__slider" data-testimonials>
+      {%- for block in section.blocks -%}
+        <blockquote class="testimonials__slide{% if forloop.first %} is-active{% endif %}" {{ block.shopify_attributes }}>
+          {%- if block.settings.rating > 0 -%}
+            <div class="testimonials__stars" aria-label="{{ block.settings.rating }} estrellas">
+              {%- for i in (1..block.settings.rating) -%}★{%- endfor -%}
+            </div>
+          {%- endif -%}
+          <p>{{ block.settings.text }}</p>
+          <footer>
+            {%- if block.settings.author != blank -%}<cite>{{ block.settings.author }}</cite>{%- endif -%}
+            {%- if block.settings.role != blank -%}<span>{{ block.settings.role }}</span>{%- endif -%}
+          </footer>
+          {%- if block.settings.image != blank -%}
+            {{ block.settings.image | image_url: width: 64 | image_tag: class: 'testimonials__avatar' }}
+          {%- endif -%}
+        </blockquote>
+      {%- endfor -%}
+      {%- if section.blocks.size > 1 -%}
+        <div class="testimonials__nav">
+          <button type="button" data-testimonial-prev aria-label="Anterior">‹</button>
+          <button type="button" data-testimonial-next aria-label="Siguiente">›</button>
+        </div>
+      {%- endif -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Testimonios",
+  "settings": [
+    { "type": "text", "id": "heading", "label": "Título", "default": "Lo que dicen nuestros clientes" },
+    { "type": "color", "id": "background", "label": "Fondo", "default": "#f7f7f7" }
+  ],
+  "blocks": [
+    {
+      "type": "review",
+      "name": "Reseña",
+      "settings": [
+        { "type": "range", "id": "rating", "min": 0, "max": 5, "step": 1, "label": "Estrellas", "default": 5 },
+        { "type": "textarea", "id": "text", "label": "Texto", "default": "Producto excelente, envío rapidísimo." },
+        { "type": "text", "id": "author", "label": "Nombre", "default": "María G." },
+        { "type": "text", "id": "role", "label": "Cargo / ciudad" },
+        { "type": "image_picker", "id": "image", "label": "Avatar" }
+      ]
+    }
+  ],
+  "presets": [{ "name": "Testimonios", "blocks": [{ "type": "review" }, { "type": "review" }, { "type": "review" }] }]
+}
+{% endschema %}

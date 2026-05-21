@@ -1,0 +1,26 @@
+{%- if section.settings.enable -%}
+  <div class="age-verifier" data-age-verifier hidden>
+    <div class="age-verifier__box">
+      <h2>{{ section.settings.heading }}</h2>
+      <p>{{ section.settings.text }}</p>
+      <div class="age-verifier__actions">
+        <button type="button" class="button" data-age-yes>{{ section.settings.button_yes }}</button>
+        <button type="button" class="button button--secondary" data-age-no data-redirect="{{ section.settings.redirect_no }}">{{ section.settings.button_no }}</button>
+      </div>
+    </div>
+  </div>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Verificador de edad",
+  "settings": [
+    { "type": "checkbox", "id": "enable", "label": "Activar", "default": false },
+    { "type": "text", "id": "heading", "label": "Título", "default": "¿Eres mayor de edad?" },
+    { "type": "textarea", "id": "text", "label": "Texto", "default": "Debes ser mayor de 18 años para entrar." },
+    { "type": "text", "id": "button_yes", "label": "Botón sí", "default": "Sí, entrar" },
+    { "type": "text", "id": "button_no", "label": "Botón no", "default": "No" },
+    { "type": "url", "id": "redirect_no", "label": "URL si dice no" }
+  ]
+}
+{% endschema %}

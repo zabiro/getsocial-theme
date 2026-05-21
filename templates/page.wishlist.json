@@ -1,0 +1,12 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-wishlist",
+      "settings": {
+        "heading": "Mi lista de deseos",
+        "description": "<p>Guarda tus favoritos y vuelve cuando quieras.</p>"
+      }
+    }
+  },
+  "order": ["main"]
+}

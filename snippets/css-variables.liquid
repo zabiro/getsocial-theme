@@ -1,0 +1,147 @@
+{%- liquid
+  assign heading_scale = settings.font_heading_scale | divided_by: 100.0
+  assign body_scale = settings.font_body_scale | divided_by: 100.0
+
+  assign color_primary = settings.color_primary
+  assign color_secondary = settings.color_secondary
+  assign color_accent = settings.color_accent
+  assign color_accent_hover = settings.color_accent_hover
+  assign color_background = settings.color_background
+  assign color_background_secondary = settings.color_background_secondary
+  assign color_text = settings.color_text
+  assign color_text_light = settings.color_text_light
+  assign color_border = settings.color_border
+  assign color_sale = settings.color_sale
+  assign color_success = settings.color_success
+  assign color_button = settings.color_button
+  assign color_button_text = settings.color_button_text
+  assign color_button_secondary = settings.color_button_secondary
+  assign color_button_secondary_text = settings.color_button_secondary_text
+  assign header_background = settings.header_background
+  assign header_text = settings.header_text
+  assign font_heading_stack = ''
+  assign font_body_stack = ''
+  assign preset_heading_scale = heading_scale
+  assign preset_body_scale = body_scale
+
+  unless settings.color_preset == 'custom' or settings.color_preset == blank
+    case settings.color_preset
+      when 'fashion'
+        assign font_heading_stack = 'Georgia, "Times New Roman", serif'
+        assign font_body_stack = 'Helvetica, Arial, sans-serif'
+        assign preset_heading_scale = 1.05
+        assign color_primary = '#1a1a1a'
+        assign color_accent = '#c9a962'
+        assign color_accent_hover = '#b8944f'
+        assign color_background = '#ffffff'
+        assign color_background_secondary = '#f7f7f7'
+        assign color_button = '#1a1a1a'
+      when 'beauty'
+        assign font_heading_stack = '"Palatino Linotype", Palatino, Georgia, serif'
+        assign font_body_stack = 'system-ui, sans-serif'
+        assign preset_heading_scale = 1.02
+        assign color_primary = '#2d2a26'
+        assign color_accent = '#c9a090'
+        assign color_accent_hover = '#b88a7a'
+        assign color_background = '#fffaf7'
+        assign color_background_secondary = '#f5ebe0'
+        assign color_button = '#2d2a26'
+        assign header_background = '#fffaf7'
+      when 'electronics'
+        assign font_heading_stack = '"Segoe UI", Roboto, Helvetica, sans-serif'
+        assign font_body_stack = '"Segoe UI", Roboto, sans-serif'
+        assign preset_heading_scale = 0.95
+        assign color_primary = '#0d1117'
+        assign color_accent = '#3b82f6'
+        assign color_accent_hover = '#2563eb'
+        assign color_background = '#ffffff'
+        assign color_background_secondary = '#f0f4f8'
+        assign color_button = '#0d1117'
+        assign color_sale = '#ef4444'
+      when 'home'
+        assign color_primary = '#3d3a36'
+        assign color_accent = '#8b7355'
+        assign color_accent_hover = '#75614a'
+        assign color_background = '#faf9f6'
+        assign color_background_secondary = '#efe9e0'
+        assign color_button = '#3d3a36'
+        assign header_background = '#faf9f6'
+      when 'food'
+        assign color_primary = '#1e3d2f'
+        assign color_accent = '#6b8f3c'
+        assign color_accent_hover = '#5a7a32'
+        assign color_background = '#fffdf8'
+        assign color_background_secondary = '#f0f5e8'
+        assign color_button = '#1e3d2f'
+        assign color_success = '#4a7c43'
+      when 'sport'
+        assign font_heading_stack = 'Impact, "Arial Black", sans-serif'
+        assign font_body_stack = 'Arial, Helvetica, sans-serif'
+        assign preset_heading_scale = 1.1
+        assign color_primary = '#111111'
+        assign color_accent = '#e63946'
+        assign color_accent_hover = '#c1121f'
+        assign color_background = '#ffffff'
+        assign color_background_secondary = '#f2f2f2'
+        assign color_button = '#111111'
+        assign color_sale = '#e63946'
+    endcase
+  endunless
+-%}
+<style>
+  :root {
+    --color-primary: {{ color_primary }};
+    --color-secondary: {{ color_secondary }};
+    --color-accent: {{ color_accent }};
+    --color-accent-hover: {{ color_accent_hover }};
+    --color-background: {{ color_background }};
+    --color-background-secondary: {{ color_background_secondary }};
+    --color-text: {{ color_text }};
+    --color-text-light: {{ color_text_light }};
+    --color-border: {{ color_border }};
+    --color-sale: {{ color_sale }};
+    --color-success: {{ color_success }};
+    --color-button: {{ color_button }};
+    --color-button-text: {{ color_button_text }};
+    --color-button-secondary: {{ color_button_secondary }};
+    --color-button-secondary-text: {{ color_button_secondary_text }};
+    --header-background: {{ header_background }};
+    --header-text: {{ header_text }};
+
+    --font-heading-family: {{ settings.font_heading.family }}, {{ settings.font_heading.fallback_families }};
+    --font-heading-weight: {{ settings.font_heading_weight }};
+    --font-heading-style: {{ settings.font_heading.style }};
+    --font-body-family: {{ settings.font_body.family }}, {{ settings.font_body.fallback_families }};
+    --font-body-style: {{ settings.font_body.style }};
+    --font-navigation-family: {{ settings.font_navigation.family }}, {{ settings.font_navigation.fallback_families }};
+
+    --font-heading-scale: {{ preset_heading_scale }};
+    --font-body-scale: {{ preset_body_scale }};
+    {%- if font_heading_stack != blank -%}
+    --font-heading-override: {{ font_heading_stack }};
+    --font-body-override: {{ font_body_stack }};
+    {%- endif -%}
+    --font-body-line-height: {{ settings.font_body_line_height }};
+
+    --page-width: {{ settings.page_width }}px;
+    --section-spacing: {{ settings.section_spacing }}px;
+    --grid-gap: {{ settings.grid_gap }}px;
+    --border-radius: {{ settings.border_radius }}px;
+    --button-radius: {{ settings.button_radius }}px;
+
+    --font-size-h1: calc(2.5rem * var(--font-heading-scale));
+    --font-size-h2: calc(2rem * var(--font-heading-scale));
+    --font-size-h3: calc(1.5rem * var(--font-heading-scale));
+    --font-size-body: calc(1rem * var(--font-body-scale));
+    --font-size-small: calc(0.875rem * var(--font-body-scale));
+  }
+</style>
+{{ settings.font_heading | font_face: font_display: 'swap' }}
+{{ settings.font_body | font_face: font_display: 'swap' }}
+{{ settings.font_navigation | font_face: font_display: 'swap' }}
+{%- if font_heading_stack != blank -%}
+<style>
+  h1,h2,h3,.site-header__logo { font-family: var(--font-heading-override), var(--font-heading-family); }
+  body { font-family: var(--font-body-override), var(--font-body-family); }
+</style>
+{%- endif -%}

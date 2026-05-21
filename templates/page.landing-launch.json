@@ -1,0 +1,50 @@
+{
+  "sections": {
+    "hero": {
+      "type": "hero-banner",
+      "settings": {
+        "subheading": "Lanzamiento exclusivo",
+        "heading": "Presentamos lo nuevo",
+        "description": "Diseño, calidad y rendimiento en un solo producto.",
+        "button_label": "Descubrir",
+        "button_label_2": "Ver características",
+        "content_alignment": "left"
+      }
+    },
+    "product": {
+      "type": "featured-product",
+      "settings": {
+        "heading": "El producto del lanzamiento",
+        "product": ""
+      }
+    },
+    "video": {
+      "type": "video-banner",
+      "settings": {
+        "heading": "Míralo en acción",
+        "button_label": "Reservar el tuyo",
+        "height": 55,
+        "alignment": "center"
+      }
+    },
+    "features": {
+      "type": "multicolumn",
+      "settings": { "heading": "Por qué es diferente" },
+      "blocks": {
+        "f1": { "type": "column", "settings": { "icon": "✦", "heading": "Innovación", "text": "Tecnología de última generación" } },
+        "f2": { "type": "column", "settings": { "icon": "✦", "heading": "Diseño", "text": "Pensado para el día a día" } },
+        "f3": { "type": "column", "settings": { "icon": "✦", "heading": "Garantía", "text": "2 años incluidos" } }
+      },
+      "block_order": ["f1", "f2", "f3"]
+    },
+    "reviews": {
+      "type": "testimonials",
+      "settings": { "heading": "Early adopters" }
+    },
+    "faq": {
+      "type": "faq",
+      "settings": { "heading": "Sobre el lanzamiento" }
+    }
+  },
+  "order": ["hero", "product", "video", "features", "reviews", "faq"]
+}

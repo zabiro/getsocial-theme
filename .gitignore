@@ -1,0 +1,20 @@
+# ZIPs generados (no versionar)
+getsocial-theme-v*.zip
+getsocial-theme-client-v*.zip
+
+# Shopify / entorno local
+.shopify/
+.env
+.env.*
+
+# Sistema
+.DS_Store
+Thumbs.db
+*.log
+
+# Servidor de licencias (datos sensibles)
+license-server/storage/licenses.json
+
+# Editor
+.idea/
+.vscode/

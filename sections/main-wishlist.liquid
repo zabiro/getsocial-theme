@@ -1,0 +1,18 @@
+<section class="main-wishlist section-spacing">
+  <div class="page-width">
+    <h1>{{ section.settings.heading | default: 'Mi lista de deseos' }}</h1>
+    {%- if section.settings.description != blank -%}<div class="rte">{{ section.settings.description }}</div>{%- endif -%}
+    <div class="grid grid--4" data-wishlist-grid></div>
+    <p class="wishlist-hint">{{ 'wishlist.hint' | t }}</p>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Wishlist",
+  "settings": [
+    { "type": "text", "id": "heading", "label": "Título", "default": "Mi lista de deseos" },
+    { "type": "richtext", "id": "description", "label": "Descripción" }
+  ]
+}
+{% endschema %}

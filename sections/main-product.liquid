@@ -1,0 +1,203 @@
+<script type="application/json" data-product-json>{{ product | json }}</script>
+
+<section class="main-product section-spacing" data-product-section data-product-id="{{ product.id }}" data-product-handle="{{ product.handle }}">
+  <div class="page-width product-main product-gallery--{{ settings.product_gallery_layout }}">
+    <div class="product-gallery" data-product-gallery>
+      {%- if settings.product_gallery_layout contains 'thumbnails' -%}
+        <div class="product-gallery__thumbs">
+          {%- for media in product.media -%}
+            <button type="button" class="product-gallery__thumb{% if forloop.first %} is-active{% endif %}" data-thumb="{{ forloop.index0 }}" data-media-id="{{ media.id }}">
+              {{ media.preview_image | image_url: width: 120 | image_tag }}
+            </button>
+          {%- endfor -%}
+        </div>
+      {%- endif -%}
+      <div class="product-gallery__main{% if settings.product_enable_zoom %} product-gallery__main--zoom{% endif %}" data-gallery-main>
+        {%- for media in product.media -%}
+          <div class="product-gallery__slide{% unless forloop.first %} hidden{% endunless %}" data-gallery-slide data-index="{{ forloop.index0 }}">
+            {%- case media.media_type -%}
+              {%- when 'image' -%}
+                {%- if forloop.first -%}
+                  {{ media | image_url: width: 1400 | image_tag: loading: 'eager', id: 'ProductMainImage', alt: media.alt }}
+                {%- else -%}
+                  {{ media | image_url: width: 1400 | image_tag: loading: 'lazy', alt: media.alt }}
+                {%- endif -%}
+              {%- when 'video' -%}
+                {{ media | video_tag: controls: true }}
+              {%- else -%}
+                {{ media | image_url: width: 1400 | image_tag }}
+            {%- endcase -%}
+          </div>
+        {%- endfor -%}
+      </div>
+    </div>
+
+    <div class="product-info" data-product-form>
+      {%- for block in section.blocks -%}
+        {%- case block.type -%}
+          {%- when '@app' -%}
+            {% render block %}
+        {%- endcase -%}
+      {%- endfor -%}
+
+      <div class="product-info__title-row">
+        <h1>{{ product.title }}</h1>
+        <div class="product-info__actions">
+          {% render 'wishlist-button', product: product %}
+          {% render 'compare-button', product: product %}
+        </div>
+      </div>
+      {%- if settings.product_card_show_vendor -%}<p class="product-info__vendor">{{ product.vendor }}</p>{%- endif -%}
+      <div class="product-info__price" data-product-price>{% render 'price', product: product %}</div>
+      {% render 'inventory-urgency', product: product %}
+
+      {%- if settings.product_show_sku -%}
+        <p class="product-info__sku" data-product-sku><small>{{ 'products.product.sku' | t }}: <span>{{ product.selected_or_first_available_variant.sku }}</span></small></p>
+      {%- endif -%}
+
+      {%- if settings.product_show_inventory -%}
+        <p class="product-info__stock" data-product-stock>
+          {%- if product.selected_or_first_available_variant.available -%}
+            <span style="color:var(--color-success)">{{ 'products.product.in_stock' | t }}</span>
+          {%- else -%}
+            <span style="color:var(--color-sale)">{{ 'products.product.out_of_stock' | t }}</span>
+          {%- endif -%}
+        </p>
+      {%- endif -%}
+
+      {%- form 'product', product, id: 'product-form', data-product-form-el: '' -%}
+        <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}" data-variant-input>
+
+        {%- if settings.product_card_show_swatches -%}
+          {% render 'swatches', product: product %}
+        {%- endif -%}
+
+        {%- unless product.has_only_default_variant -%}
+          {%- for option in product.options_with_values -%}
+            <fieldset class="product-option" data-option-index="{{ forloop.index0 }}">
+              <legend>{{ option.name }}</legend>
+              <div class="product-option__values">
+                {%- for value in option.values -%}
+                  <label class="product-option__value">
+                    <input type="radio" name="options[{{ option.name | escape }}]" value="{{ value | escape }}"{% if option.selected_value == value %} checked{% endif %}>
+                    <span>{{ value }}</span>
+                  </label>
+                {%- endfor -%}
+              </div>
+            </fieldset>
+          {%- endfor -%}
+        {%- endunless -%}
+
+        <div class="product-form__qty">
+          <label for="Quantity">{{ 'general.quantity' | t }}</label>
+          <button type="button" data-qty-minus>−</button>
+          <input type="number" id="Quantity" name="quantity" value="1" min="1" data-qty-input>
+          <button type="button" data-qty-plus>+</button>
+        </div>
+
+        <button type="submit" name="add" class="button button--full" data-add-to-cart{% unless product.selected_or_first_available_variant.available %} disabled{% endunless %}>
+          {%- if product.selected_or_first_available_variant.available -%}
+            {{ 'products.product.add_to_cart' | t }}
+          {%- else -%}
+            {{ 'products.product.sold_out' | t }}
+          {%- endif -%}
+        </button>
+
+        {%- if section.settings.show_dynamic_checkout -%}
+          {{ form | payment_button }}
+        {%- endif -%}
+      {%- endform -%}
+
+      {%- for block in section.blocks -%}
+        {%- case block.type -%}
+          {%- when 'trust' -%}
+            <ul class="product-trust" {{ block.shopify_attributes }}>
+              <li>{{ block.settings.icon }} {{ block.settings.text }}</li>
+            </ul>
+          {%- when 'size_chart' -%}
+            {%- if block.settings.page != blank -%}
+              <button type="button" class="size-chart-link" data-size-chart-open data-size-chart-target="size-chart-{{ block.id }}" {{ block.shopify_attributes }}>{{ block.settings.label }}</button>
+              <div id="size-chart-{{ block.id }}" hidden class="rte size-chart-source">{{ block.settings.page.content }}</div>
+            {%- endif -%}
+        {%- endcase -%}
+      {%- endfor -%}
+
+      {%- if settings.product_show_share -%}
+        {% render 'social-share', product: product %}
+      {%- endif -%}
+
+      {%- if section.blocks.size > 0 -%}
+        <div class="product-tabs" data-product-tabs>
+          {%- for block in section.blocks -%}
+            {%- if block.type == 'tab' -%}
+              <details class="product-tabs__item" {{ block.shopify_attributes }}{% if forloop.first %} open{% endif %}>
+                <summary>{{ block.settings.title }}</summary>
+                <div class="rte">{{ block.settings.content }}</div>
+              </details>
+            {%- endif -%}
+          {%- endfor -%}
+        </div>
+      {%- elsif settings.product_tabs_count > 0 -%}
+        <div class="product-tabs">
+          <details open><summary>Descripción</summary><div class="rte">{{ product.description }}</div></details>
+        </div>
+      {%- endif -%}
+    </div>
+  </div>
+
+  {%- if settings.product_sticky_add_to_cart -%}
+    <div class="sticky-atc" data-sticky-atc>
+      <div class="page-width sticky-atc__inner">
+        <span>{{ product.title }}</span>
+        <span data-sticky-price>{% render 'price', product: product %}</span>
+        <button type="submit" form="product-form" class="button button--small">{{ 'products.product.add_to_cart' | t }}</button>
+      </div>
+    </div>
+  {%- endif -%}
+</section>
+
+{% schema %}
+{
+  "name": "Producto",
+  "tag": "section",
+  "class": "section-main-product",
+  "settings": [
+    { "type": "checkbox", "id": "show_dynamic_checkout", "label": "Botones de pago dinámico", "default": true }
+  ],
+  "blocks": [
+    {
+      "type": "tab",
+      "name": "Pestaña",
+      "settings": [
+        { "type": "text", "id": "title", "label": "Título", "default": "Detalles" },
+        { "type": "richtext", "id": "content", "label": "Contenido" }
+      ]
+    },
+    {
+      "type": "trust",
+      "name": "Icono confianza",
+      "settings": [
+        { "type": "text", "id": "icon", "label": "Emoji", "default": "🚚" },
+        { "type": "text", "id": "text", "label": "Texto", "default": "Envío en 24-48h" }
+      ]
+    },
+    {
+      "type": "size_chart",
+      "name": "Guía de tallas",
+      "settings": [
+        { "type": "text", "id": "label", "label": "Texto enlace", "default": "Guía de tallas" },
+        { "type": "page", "id": "page", "label": "Página con tabla" }
+      ]
+    },
+    { "type": "@app" }
+  ],
+  "default": {
+    "blocks": [
+      { "type": "trust", "settings": { "icon": "🚚", "text": "Envío gratis +100€" } },
+      { "type": "trust", "settings": { "icon": "↩️", "text": "Devolución 30 días" } },
+      { "type": "tab", "settings": { "title": "Descripción", "content": "<p>Información del producto.</p>" } },
+      { "type": "tab", "settings": { "title": "Envíos", "content": "<p>24-48h laborables.</p>" } }
+    ]
+  }
+}
+{% endschema %}

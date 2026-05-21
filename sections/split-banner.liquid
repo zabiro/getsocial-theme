@@ -1,0 +1,45 @@
+<section class="split-banner section-spacing">
+  <div class="split-banner__grid split-banner__grid--{{ section.settings.height }}">
+    {%- for block in section.blocks -%}
+      <a href="{{ block.settings.link | default: '#' }}" class="split-banner__item" style="--overlay:{{ block.settings.overlay_opacity | divided_by: 100.0 }}" {{ block.shopify_attributes }}>
+        {%- if block.settings.image != blank -%}
+          {{ block.settings.image | image_url: width: 1200 | image_tag: loading: 'lazy', class: 'split-banner__bg' }}
+        {%- endif -%}
+        <div class="split-banner__content" style="color:{{ block.settings.text_color }}">
+          {%- if block.settings.subheading != blank -%}<span>{{ block.settings.subheading }}</span>{%- endif -%}
+          <h2>{{ block.settings.heading }}</h2>
+          {%- if block.settings.button_label != blank -%}<span class="split-banner__cta">{{ block.settings.button_label }} →</span>{%- endif -%}
+        </div>
+      </a>
+    {%- endfor -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Banner dividido",
+  "settings": [
+    { "type": "select", "id": "height", "label": "Altura", "options": [
+      { "value": "medium", "label": "Media" },
+      { "value": "tall", "label": "Alta" }
+    ], "default": "tall" }
+  ],
+  "blocks": [
+    {
+      "type": "panel",
+      "name": "Panel",
+      "limit": 2,
+      "settings": [
+        { "type": "image_picker", "id": "image", "label": "Imagen" },
+        { "type": "text", "id": "subheading", "label": "Subtítulo" },
+        { "type": "text", "id": "heading", "label": "Título", "default": "Colección" },
+        { "type": "text", "id": "button_label", "label": "Texto enlace", "default": "Descubrir" },
+        { "type": "url", "id": "link", "label": "Enlace" },
+        { "type": "range", "id": "overlay_opacity", "min": 0, "max": 70, "step": 5, "label": "Overlay %", "default": 25 },
+        { "type": "color", "id": "text_color", "label": "Texto", "default": "#ffffff" }
+      ]
+    }
+  ],
+  "presets": [{ "name": "Banner dividido", "blocks": [{ "type": "panel" }, { "type": "panel" }] }]
+}
+{% endschema %}

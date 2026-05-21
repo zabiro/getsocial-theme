@@ -1,0 +1,15 @@
+﻿{
+  "GS-DEMO-0001": {
+    "email": "demo@ejemplo.com",
+    "shop": null,
+    "max_shops": 1,
+    "created": "2026-05-21"
+  },
+  "GS-DEMO-0002-EXT": {
+    "email": "agencia@ejemplo.com",
+    "shop": "cliente-oficial.myshopify.com",
+    "max_shops": 1,
+    "created": "2026-01-10",
+    "activated_at": "2026-01-15T10:00:00+00:00"
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "type": "header",
+  "name": "Grupo cabecera",
+  "sections": {
+    "announcement": {
+      "type": "announcement-bar",
+      "settings": {
+        "enable": true,
+        "text": "Envío gratis en pedidos superiores a 100€"
+      }
+    },
+    "header": {
+      "type": "header",
+      "settings": {
+        "menu": "main-menu",
+        "enable_mega_menu": true
+      }
+    }
+  },
+  "order": ["announcement", "header"]
+}

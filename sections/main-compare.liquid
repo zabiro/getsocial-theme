@@ -1,0 +1,16 @@
+<section class="main-compare section-spacing">
+  <div class="page-width">
+    <h1>{{ section.settings.heading | default: 'Comparar productos' }}</h1>
+    <p>{{ 'compare.instructions' | t }}</p>
+    <div data-compare-table></div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Comparador",
+  "settings": [
+    { "type": "text", "id": "heading", "label": "Título", "default": "Comparar productos" }
+  ]
+}
+{% endschema %}

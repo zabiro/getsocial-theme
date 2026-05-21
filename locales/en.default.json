@@ -1,0 +1,105 @@
+{
+  "general": {
+    "home": "Home",
+    "search": "Search",
+    "cart": "Cart",
+    "account": "Account",
+    "close": "Close",
+    "menu": "Menu",
+    "loading": "Loading…",
+    "view_all": "View all",
+    "add_to_cart": "Add to cart",
+    "sold_out": "Sold out",
+    "unavailable": "Unavailable",
+    "quantity": "Quantity",
+    "subtotal": "Subtotal",
+    "checkout": "Checkout",
+    "continue_shopping": "Continue shopping",
+    "back_to_top": "Back to top",
+    "skip_to_content": "Skip to content",
+    "share": "Share",
+    "copy_link": "Copy link"
+  },
+  "products": {
+    "quick_view": "Quick view",
+    "view_product": "View product",
+    "low_stock": "Only {{ count }} left!",
+    "product": {
+      "add_to_cart": "Add to cart",
+      "sold_out": "Sold out",
+      "on_sale": "Sale",
+      "sku": "SKU",
+      "in_stock": "In stock",
+      "low_stock": "Low stock",
+      "out_of_stock": "Out of stock"
+    }
+  },
+  "wishlist": {
+    "title": "Wishlist",
+    "add": "Add to wishlist",
+    "empty": "Your wishlist is empty",
+    "hint": "Favorites are saved in this browser."
+  },
+  "compare": {
+    "title": "Compare",
+    "add": "Add to compare",
+    "view": "View comparison",
+    "clear": "Clear all",
+    "empty": "No products to compare",
+    "products_selected": "products selected",
+    "instructions": "Add products using the ⇄ icon on cards (max per theme settings)."
+  },
+  "collections": {
+    "products": "products",
+    "sort": "Sort by",
+    "filter": "Filter",
+    "filters_title": "Filters",
+    "apply_filters": "View results",
+    "clear": "Clear filters",
+    "no_filters": "Enable filters in Search & Discovery",
+    "empty": "No products match these filters"
+  },
+  "cart": {
+    "title": "Your cart",
+    "empty": "Your cart is empty",
+    "free_shipping_remaining": "{{ amount }} away from free shipping",
+    "free_shipping_achieved": "You've unlocked free shipping!"
+  },
+  "contact": {
+    "name": "Name",
+    "email": "Email",
+    "phone": "Phone",
+    "message": "Message",
+    "success": "Thanks! We'll get back to you soon."
+  },
+  "sections": {
+    "countdown": {
+      "days": "Days",
+      "hours": "Hours",
+      "minutes": "Min",
+      "seconds": "Sec"
+    }
+  },
+  "password": {
+    "message": "This store is private. Enter the password.",
+    "label": "Password",
+    "placeholder": "Password",
+    "submit": "Enter",
+    "admin": "Store owner?",
+    "admin_link": "Log in here"
+  },
+  "gift_card": {
+    "title": "Gift card",
+    "code": "Code",
+    "shop_link": "Continue shopping",
+    "expired": "This gift card has expired"
+  },
+  "footer": {
+    "payment_methods": "Payment methods"
+  },
+  "blogs": {
+    "comments": {
+      "title": "Comments"
+    }
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "sections": {
+    "form": {
+      "type": "contact-form",
+      "settings": {
+        "heading": "Contáctanos",
+        "text": "<p>Estamos aquí para ayudarte.</p>"
+      }
+    }
+  },
+  "order": ["form"]
+}

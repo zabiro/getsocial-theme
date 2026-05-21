@@ -1,0 +1,56 @@
+{
+  "sections": {
+    "countdown": {
+      "type": "countdown-timer",
+      "settings": {
+        "heading": "El webinar empieza en",
+        "subheading": "Plazas limitadas",
+        "end_date": "2026-09-15 18:00",
+        "button_label": "Reservar plaza",
+        "background": "#0d1117",
+        "text_color": "#ffffff"
+      }
+    },
+    "hero": {
+      "type": "hero-banner",
+      "settings": {
+        "heading": "Masterclass en vivo",
+        "description": "Aprende estrategias de venta online con expertos del sector.",
+        "button_label": "Registrarme gratis",
+        "content_alignment": "center"
+      }
+    },
+    "agenda": {
+      "type": "multicolumn",
+      "settings": { "heading": "Agenda", "columns": "3" },
+      "blocks": {
+        "a1": { "type": "column", "settings": { "heading": "18:00", "text": "Introducción y tendencias" } },
+        "a2": { "type": "column", "settings": { "heading": "18:30", "text": "Casos de éxito reales" } },
+        "a3": { "type": "column", "settings": { "heading": "19:00", "text": "Q&A en directo" } }
+      },
+      "block_order": ["a1", "a2", "a3"]
+    },
+    "speaker": {
+      "type": "image-with-text",
+      "settings": {
+        "subheading": "Ponente",
+        "heading": "Nombre del experto",
+        "text": "<p>+15 años ayudando marcas a escalar en e-commerce.</p>",
+        "layout": "image_right"
+      }
+    },
+    "register": {
+      "type": "contact-form",
+      "settings": {
+        "heading": "Reserva tu plaza",
+        "text": "<p>Recibirás el enlace de Zoom por email.</p>",
+        "button_label": "Confirmar registro"
+      }
+    },
+    "faq": {
+      "type": "faq",
+      "settings": { "heading": "Preguntas del evento" }
+    }
+  },
+  "order": ["countdown", "hero", "agenda", "speaker", "register", "faq"]
+}

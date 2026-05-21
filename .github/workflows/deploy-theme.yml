@@ -1,0 +1,33 @@
+# Sube el tema a Shopify en cada push a main.
+# Secrets en GitHub: SHOPIFY_CLI_THEME_TOKEN, SHOPIFY_STORE (ej. prueba-tienda-3bmgzfei.myshopify.com)
+
+name: Deploy GetSocial Theme
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Install Shopify CLI
+        run: npm install -g @shopify/cli@latest
+
+      - name: Push theme (sin publicar)
+        env:
+          SHOPIFY_CLI_THEME_TOKEN: ${{ secrets.SHOPIFY_CLI_THEME_TOKEN }}
+          SHOPIFY_FLAG_STORE: ${{ secrets.SHOPIFY_STORE }}
+        run: |
+          shopify theme push \
+            --path . \
+            --store "$SHOPIFY_FLAG_STORE" \
+            --unpublished \
+            --json

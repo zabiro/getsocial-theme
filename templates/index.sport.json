@@ -1,0 +1,48 @@
+{
+  "sections": {
+    "video": {
+      "type": "video-banner",
+      "settings": {
+        "heading": "Supera tus límites",
+        "button_label": "Nueva colección",
+        "height": 75,
+        "alignment": "center"
+      }
+    },
+    "scrolling": {
+      "type": "scrolling-text",
+      "settings": { "background": "#111111" },
+      "blocks": {
+        "t1": { "type": "text", "settings": { "text": "PERFORMANCE" } },
+        "t2": { "type": "text", "settings": { "text": "RUN · TRAIN · WIN" } }
+      },
+      "block_order": ["t1", "t2"]
+    },
+    "promo": {
+      "type": "promo-grid",
+      "blocks": {
+        "b1": { "type": "banner", "settings": { "heading": "Running", "size": "medium" } },
+        "b2": { "type": "banner", "settings": { "heading": "Gym", "size": "medium" } },
+        "b3": { "type": "banner", "settings": { "heading": "Outdoor", "size": "medium" } }
+      },
+      "block_order": ["b1", "b2", "b3"]
+    },
+    "featured": {
+      "type": "featured-collection",
+      "settings": { "heading": "Equipamiento top", "products_to_show": 8, "columns_desktop": "4" }
+    },
+    "countdown": {
+      "type": "countdown-timer",
+      "settings": { "heading": "Drop limitado", "end_date": "2026-08-01 00:00" }
+    },
+    "testimonials": {
+      "type": "testimonials",
+      "settings": { "heading": "Atletas" }
+    },
+    "logos": {
+      "type": "logo-list",
+      "settings": { "heading": "Patrocinadores", "enable_scroll": true }
+    }
+  },
+  "order": ["video", "scrolling", "promo", "featured", "countdown", "testimonials", "logos"]
+}

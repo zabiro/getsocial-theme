@@ -1,0 +1,32 @@
+<section class="contact-form section-spacing">
+  <div class="page-width" style="max-width:640px;margin:0 auto">
+    {%- if section.settings.heading != blank -%}<h2>{{ section.settings.heading }}</h2>{%- endif -%}
+    {%- if section.settings.text != blank -%}<div class="rte">{{ section.settings.text }}</div>{%- endif -%}
+    {% form 'contact' %}
+      {%- if form.posted_successfully? -%}
+        <p class="form-success">{{ 'contact.success' | t }}</p>
+      {%- endif -%}
+      {{ form.errors | default_errors }}
+      <label>{{ 'contact.name' | t }}<input type="text" name="contact[name]" required></label>
+      <label>{{ 'contact.email' | t }}<input type="email" name="contact[email]" required></label>
+      {%- if section.settings.show_phone -%}
+        <label>{{ 'contact.phone' | t }}<input type="tel" name="contact[phone]"></label>
+      {%- endif -%}
+      <label>{{ 'contact.message' | t }}<textarea name="contact[body]" rows="5" required></textarea></label>
+      <button type="submit" class="button">{{ section.settings.button_label | default: 'Enviar' }}</button>
+    {% endform %}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Formulario de contacto",
+  "settings": [
+    { "type": "text", "id": "heading", "label": "Título", "default": "Contáctanos" },
+    { "type": "richtext", "id": "text", "label": "Texto intro" },
+    { "type": "checkbox", "id": "show_phone", "label": "Campo teléfono", "default": true },
+    { "type": "text", "id": "button_label", "label": "Botón", "default": "Enviar mensaje" }
+  ],
+  "presets": [{ "name": "Formulario de contacto" }]
+}
+{% endschema %}

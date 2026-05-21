@@ -1,0 +1,27 @@
+{%- unless template.name == 'index' -%}
+  <nav class="breadcrumbs page-width" aria-label="Breadcrumb">
+    <ol class="breadcrumbs__list">
+      <li><a href="{{ routes.root_url }}">{{ 'general.home' | t }}</a></li>
+      {%- case template.name -%}
+        {%- when 'product' -%}
+          {%- if collection -%}
+            <li><a href="{{ collection.url }}">{{ collection.title }}</a></li>
+          {%- endif -%}
+          <li aria-current="page">{{ product.title }}</li>
+        {%- when 'collection' -%}
+          <li aria-current="page">{{ collection.title }}</li>
+        {%- when 'blog' -%}
+          <li aria-current="page">{{ blog.title }}</li>
+        {%- when 'article' -%}
+          <li><a href="{{ blog.url }}">{{ blog.title }}</a></li>
+          <li aria-current="page">{{ article.title }}</li>
+        {%- when 'cart' -%}
+          <li aria-current="page">{{ 'cart.title' | t }}</li>
+        {%- when 'search' -%}
+          <li aria-current="page">{{ 'general.search' | t }}</li>
+        {%- when 'page' -%}
+          <li aria-current="page">{{ page.title }}</li>
+      {%- endcase -%}
+    </ol>
+  </nav>
+{%- endunless -%}

@@ -1,0 +1,102 @@
+<!doctype html>
+<html class="no-js" lang="{{ request.locale.iso_code }}">
+<head>
+  <!-- GetSocial Theme | GetSocial | Luciano De Luque -->
+  {%- render 'meta-tags' -%}
+  <title>
+    {{ page_title }}
+    {%- unless page_title contains shop.name %} &ndash; {{ shop.name }}{% endunless -%}
+  </title>
+  {% if page_description %}
+    <meta name="description" content="{{ page_description | escape }}">
+  {% endif %}
+  <link rel="canonical" href="{{ canonical_url }}">
+  {%- if settings.favicon != blank -%}
+    <link rel="icon" type="image/png" href="{{ settings.favicon | image_url: width: 32, height: 32 }}">
+  {%- endif -%}
+
+  {{ content_for_header }}
+
+  {%- render 'css-variables' -%}
+  {%- render 'json-ld' -%}
+  {%- render 'license-admin-notice' -%}
+  {{ 'base.css' | asset_url | stylesheet_tag }}
+  {{ 'components.css' | asset_url | stylesheet_tag }}
+  {%- if settings.custom_css != blank -%}<style>{{ settings.custom_css }}</style>{%- endif -%}
+  {%- if settings.custom_head_scripts != blank -%}{{ settings.custom_head_scripts }}{%- endif -%}
+  <script>document.documentElement.classList.replace('no-js','js');</script>
+</head>
+<body class="template-{{ template.name }} header-style--{{ settings.header_style }} cart-type--{{ settings.cart_type }}{% if settings.enable_animations %} animations-enabled{% endif %}{% if settings.header_scroll_hide %} header-scroll-hide{% endif %}" data-shop-url="{{ shop.url }}">
+  <a class="skip-link" href="#MainContent">{{ 'general.skip_to_content' | t }}</a>
+
+  {% sections 'header-group' %}
+
+  {%- if settings.show_breadcrumbs -%}
+    {%- render 'breadcrumbs' -%}
+  {%- endif -%}
+
+  <main id="MainContent" class="main-content" role="main">
+    {{ content_for_layout }}
+  </main>
+
+  {% sections 'footer-group' %}
+
+  {%- if settings.cart_type == 'drawer' or settings.cart_type == 'notification' -%}
+    {%- section 'cart-drawer' -%}
+  {%- endif -%}
+
+  {%- section 'search-modal' -%}
+  {%- section 'newsletter-popup' -%}
+  {%- section 'cookie-bar' -%}
+  {%- section 'age-verifier' -%}
+
+  {%- if settings.enable_quick_view -%}
+    {% render 'quick-view-modal' %}
+  {%- endif -%}
+  {% render 'size-chart-modal' %}
+
+  {%- if settings.back_to_top -%}
+    <button type="button" class="back-to-top" data-back-to-top aria-label="{{ 'general.back_to_top' | t }}">↑</button>
+  {%- endif -%}
+
+  {% render 'whatsapp-float' %}
+
+  {%- if settings.enable_compare -%}
+    {% render 'compare-bar' %}
+  {%- endif -%}
+
+  <script>
+    window.themeSettings = {
+      cartType: {{ settings.cart_type | json }},
+      freeShippingThreshold: {{ settings.cart_free_shipping_threshold | default: 0 | json }},
+      predictiveSearch: {{ settings.predictive_search | json }},
+      animations: {{ settings.enable_animations | json }},
+      compareMax: {{ settings.compare_max | default: 4 | json }},
+      headerScrollHide: {{ settings.header_scroll_hide | json }}
+    };
+    window.themeStrings = {
+      wishlistEmpty: {{ 'wishlist.empty' | t | json }},
+      compareEmpty: {{ 'compare.empty' | t | json }},
+      loading: {{ 'general.loading' | t | json }},
+      addToCart: {{ 'products.product.add_to_cart' | t | json }},
+      viewProduct: {{ 'products.view_product' | t | json }}
+    };
+  </script>
+  <script src="{{ 'theme.js' | asset_url }}" defer></script>
+  {%- if template.name == 'collection' -%}
+    <script src="{{ 'collection-ajax.js' | asset_url }}" defer></script>
+  {%- endif -%}
+  {%- if settings.enable_wishlist or settings.enable_compare -%}
+    <script src="{{ 'wishlist-compare.js' | asset_url }}" defer></script>
+  {%- endif -%}
+  {%- if settings.enable_quick_view -%}
+    <script src="{{ 'quick-view.js' | asset_url }}" defer></script>
+  {%- endif -%}
+  {%- if settings.predictive_search -%}
+    <script src="{{ 'predictive-search.js' | asset_url }}" defer></script>
+  {%- endif -%}
+  {%- if settings.enable_license_check -%}
+    <script src="{{ 'license-check.js' | asset_url }}" defer></script>
+  {%- endif -%}
+</body>
+</html>

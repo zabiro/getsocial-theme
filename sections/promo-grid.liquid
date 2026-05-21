@@ -1,0 +1,72 @@
+<section class="promo-grid section-spacing">
+  <div class="page-width">
+    <div class="promo-grid__layout promo-grid__layout--{{ section.settings.layout }}">
+      {%- for block in section.blocks -%}
+        <a
+          href="{{ block.settings.link | default: '#' }}"
+          class="promo-grid__item promo-grid__item--{{ block.settings.size }}"
+          style="--promo-bg:{{ block.settings.overlay_color }}"
+          {{ block.shopify_attributes }}
+        >
+          {%- if block.settings.image != blank -%}
+            {{ block.settings.image | image_url: width: 900 | image_tag: loading: 'lazy' }}
+          {%- endif -%}
+          <div class="promo-grid__content" style="color:{{ block.settings.text_color }}">
+            {%- if block.settings.subheading != blank -%}<span>{{ block.settings.subheading }}</span>{%- endif -%}
+            {%- if block.settings.heading != blank -%}<h3>{{ block.settings.heading }}</h3>{%- endif -%}
+            {%- if block.settings.button_label != blank -%}<span class="promo-grid__link">{{ block.settings.button_label }} →</span>{%- endif -%}
+          </div>
+        </a>
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Grid promocional",
+  "settings": [
+    {
+      "type": "select",
+      "id": "layout",
+      "label": "Layout",
+      "options": [
+        { "value": "2x2", "label": "2 columnas" },
+        { "value": "hero_side", "label": "1 grande + 2 pequeñas" },
+        { "value": "3col", "label": "3 iguales" }
+      ],
+      "default": "hero_side"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "banner",
+      "name": "Banner",
+      "settings": [
+        { "type": "image_picker", "id": "image", "label": "Imagen" },
+        { "type": "text", "id": "subheading", "label": "Subtítulo" },
+        { "type": "text", "id": "heading", "label": "Título", "default": "Nueva colección" },
+        { "type": "text", "id": "button_label", "label": "Texto enlace", "default": "Descubrir" },
+        { "type": "url", "id": "link", "label": "Enlace" },
+        { "type": "select", "id": "size", "label": "Tamaño", "options": [
+          { "value": "small", "label": "Pequeño" },
+          { "value": "medium", "label": "Mediano" },
+          { "value": "large", "label": "Grande" }
+        ], "default": "medium" },
+        { "type": "color", "id": "text_color", "label": "Color texto", "default": "#ffffff" },
+        { "type": "color", "id": "overlay_color", "label": "Overlay", "default": "rgba(0,0,0,0.25)" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Grid promocional",
+      "blocks": [
+        { "type": "banner", "settings": { "size": "large", "heading": "Mujer" } },
+        { "type": "banner", "settings": { "size": "small", "heading": "Hombre" } },
+        { "type": "banner", "settings": { "size": "small", "heading": "Accesorios" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

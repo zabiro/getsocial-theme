@@ -1,0 +1,43 @@
+<section
+  class="main-collection section-spacing"
+  id="shopify-section-{{ section.id }}"
+  data-collection-section="{{ section.id }}"
+  data-collection-root
+  data-collection-url="{{ collection.url }}"
+>
+  <div class="page-width">
+    <header class="collection-header">
+      <div>
+        <h1>{{ collection.title }}</h1>
+        {%- if collection.description != blank -%}<div class="rte">{{ collection.description }}</div>{%- endif -%}
+        <p class="collection-header__count" data-collection-header-count>{{ collection.products_count }} {{ 'collections.products' | t }}</p>
+      </div>
+      {%- if collection.image -%}
+        {{ collection.image | image_url: width: 400 | image_tag: class: 'collection-header__image', loading: 'lazy' }}
+      {%- endif -%}
+    </header>
+
+    <div class="collection-layout{% if section.settings.enable_filtering %} collection-layout--with-sidebar collection-layout--filter-drawer{% endif %}{% if section.settings.enable_ajax_filters %} collection-layout--ajax{% endif %}">
+      {% render 'collection-results', collection: collection, section: section %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Colección",
+  "class": "section-main-collection",
+  "settings": [
+    { "type": "checkbox", "id": "enable_filtering", "label": "Filtros laterales", "default": true },
+    { "type": "checkbox", "id": "enable_ajax_filters", "label": "Filtros AJAX (sin recargar página)", "default": true },
+    { "type": "checkbox", "id": "enable_mobile_filter_drawer", "label": "Cajón de filtros en móvil", "default": true, "info": "En escritorio los filtros siguen en barra lateral" },
+    { "type": "checkbox", "id": "enable_sticky_filter_bar", "label": "Barra horizontal de filtros activos", "default": true },
+    { "type": "range", "id": "products_per_page", "min": 8, "max": 48, "step": 4, "label": "Productos por página", "default": 24 },
+    { "type": "select", "id": "columns_desktop", "label": "Columnas", "options": [
+      { "value": "2", "label": "2" },
+      { "value": "3", "label": "3" },
+      { "value": "4", "label": "4" }
+    ], "default": "4" }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,65 @@
+{
+  "sections": {
+    "scroll": {
+      "type": "scrolling-text",
+      "blocks": {
+        "a": { "type": "text", "settings": { "text": "FLASH SALE — HASTA 50%" } },
+        "b": { "type": "text", "settings": { "text": "ENVÍO GRATIS HOY" } }
+      },
+      "block_order": ["a", "b"]
+    },
+    "hero": {
+      "type": "hero-banner",
+      "settings": {
+        "subheading": "Oferta limitada",
+        "heading": "Precios irrepetibles",
+        "description": "Solo 48 horas. No acumulable con otras promociones.",
+        "button_label": "Comprar con descuento",
+        "content_alignment": "center",
+        "overlay_opacity": 40
+      }
+    },
+    "countdown": {
+      "type": "countdown-timer",
+      "settings": {
+        "heading": "La oferta termina en",
+        "end_date": "2026-12-31 23:59",
+        "button_label": "Aprovechar ahora",
+        "background": "#1a1a1a"
+      }
+    },
+    "products": {
+      "type": "featured-collection",
+      "settings": {
+        "heading": "Productos en oferta",
+        "products_to_show": 8,
+        "columns_desktop": "4",
+        "show_view_all": true
+      }
+    },
+    "trust": {
+      "type": "multicolumn",
+      "settings": { "heading": "Compra con confianza" },
+      "blocks": {
+        "t1": { "type": "column", "settings": { "icon": "🚚", "heading": "Envío rápido", "text": "24-48h" } },
+        "t2": { "type": "column", "settings": { "icon": "↩️", "heading": "Devoluciones", "text": "30 días" } },
+        "t3": { "type": "column", "settings": { "icon": "🔒", "heading": "Pago seguro", "text": "SSL" } }
+      },
+      "block_order": ["t1", "t2", "t3"]
+    },
+    "faq": {
+      "type": "faq",
+      "settings": { "heading": "Preguntas sobre la promoción" }
+    },
+    "cta": {
+      "type": "rich-text",
+      "blocks": {
+        "h": { "type": "heading", "settings": { "heading": "¿Listo para ahorrar?" } },
+        "b": { "type": "button", "settings": { "label": "Ir a la tienda", "style": "primary" } }
+      },
+      "block_order": ["h", "b"],
+      "settings": { "alignment": "center", "background": "#f7f7f7" }
+    }
+  },
+  "order": ["scroll", "hero", "countdown", "products", "trust", "faq", "cta"]
+}

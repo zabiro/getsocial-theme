@@ -1,0 +1,48 @@
+{
+  "sections": {
+    "hero": {
+      "type": "hero-banner",
+      "settings": {
+        "subheading": "Nuestra marca",
+        "heading": "Más que productos",
+        "description": "Compromiso con calidad, personas y planeta.",
+        "button_label": "Conoce la colección",
+        "content_alignment": "center"
+      }
+    },
+    "split": {
+      "type": "split-banner",
+      "blocks": {
+        "p1": { "type": "panel", "settings": { "heading": "Origen", "subheading": "2018", "button_label": "Historia" } },
+        "p2": { "type": "panel", "settings": { "heading": "Futuro", "subheading": "2026", "button_label": "Sostenibilidad" } }
+      },
+      "block_order": ["p1", "p2"]
+    },
+    "mission": {
+      "type": "rich-text",
+      "blocks": {
+        "h": { "type": "heading", "settings": { "heading": "Nuestra misión", "heading_tag": "h2" } },
+        "t": { "type": "text", "settings": { "text": "<p>Crear piezas atemporales que duren años, no temporadas.</p>" } }
+      },
+      "block_order": ["h", "t"],
+      "settings": { "alignment": "center", "content_width": 700 }
+    },
+    "gallery": {
+      "type": "gallery",
+      "settings": { "heading": "Detrás de cámaras", "columns": "4" }
+    },
+    "team": {
+      "type": "image-with-text",
+      "settings": {
+        "heading": "El equipo",
+        "layout": "image_left",
+        "button_label": "Trabaja con nosotros"
+      }
+    },
+    "press": {
+      "type": "logo-list",
+      "settings": { "heading": "Prensa y partners" }
+    }
+  },
+  "order": ["hero", "split", "mission", "gallery", "team", "press"]
+}

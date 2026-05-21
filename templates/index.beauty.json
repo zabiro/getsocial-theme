@@ -1,0 +1,55 @@
+{
+  "sections": {
+    "hero": {
+      "type": "hero-banner",
+      "settings": {
+        "subheading": "Belleza limpia",
+        "heading": "Tu ritual de cuidado",
+        "description": "Ingredientes naturales. Resultados visibles.",
+        "button_label": "Ver skincare",
+        "content_alignment": "center",
+        "overlay_opacity": 25
+      }
+    },
+    "multicolumn": {
+      "type": "multicolumn",
+      "settings": { "heading": "Sin parabenos · Cruelty free" },
+      "blocks": {
+        "c1": { "type": "column", "settings": { "icon": "🌿", "heading": "Natural", "text": "Fórmulas botánicas" } },
+        "c2": { "type": "column", "settings": { "icon": "✨", "heading": "Glow", "text": "Resultados en 14 días" } },
+        "c3": { "type": "column", "settings": { "icon": "💧", "heading": "Hidratación", "text": "24h de confort" } }
+      },
+      "block_order": ["c1", "c2", "c3"]
+    },
+    "featured": {
+      "type": "featured-collection",
+      "settings": { "heading": "Bestsellers belleza", "products_to_show": 8, "columns_desktop": "4" }
+    },
+    "image_text": {
+      "type": "image-with-text",
+      "settings": { "heading": "Ciencia + naturaleza", "subheading": "Nuestra filosofía", "layout": "image_right" }
+    },
+    "testimonials": {
+      "type": "testimonials",
+      "settings": { "heading": "Reseñas verificadas", "background": "#faf8f5" }
+    },
+    "countdown": {
+      "type": "countdown-timer",
+      "settings": { "heading": "Oferta lanzamiento", "background": "#2d2a26", "end_date": "2026-12-31 23:59" }
+    },
+    "faq": {
+      "type": "faq",
+      "settings": { "heading": "Ingredientes y uso" }
+    },
+    "newsletter": {
+      "type": "rich-text",
+      "blocks": {
+        "h": { "type": "heading", "settings": { "heading": "Club belleza" } },
+        "t": { "type": "text", "settings": { "text": "<p>Muestras gratis en tu primera compra.</p>" } }
+      },
+      "block_order": ["h", "t"],
+      "settings": { "alignment": "center", "background": "#f5ebe0" }
+    }
+  },
+  "order": ["hero", "multicolumn", "featured", "image_text", "testimonials", "countdown", "faq", "newsletter"]
+}

@@ -1,0 +1,28 @@
+<div class="mobile-menu" data-mobile-menu aria-hidden="true">
+  <div class="mobile-menu__overlay" data-mobile-menu-close></div>
+  <div class="mobile-menu__panel">
+    <div class="mobile-menu__header">
+      <span>{{ shop.name }}</span>
+      <button type="button" data-mobile-menu-close aria-label="{{ 'general.close' | t }}">✕</button>
+    </div>
+    <nav class="mobile-menu__nav">
+      {%- for link in menu.links -%}
+        <details class="mobile-menu__item">
+          <summary><a href="{{ link.url }}">{{ link.title }}</a></summary>
+          {%- if link.links.size > 0 -%}
+            <ul>
+              {%- for child in link.links -%}
+                <li><a href="{{ child.url }}">{{ child.title }}</a></li>
+              {%- endfor -%}
+            </ul>
+          {%- endif -%}
+        </details>
+      {%- endfor -%}
+    </nav>
+    {%- if settings.social_instagram != blank -%}
+      <div class="mobile-menu__social">
+        <a href="{{ settings.social_instagram }}">Instagram</a>
+      </div>
+    {%- endif -%}
+  </div>
+</div>

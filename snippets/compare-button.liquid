@@ -1,0 +1,9 @@
+{%- if settings.enable_compare -%}
+  <button
+    type="button"
+    class="card-action"
+    data-compare-toggle
+    data-product-handle="{{ product.handle }}"
+    aria-label="{{ 'compare.add' | t }}"
+  >⇄</button>
+{%- endif -%}

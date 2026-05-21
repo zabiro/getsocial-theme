@@ -1,0 +1,19 @@
+﻿{%- comment -%}
+  Solo visible en el personalizador de temas (request.design_mode).
+  No bloquea la tienda pública — avisa al merchant.
+  Configura license_api_url en ajustes (tu backend debe responder JSON { "valid": true|false, "message": "..." }).
+{%- endcomment -%}
+{%- if request.design_mode and settings.enable_license_check -%}
+  <div id="getsocial-license-notice" class="getsocial-license-notice" data-license-notice hidden>
+    <p data-license-msg></p>
+    <a href="{{ routes.root_url }}admin/themes/current/editor?context=theme" target="_blank" rel="noopener">Configuración del tema → Licencia</a>
+  </div>
+  <script>
+    window.getsocialLicense = {
+      key: {{ settings.license_key | json }},
+      shop: {{ shop.permanent_domain | json }},
+      apiTemplate: {{ settings.license_api_url | default: '' | json }},
+      apiSecret: {{ settings.license_api_secret | default: '' | json }}
+    };
+  </script>
+{%- endif -%}

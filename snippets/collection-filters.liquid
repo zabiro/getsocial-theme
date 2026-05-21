@@ -1,0 +1,39 @@
+<form class="collection-filters" data-collection-filters action="{{ collection.url }}" method="get">
+  {%- if collection.filters.size > 0 -%}
+    {%- for filter in collection.filters -%}
+      <details class="collection-filters__group" open>
+        <summary>{{ filter.label }}</summary>
+        <ul>
+          {%- case filter.type -%}
+            {%- when 'list' -%}
+              {%- for value in filter.values -%}
+                <li>
+                  <label>
+                    <input
+                      type="checkbox"
+                      name="{{ value.param_name }}"
+                      value="{{ value.value }}"
+                      data-filter-input
+                      {% if value.active %}checked{% endif %}
+                      {% if value.count == 0 and value.active == false %}disabled{% endif %}
+                    >
+                    {{ value.label }} ({{ value.count }})
+                  </label>
+                </li>
+              {%- endfor -%}
+            {%- when 'price_range' -%}
+              <li class="collection-filters__price">
+                <input type="number" name="{{ filter.min_value.param_name }}" data-filter-input placeholder="Min" value="{% if filter.min_value.value %}{{ filter.min_value.value | money_without_currency | replace: ',', '' }}{% endif %}">
+                <span>—</span>
+                <input type="number" name="{{ filter.max_value.param_name }}" data-filter-input placeholder="Max" value="{% if filter.max_value.value %}{{ filter.max_value.value | money_without_currency | replace: ',', '' }}{% endif %}">
+              </li>
+          {%- endcase -%}
+        </ul>
+      </details>
+    {%- endfor -%}
+    <button type="submit" class="button button--small" data-filter-submit>{{ 'collections.filter' | t }}</button>
+    <a href="{{ collection.url }}" class="collection-filters__clear" data-filter-clear>{{ 'collections.clear' | t }}</a>
+  {%- else -%}
+    <p class="collection-filters__empty">{{ 'collections.no_filters' | t }}</p>
+  {%- endif -%}
+</form>

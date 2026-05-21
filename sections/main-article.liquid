@@ -1,0 +1,31 @@
+<article class="main-article section-spacing">
+  <div class="page-width" style="max-width:760px;margin:0 auto">
+    {%- if article.image -%}
+      {{ article.image | image_url: width: 1200 | image_tag: loading: 'eager', style: 'border-radius:var(--border-radius);margin-bottom:2rem' }}
+    {%- endif -%}
+    <header>
+      <h1>{{ article.title }}</h1>
+      <time datetime="{{ article.published_at | date: '%Y-%m-%d' }}">{{ article.published_at | date: format: 'date' }}</time>
+      {%- if article.author != blank -%}<span> — {{ article.author }}</span>{%- endif -%}
+    </header>
+    <div class="rte article-content">{{ article.content }}</div>
+    {%- if blog.comments_enabled? -%}
+      <section class="article-comments" style="margin-top:3rem">
+        <h2>{{ 'blogs.comments.title' | t }}</h2>
+        {% paginate article.comments by 10 %}
+          {%- for comment in article.comments -%}
+            <div class="comment"><strong>{{ comment.author }}</strong><p>{{ comment.content }}</p></div>
+          {%- endfor -%}
+          {{ paginate | default_pagination }}
+        {% endpaginate %}
+      </section>
+    {%- endif -%}
+  </div>
+</article>
+
+{% schema %}
+{
+  "name": "Artículo",
+  "class": "section-main-article"
+}
+{% endschema %}

@@ -1,0 +1,39 @@
+{
+  "sections": {
+    "hero": {
+      "type": "hero-banner",
+      "settings": {
+        "subheading": "Hogar & decoración",
+        "heading": "Diseña tu espacio",
+        "description": "Muebles y detalles con alma.",
+        "button_label": "Explorar hogar",
+        "content_alignment": "center"
+      }
+    },
+    "collections": {
+      "type": "collection-list",
+      "settings": { "heading": "Ambientes", "columns": "3", "card_style": "overlay" }
+    },
+    "lookbook": {
+      "type": "lookbook",
+      "settings": { "heading": "Inspiración", "layout": "masonry" }
+    },
+    "featured": {
+      "type": "featured-collection",
+      "settings": { "heading": "Novedades hogar", "products_to_show": 6, "columns_desktop": "3" }
+    },
+    "image_text": {
+      "type": "image-with-text",
+      "settings": { "heading": "Hecho para durar", "layout": "image_left" }
+    },
+    "testimonials": {
+      "type": "testimonials",
+      "settings": { "heading": "Hogares reales" }
+    },
+    "gallery": {
+      "type": "gallery",
+      "settings": { "heading": "Instagram @tu_tienda", "columns": "4" }
+    }
+  },
+  "order": ["hero", "collections", "lookbook", "featured", "image_text", "testimonials", "gallery"]
+}

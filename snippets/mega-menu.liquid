@@ -1,0 +1,23 @@
+{%- comment -%} Mega menú: enlaces de 2º nivel con imagen promo opcional {%- endcomment -%}
+<ul class="mega-menu__grid">
+  {%- for child in link.links -%}
+    <li class="mega-menu__column">
+      <a href="{{ child.url }}" class="mega-menu__parent">{{ child.title }}</a>
+      {%- if child.links.size > 0 -%}
+        <ul class="mega-menu__children">
+          {%- for grandchild in child.links -%}
+            <li><a href="{{ grandchild.url }}">{{ grandchild.title }}</a></li>
+          {%- endfor -%}
+        </ul>
+      {%- endif -%}
+    </li>
+  {%- endfor -%}
+  {%- if promo_image != blank -%}
+    <li class="mega-menu__promo">
+      <a href="{{ promo_link }}">
+        {{ promo_image | image_url: width: 400 | image_tag: loading: 'lazy' }}
+        {%- if promo_title != blank -%}<span>{{ promo_title }}</span>{%- endif -%}
+      </a>
+    </li>
+  {%- endif -%}
+</ul>

@@ -1,0 +1,28 @@
+<section class="scrolling-text" style="background:{{ section.settings.background }};color:{{ section.settings.text_color }};--speed:{{ section.settings.speed }}s">
+  <div class="scrolling-text__track" data-marquee aria-hidden="true">
+    {%- for i in (1..4) -%}
+      <span class="scrolling-text__content">
+        {%- for block in section.blocks -%}
+          <span {{ block.shopify_attributes }}>{{ block.settings.text }}</span>
+          {%- unless forloop.last -%}<span class="scrolling-text__sep">{{ section.settings.separator }}</span>{%- endunless -%}
+        {%- endfor -%}
+      </span>
+    {%- endfor -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Texto en scroll",
+  "settings": [
+    { "type": "color", "id": "background", "label": "Fondo", "default": "#1a1a1a" },
+    { "type": "color", "id": "text_color", "label": "Texto", "default": "#ffffff" },
+    { "type": "text", "id": "separator", "label": "Separador", "default": "•" },
+    { "type": "range", "id": "speed", "min": 10, "max": 60, "step": 5, "unit": "s", "label": "Velocidad", "default": 25 }
+  ],
+  "blocks": [
+    { "type": "text", "name": "Texto", "settings": [{ "type": "text", "id": "text", "label": "Texto", "default": "ENVÍO GRATIS" }] }
+  ],
+  "presets": [{ "name": "Texto en scroll", "blocks": [{ "type": "text" }, { "type": "text" }, { "type": "text" }] }]
+}
+{% endschema %}

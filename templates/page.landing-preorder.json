@@ -1,0 +1,54 @@
+{
+  "sections": {
+    "hero": {
+      "type": "hero-banner",
+      "settings": {
+        "subheading": "Pre-order abierto",
+        "heading": "Sé el primero en tenerlo",
+        "description": "Reserva ahora. Envío estimado en 4-6 semanas.",
+        "button_label": "Reservar ahora",
+        "content_alignment": "center"
+      }
+    },
+    "countdown": {
+      "type": "countdown-timer",
+      "settings": {
+        "heading": "El pre-order cierra en",
+        "end_date": "2026-10-01 00:00",
+        "button_label": "Reservar",
+        "background": "#111111"
+      }
+    },
+    "product": {
+      "type": "featured-product",
+      "settings": { "heading": "El producto", "product": "" }
+    },
+    "timeline": {
+      "type": "multicolumn",
+      "settings": { "heading": "Calendario de envío", "columns": "3" },
+      "blocks": {
+        "t1": { "type": "column", "settings": { "heading": "Semana 1-2", "text": "Producción" } },
+        "t2": { "type": "column", "settings": { "heading": "Semana 3-4", "text": "Control calidad" } },
+        "t3": { "type": "column", "settings": { "heading": "Semana 5-6", "text": "Envío a clientes" } }
+      },
+      "block_order": ["t1", "t2", "t3"]
+    },
+    "faq": {
+      "type": "faq",
+      "settings": { "heading": "Pre-order FAQ" },
+      "blocks": {
+        "q1": { "type": "question", "settings": { "question": "¿Cuándo se cobra?", "answer": "<p>Al confirmar el pedido.</p>" } },
+        "q2": { "type": "question", "settings": { "question": "¿Puedo cancelar?", "answer": "<p>Hasta 48h después del pedido.</p>" } }
+      },
+      "block_order": ["q1", "q2"]
+    },
+    "urgency": {
+      "type": "scrolling-text",
+      "blocks": {
+        "u": { "type": "text", "settings": { "text": "PLAZAS LIMITADAS — 200 UNIDADES" } }
+      },
+      "block_order": ["u"]
+    }
+  },
+  "order": ["hero", "countdown", "product", "timeline", "faq", "urgency"]
+}
