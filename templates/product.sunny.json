@@ -6,9 +6,10 @@
         "ben1": { "type": "benefit", "settings": { "text": "Despigmenta la piel y unifica el tono." } },
         "ben2": { "type": "benefit", "settings": { "text": "Estimula la producción de colágeno." } },
         "ben3": { "type": "benefit", "settings": { "text": "Rejuvenece la piel." } },
-        "ben4": { "type": "benefit", "settings": { "text": "Mejora textura, tono y luminosidad." } }
+        "ben4": { "type": "benefit", "settings": { "text": "Mejora textura, tono y luminosidad." } },
+        "share1": { "type": "share", "settings": { "heading": "Compartir", "icon_style": "circle" } }
       },
-      "block_order": ["ben1", "ben2", "ben3", "ben4"],
+      "block_order": ["ben1", "ben2", "ben3", "ben4", "share1"],
       "settings": { "show_dynamic_checkout": false }
     },
     "faq": {
