@@ -21,10 +21,12 @@
     const cmp = getCompare();
     document.querySelectorAll('[data-wishlist-count]').forEach((el) => {
       el.textContent = wish.length;
+      el.hidden = wish.length === 0;
       el.classList.toggle('has-items', wish.length > 0);
     });
     document.querySelectorAll('[data-compare-count]').forEach((el) => {
       el.textContent = cmp.length;
+      el.hidden = cmp.length === 0;
       el.classList.toggle('has-items', cmp.length > 0);
     });
     const bar = document.querySelector('[data-compare-bar]');

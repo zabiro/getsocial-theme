@@ -18,7 +18,10 @@
       body: JSON.stringify({ items: [{ id: Number(variantId), quantity: qty }] }),
     });
     const cart = await (await fetch(`${root}cart.js`)).json();
-    cartCount.forEach((c) => { c.textContent = cart.item_count; });
+    cartCount.forEach((c) => {
+      c.textContent = cart.item_count;
+      c.hidden = cart.item_count === 0;
+    });
     openCart();
   };
 

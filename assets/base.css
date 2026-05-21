@@ -56,7 +56,6 @@ h1{font-size:var(--font-size-h1)}h2{font-size:var(--font-size-h2)}h3{font-size:v
 .site-header__logo{font-family:var(--font-heading-family);font-size:1.25rem;font-weight:var(--font-heading-weight)}
 .site-header__nav{display:none;gap:1.5rem;font-family:var(--font-navigation-family)}
 @media(min-width:990px){.site-header__nav{display:flex}}
-.site-header__icons{display:flex;align-items:center;gap:1rem}
 .site-header__cart{position:relative;display:flex}
 .site-header__count{position:absolute;top:-6px;right:-8px;min-width:1.1rem;height:1.1rem;padding:0 4px;font-size:.65rem;line-height:1.1rem;text-align:center;background:var(--color-accent);color:#fff;border-radius:50%}
 .hero{position:relative;display:flex;align-items:center;overflow:hidden;min-height:var(--hero-min-height,70vh)}

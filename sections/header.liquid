@@ -1,20 +1,38 @@
-<header class="site-header site-header--{{ settings.header_layout }}" role="banner" data-header data-site-header>
+{%- liquid
+  assign is_tropical = false
+  if settings.color_preset == 'sunny' or settings.color_preset == 'beauty'
+    assign is_tropical = true
+  endif
+  assign show_wishlist = false
+  if is_tropical == false and settings.enable_wishlist
+    assign show_wishlist = true
+  elsif settings.header_show_wishlist
+    assign show_wishlist = true
+  endif
+  assign show_compare = false
+  if is_tropical == false and settings.enable_compare
+    assign show_compare = true
+  endif
+-%}
+<header class="site-header site-header--{{ settings.header_layout }}{% if is_tropical %} site-header--tropical{% endif %}" role="banner" data-header data-site-header>
   <div class="page-width">
     <div class="site-header__inner">
-      <button type="button" class="site-header__menu-toggle" aria-label="{{ 'general.menu' | t }}" data-mobile-menu-open>☰</button>
+      <button type="button" class="site-header__icon-btn site-header__menu-toggle" aria-label="{{ 'general.menu' | t }}" data-mobile-menu-open>
+        {% render 'icon-menu' %}
+      </button>
 
       <a href="{{ routes.root_url }}" class="site-header__logo">
         {%- if section.settings.logo != blank -%}
-          {{ section.settings.logo | image_url: width: 240 | image_tag: alt: shop.name, loading: 'eager' }}
+          {{ section.settings.logo | image_url: width: 280 | image_tag: alt: shop.name, loading: 'eager', class: 'site-header__logo-image' }}
         {%- else -%}
-          {{ shop.name }}
+          <span class="site-header__logo-text">{{ shop.name }}</span>
         {%- endif -%}
       </a>
 
       <nav class="site-header__nav" aria-label="Principal">
         {%- for link in section.settings.menu.links -%}
           <div class="site-header__nav-item{% if link.links.size > 0 %} has-dropdown{% endif %}">
-            <a href="{{ link.url }}" class="{% if settings.color_preset == 'sunny' or settings.color_preset == 'beauty' %}link-hover-sunny{% endif %}">{{ link.title }}</a>
+            <a href="{{ link.url }}" class="site-header__nav-link{% if is_tropical %} link-hover-sunny{% endif %}">{{ link.title }}</a>
             {%- if link.links.size > 0 and section.settings.enable_mega_menu -%}
               <div class="site-header__dropdown mega-menu">
                 {% render 'mega-menu', link: link, promo_image: section.settings.mega_menu_image, promo_link: section.settings.mega_menu_link, promo_title: section.settings.mega_menu_title %}
@@ -32,28 +50,32 @@
 
       <div class="site-header__icons">
         {%- if settings.header_show_search -%}
-          <button type="button" data-search-open aria-label="{{ 'general.search' | t }}">{% render 'icon-search' %}</button>
+          <button type="button" class="site-header__icon-btn" data-search-open aria-label="{{ 'general.search' | t }}">
+            {% render 'icon-search' %}
+          </button>
         {%- endif -%}
-        {%- if settings.enable_wishlist -%}
+        {%- if show_wishlist -%}
           {%- assign wish_url = settings.wishlist_page.url | default: '/pages/wishlist' -%}
-          <a href="{{ wish_url }}" class="site-header__wishlist" aria-label="{{ 'wishlist.title' | t }}">
-            ♡<span class="site-header__count" data-wishlist-count>0</span>
+          <a href="{{ wish_url }}" class="site-header__icon-btn site-header__wishlist" aria-label="{{ 'wishlist.title' | t }}">
+            {% render 'icon-wishlist' %}
+            <span class="site-header__count" data-wishlist-count hidden>0</span>
           </a>
-        {%- elsif settings.header_show_wishlist -%}
-          <a href="{{ section.settings.wishlist_link | default: '#' }}" class="site-header__wishlist" aria-label="Wishlist">♡</a>
         {%- endif -%}
-        {%- if settings.enable_compare -%}
+        {%- if show_compare -%}
           {%- assign cmp_url = settings.compare_page.url | default: '/pages/comparar' -%}
-          <a href="{{ cmp_url }}" class="site-header__compare" aria-label="{{ 'compare.title' | t }}">
-            ⇄<span class="site-header__count" data-compare-count>0</span>
+          <a href="{{ cmp_url }}" class="site-header__icon-btn site-header__compare" aria-label="{{ 'compare.title' | t }}">
+            {% render 'icon-compare' %}
+            <span class="site-header__count" data-compare-count hidden>0</span>
           </a>
         {%- endif -%}
         {%- if settings.header_show_account -%}
-          <a href="{{ routes.account_url }}" aria-label="{{ 'general.account' | t }}">👤</a>
+          <a href="{{ routes.account_url }}" class="site-header__icon-btn" aria-label="{{ 'general.account' | t }}">
+            {% render 'icon-account' %}
+          </a>
         {%- endif -%}
-        <a href="{{ routes.cart_url }}" class="site-header__cart" data-cart-open aria-label="{{ 'general.cart' | t }}">
+        <a href="{{ routes.cart_url }}" class="site-header__icon-btn site-header__cart" data-cart-open aria-label="{{ 'general.cart' | t }}">
           {% render 'icon-cart' %}
-          <span class="site-header__count" data-cart-count>{{ cart.item_count }}</span>
+          <span class="site-header__count" data-cart-count{% if cart.item_count == 0 %} hidden{% endif %}>{{ cart.item_count }}</span>
         </a>
       </div>
     </div>

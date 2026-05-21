@@ -255,6 +255,19 @@ html.newsletter-popup-open{overflow:hidden}
 .site-header{transition:transform .35s}
 .site-header{transition:transform .35s cubic-bezier(.4,0,.2,1)}
 .site-header--hidden{transform:translateY(-100%)}
+.site-header__icons{display:flex;align-items:center;gap:.25rem}
+.site-header__icon-btn{position:relative;display:inline-flex;align-items:center;justify-content:center;width:2.5rem;height:2.5rem;padding:0;border:0;background:transparent;color:inherit;cursor:pointer;border-radius:50%;text-decoration:none;transition:background .2s ease,color .2s ease,transform .2s ease}
+.site-header__icon-btn:hover{background:var(--color-background-secondary);opacity:1}
+.site-header__icon-btn .icon{width:1.25rem;height:1.25rem;display:block}
+.site-header__icon-btn svg{width:1.25rem;height:1.25rem}
+.site-header__cart{position:relative}
+.site-header__count{position:absolute;top:2px;right:2px;min-width:1rem;height:1rem;padding:0 4px;font-size:.625rem;font-weight:700;line-height:1rem;text-align:center;background:var(--color-accent);color:#fff;border-radius:999px}
+.site-header__count[hidden]{display:none}
+.site-header__menu-toggle{border:0;background:transparent}
+.site-header--tropical .site-header__icons{gap:.15rem}
+.site-header--tropical .site-header__icon-btn{width:2.35rem;height:2.35rem}
+.site-header--tropical .site-header__icon-btn .icon,.site-header--tropical .site-header__icon-btn svg{width:1.125rem;height:1.125rem;stroke-width:1.35}
+.site-header--tropical .site-header__count{top:0;right:0;background:var(--sunny-coral,var(--color-accent))}
 
 /* === Quick view === */
 .quick-view{position:fixed;inset:0;z-index:260;display:flex;align-items:center;justify-content:center}
