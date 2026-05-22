@@ -16,14 +16,38 @@
         "label": "Preset de color (por industria)",
         "info": "Elige un preset o «Personalizado» para usar los colores de abajo. Combina con la plantilla de inicio (ver docs/DEMOS.md).",
         "options": [
-          { "value": "custom", "label": "Personalizado" },
-          { "value": "fashion", "label": "Moda" },
-          { "value": "beauty", "label": "Belleza" },
-          { "value": "sunny", "label": "Belleza tropical (estilo Sunny)" },
-          { "value": "electronics", "label": "Electrónica" },
-          { "value": "home", "label": "Hogar" },
-          { "value": "food", "label": "Gourmet / Food" },
-          { "value": "sport", "label": "Deporte" }
+          {
+            "value": "custom",
+            "label": "Personalizado"
+          },
+          {
+            "value": "fashion",
+            "label": "Moda"
+          },
+          {
+            "value": "beauty",
+            "label": "Belleza"
+          },
+          {
+            "value": "sunny",
+            "label": "Belleza tropical (estilo Sunny)"
+          },
+          {
+            "value": "electronics",
+            "label": "Electrónica"
+          },
+          {
+            "value": "home",
+            "label": "Hogar"
+          },
+          {
+            "value": "food",
+            "label": "Gourmet / Food"
+          },
+          {
+            "value": "sport",
+            "label": "Deporte"
+          }
         ],
         "default": "fashion"
       },
@@ -151,10 +175,22 @@
         "id": "font_heading_weight",
         "label": "t:settings_schema.typography.settings.font_heading_weight.label",
         "options": [
-          { "value": "400", "label": "Regular" },
-          { "value": "500", "label": "Medium" },
-          { "value": "600", "label": "Semibold" },
-          { "value": "700", "label": "Bold" }
+          {
+            "value": "400",
+            "label": "Regular"
+          },
+          {
+            "value": "500",
+            "label": "Medium"
+          },
+          {
+            "value": "600",
+            "label": "Semibold"
+          },
+          {
+            "value": "700",
+            "label": "Bold"
+          }
         ],
         "default": "600"
       },
@@ -255,10 +291,22 @@
         "id": "image_ratio",
         "label": "t:settings_schema.layout.settings.image_ratio.label",
         "options": [
-          { "value": "adapt", "label": "Adaptar a imagen" },
-          { "value": "portrait", "label": "Retrato (3:4)" },
-          { "value": "square", "label": "Cuadrado (1:1)" },
-          { "value": "landscape", "label": "Paisaje (4:3)" }
+          {
+            "value": "adapt",
+            "label": "Adaptar a imagen"
+          },
+          {
+            "value": "portrait",
+            "label": "Retrato (3:4)"
+          },
+          {
+            "value": "square",
+            "label": "Cuadrado (1:1)"
+          },
+          {
+            "value": "landscape",
+            "label": "Paisaje (4:3)"
+          }
         ],
         "default": "portrait"
       },
@@ -267,9 +315,18 @@
         "id": "card_image_hover",
         "label": "t:settings_schema.layout.settings.card_image_hover.label",
         "options": [
-          { "value": "none", "label": "Ninguno" },
-          { "value": "second_image", "label": "Segunda imagen" },
-          { "value": "zoom", "label": "Zoom" }
+          {
+            "value": "none",
+            "label": "Ninguno"
+          },
+          {
+            "value": "second_image",
+            "label": "Segunda imagen"
+          },
+          {
+            "value": "zoom",
+            "label": "Zoom"
+          }
         ],
         "default": "second_image"
       }
@@ -283,9 +340,18 @@
         "id": "header_layout",
         "label": "t:settings_schema.header.settings.header_layout.label",
         "options": [
-          { "value": "logo_left", "label": "Logo izquierda" },
-          { "value": "logo_center", "label": "Logo centrado" },
-          { "value": "logo_left_menu_center", "label": "Logo izq. + menú centro" }
+          {
+            "value": "logo_left",
+            "label": "Logo izquierda"
+          },
+          {
+            "value": "logo_center",
+            "label": "Logo centrado"
+          },
+          {
+            "value": "logo_left_menu_center",
+            "label": "Logo izq. + menú centro"
+          }
         ],
         "default": "logo_left"
       },
@@ -294,9 +360,18 @@
         "id": "header_style",
         "label": "t:settings_schema.header.settings.header_style.label",
         "options": [
-          { "value": "solid", "label": "Sólido" },
-          { "value": "transparent", "label": "Transparente en inicio" },
-          { "value": "sticky", "label": "Fijo al scroll" }
+          {
+            "value": "solid",
+            "label": "Sólido"
+          },
+          {
+            "value": "transparent",
+            "label": "Transparente en inicio"
+          },
+          {
+            "value": "sticky",
+            "label": "Fijo al scroll"
+          }
         ],
         "default": "sticky"
       },
@@ -323,8 +398,14 @@
         "id": "cart_icon_style",
         "label": "t:settings_schema.header.settings.cart_icon_style.label",
         "options": [
-          { "value": "bag", "label": "Bolsa" },
-          { "value": "cart", "label": "Carrito" }
+          {
+            "value": "bag",
+            "label": "Bolsa"
+          },
+          {
+            "value": "cart",
+            "label": "Carrito"
+          }
         ],
         "default": "bag"
       },
@@ -350,9 +431,18 @@
         "id": "product_card_style",
         "label": "t:settings_schema.product_card.settings.product_card_style.label",
         "options": [
-          { "value": "standard", "label": "Estándar" },
-          { "value": "minimal", "label": "Minimal" },
-          { "value": "overlay", "label": "Info sobre imagen" }
+          {
+            "value": "standard",
+            "label": "Estándar"
+          },
+          {
+            "value": "minimal",
+            "label": "Minimal"
+          },
+          {
+            "value": "overlay",
+            "label": "Info sobre imagen"
+          }
         ],
         "default": "standard"
       },
@@ -422,9 +512,18 @@
         "id": "product_badge_style",
         "label": "t:settings_schema.product_card.settings.product_badge_style.label",
         "options": [
-          { "value": "sale", "label": "Solo oferta" },
-          { "value": "sale_soldout", "label": "Oferta + agotado" },
-          { "value": "custom", "label": "Etiquetas personalizadas" }
+          {
+            "value": "sale",
+            "label": "Solo oferta"
+          },
+          {
+            "value": "sale_soldout",
+            "label": "Oferta + agotado"
+          },
+          {
+            "value": "custom",
+            "label": "Etiquetas personalizadas"
+          }
         ],
         "default": "sale_soldout"
       },
@@ -450,10 +549,22 @@
         "id": "product_gallery_layout",
         "label": "t:settings_schema.product_page.settings.product_gallery_layout.label",
         "options": [
-          { "value": "stacked", "label": "Apilado" },
-          { "value": "thumbnails_left", "label": "Miniaturas izquierda" },
-          { "value": "thumbnails_bottom", "label": "Miniaturas abajo" },
-          { "value": "carousel", "label": "Carrusel" }
+          {
+            "value": "stacked",
+            "label": "Apilado"
+          },
+          {
+            "value": "thumbnails_left",
+            "label": "Miniaturas izquierda"
+          },
+          {
+            "value": "thumbnails_bottom",
+            "label": "Miniaturas abajo"
+          },
+          {
+            "value": "carousel",
+            "label": "Carrusel"
+          }
         ],
         "default": "thumbnails_left"
       },
@@ -512,9 +623,18 @@
         "id": "cart_type",
         "label": "t:settings_schema.cart.settings.cart_type.label",
         "options": [
-          { "value": "drawer", "label": "Cajón lateral" },
-          { "value": "page", "label": "Página completa" },
-          { "value": "notification", "label": "Notificación + drawer" }
+          {
+            "value": "drawer",
+            "label": "Cajón lateral"
+          },
+          {
+            "value": "page",
+            "label": "Página completa"
+          },
+          {
+            "value": "notification",
+            "label": "Notificación + drawer"
+          }
         ],
         "default": "drawer"
       },
@@ -651,15 +771,11 @@
     ]
   },
   {
-    "name": "Extras premium",
+    "name": "Cursor personalizado",
     "settings": [
       {
-        "type": "header",
-        "content": "Cursor personalizado"
-      },
-      {
         "type": "paragraph",
-        "content": "Anillo, punto o imagen (PNG/SVG). Solo escritorio con ratón."
+        "content": "Anillo, punto o imagen PNG/SVG. Solo en escritorio con raton; en movil se usa el cursor del sistema."
       },
       {
         "type": "checkbox",
@@ -672,9 +788,18 @@
         "id": "cursor_style",
         "label": "Estilo del cursor",
         "options": [
-          { "value": "ring", "label": "Anillo (Sunny)" },
-          { "value": "dot", "label": "Punto sólido" },
-          { "value": "image", "label": "Imagen personalizada" }
+          {
+            "value": "ring",
+            "label": "Anillo (Sunny)"
+          },
+          {
+            "value": "dot",
+            "label": "Punto solido"
+          },
+          {
+            "value": "image",
+            "label": "Imagen personalizada"
+          }
         ],
         "default": "ring"
       },
@@ -682,12 +807,12 @@
         "type": "image_picker",
         "id": "cursor_image",
         "label": "Imagen del cursor",
-        "info": "PNG o SVG transparente, ~64–128 px. Usar con estilo «Imagen personalizada»."
+        "info": "PNG o SVG transparente, 64-128 px. Solo con estilo Imagen personalizada."
       },
       {
         "type": "image_picker",
         "id": "cursor_image_hover",
-        "label": "Imagen al pasar sobre enlaces (opcional)"
+        "label": "Imagen al hover (opcional)"
       },
       {
         "type": "range",
@@ -696,7 +821,7 @@
         "max": 80,
         "step": 2,
         "unit": "px",
-        "label": "Tamaño normal",
+        "label": "Tamano normal",
         "default": 28
       },
       {
@@ -706,7 +831,7 @@
         "max": 120,
         "step": 2,
         "unit": "px",
-        "label": "Tamaño al hover",
+        "label": "Tamano al hover",
         "default": 44
       },
       {
@@ -724,12 +849,24 @@
       {
         "type": "select",
         "id": "cursor_blend_mode",
-        "label": "Modo de fusión",
+        "label": "Modo de fusion",
         "options": [
-          { "value": "multiply", "label": "Multiply (Sunny)" },
-          { "value": "normal", "label": "Normal" },
-          { "value": "screen", "label": "Screen" },
-          { "value": "difference", "label": "Difference" }
+          {
+            "value": "multiply",
+            "label": "Multiply (Sunny)"
+          },
+          {
+            "value": "normal",
+            "label": "Normal"
+          },
+          {
+            "value": "screen",
+            "label": "Screen"
+          },
+          {
+            "value": "difference",
+            "label": "Difference"
+          }
         ],
         "default": "normal"
       },
@@ -742,20 +879,59 @@
       {
         "type": "checkbox",
         "id": "cursor_hide_on_product",
-        "label": "Ocultar en página de producto",
+        "label": "Ocultar en pagina de producto",
+        "default": false
+      }
+    ]
+  },
+  {
+    "name": "Extras premium",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "enable_quick_view",
+        "label": "Vista rápida (quick view)",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "enable_whatsapp",
+        "label": "Botón flotante WhatsApp",
         "default": false
       },
       {
-        "type": "header",
-        "content": "Otras funciones premium"
+        "type": "text",
+        "id": "whatsapp_number",
+        "label": "Número WhatsApp (con código país)",
+        "default": "34600000000"
       },
-      { "type": "checkbox", "id": "enable_quick_view", "label": "Vista rápida (quick view)", "default": true },
-      { "type": "checkbox", "id": "enable_whatsapp", "label": "Botón flotante WhatsApp", "default": false },
-      { "type": "text", "id": "whatsapp_number", "label": "Número WhatsApp (con código país)", "default": "34600000000" },
-      { "type": "text", "id": "whatsapp_message", "label": "Mensaje WhatsApp", "default": "Hola, tengo una consulta" },
-      { "type": "checkbox", "id": "header_scroll_hide", "label": "Ocultar cabecera al bajar scroll", "default": true },
-      { "type": "checkbox", "id": "show_inventory_urgency", "label": "Urgencia de stock en producto", "default": true },
-      { "type": "range", "id": "inventory_urgency_threshold", "min": 3, "max": 30, "step": 1, "label": "Umbral «pocas unidades»", "default": 10 }
+      {
+        "type": "text",
+        "id": "whatsapp_message",
+        "label": "Mensaje WhatsApp",
+        "default": "Hola, tengo una consulta"
+      },
+      {
+        "type": "checkbox",
+        "id": "header_scroll_hide",
+        "label": "Ocultar cabecera al bajar scroll",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "show_inventory_urgency",
+        "label": "Urgencia de stock en producto",
+        "default": true
+      },
+      {
+        "type": "range",
+        "id": "inventory_urgency_threshold",
+        "min": 3,
+        "max": 30,
+        "step": 1,
+        "label": "Umbral «pocas unidades»",
+        "default": 10
+      }
     ]
   },
   {
