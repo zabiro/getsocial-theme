@@ -35,15 +35,6 @@
     "border_radius": 12,
     "button_radius": 40,
     "enable_animations": true,
-    "enable_custom_cursor": true,
-    "cursor_style": "ring",
-    "cursor_size": 28,
-    "cursor_size_hover": 44,
-    "cursor_color": "#e8788a",
-    "cursor_fill": "rgba(255, 240, 232, 0.35)",
-    "cursor_blend_mode": "multiply",
-    "cursor_smooth_follow": true,
-    "cursor_hide_on_product": false,
     "image_ratio": "portrait",
     "card_image_hover": "second_image",
     "header_layout": "logo_center",
@@ -51,9 +42,6 @@
     "header_show_search": true,
     "header_show_account": true,
     "header_show_wishlist": false,
-    "enable_wishlist": false,
-    "enable_compare": false,
-    "compare_max": 4,
     "cart_icon_style": "bag",
     "header_background": "#fffbf8",
     "header_text": "#2b2623",
@@ -62,11 +50,13 @@
     "product_card_show_rating": true,
     "product_card_show_swatches": true,
     "product_card_show_quick_add": true,
+    "enable_wishlist": false,
+    "enable_compare": false,
+    "compare_max": 4,
     "product_card_show_second_image": true,
     "product_badge_style": "sale_soldout",
     "product_badge_sale_text": "Oferta",
     "product_badge_soldout_text": "Agotado",
-    "show_breadcrumbs": false,
     "product_gallery_layout": "thumbnails_left",
     "product_enable_zoom": true,
     "product_show_sku": true,
@@ -81,19 +71,82 @@
     "cart_show_shipping_bar": true,
     "cart_free_shipping_threshold": "100",
     "cart_empty_message": "Tu carrito está vacío",
-    "predictive_search": true,
-    "back_to_top": true,
+    "cart_upsell_limit": 3,
+    "enable_custom_cursor": true,
+    "cursor_style": "dot",
+    "cursor_size": 28,
+    "cursor_size_hover": 44,
+    "cursor_color": "#e8788a",
+    "cursor_fill": "rgba(255, 240, 232, 0.35)",
+    "cursor_blend_mode": "multiply",
+    "cursor_smooth_follow": false,
+    "cursor_hide_on_product": false,
     "enable_quick_view": true,
     "enable_whatsapp": false,
     "whatsapp_number": "34600000000",
     "header_scroll_hide": true,
     "show_inventory_urgency": true,
     "inventory_urgency_threshold": 10,
-    "cart_upsell_limit": 3,
+    "predictive_search": true,
+    "show_breadcrumbs": false,
+    "back_to_top": true,
     "sections": {
-      "header": { "type": "header", "settings": {} },
-      "footer": { "type": "footer", "settings": {} }
-    }
+      "header": {
+        "type": "header",
+        "settings": {}
+      },
+      "footer": {
+        "type": "footer",
+        "settings": {
+          "background": "#fff0e8",
+          "text_color": "#2b2623"
+        }
+      },
+      "cart-drawer": {
+        "type": "cart-drawer",
+        "settings": {}
+      },
+      "search-modal": {
+        "type": "search-modal",
+        "settings": {}
+      },
+      "newsletter-popup": {
+        "type": "newsletter-popup",
+        "settings": {
+          "enable": true,
+          "delay": 5,
+          "frequency_days": 7,
+          "heading": "10% de descuento",
+          "text": "Suscríbete y recibe tu código",
+          "placeholder": "tu@email.com",
+          "button_label": "Obtener descuento",
+          "show_discount_code": false,
+          "discount_code": "WELCOME10"
+        }
+      },
+      "cookie-bar": {
+        "type": "cookie-bar",
+        "settings": {
+          "enable": true,
+          "text": "<p>Usamos cookies para mejorar tu experiencia.</p>",
+          "accept_label": "Aceptar",
+          "policy_label": "Política de privacidad",
+          "policy_link": ""
+        }
+      },
+      "age-verifier": {
+        "type": "age-verifier",
+        "settings": {
+          "enable": false,
+          "heading": "¿Eres mayor de edad?",
+          "text": "Debes ser mayor de 18 años para entrar.",
+          "button_yes": "Sí, entrar",
+          "button_no": "No",
+          "redirect_no": ""
+        }
+      }
+    },
+    "content_for_index": []
   },
   "presets": {
     "Moda (Fashion)": {
